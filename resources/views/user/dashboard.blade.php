@@ -136,6 +136,7 @@
                                 </div>
                             </div>
                             <a href="{{URL('/contact')}}" class="nav-item nav-link">Contact</a>
+                            <a href="{{URL('/blog')}}" class="nav-item nav-link">Blog</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <?php

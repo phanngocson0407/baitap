@@ -53,6 +53,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-male"></i>ADMIN</a>
                         <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/blog')}}">Quản lí Blog</a></li>
+                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/order')}}">Quản lí Đơn hàng</a></li>
                             {{-- <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ route('quanli_blog') }}">Quản lí Blog</a></li>
                             <li><i class="menu-icon fa fa-star-half-empty"></i><a href="{{ route('quanli_danhgia') }}">Quản lí Đánh Giá</a></li> --}}
                         </ul>

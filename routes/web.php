@@ -47,6 +47,9 @@ Route::get('/logoutuser', [UserController::class, 'logout']);
 Route::get('/contact', function(){
     return view('contact');
 });
+Route::get('/blog', function(){
+    return view('blog');
+});
 Route::get('/detail', function(){
     return view('detail');
 });
@@ -84,6 +87,16 @@ route::prefix('admin')->group( function()
         Route::get('/edit/{idloaigiay}',[CategoryController::class,'edit']);
         Route::put('/edit/{idloaigiay}',[CategoryController::class,'update']);
         Route::delete('/delete/{idloaigiay}',[CategoryController::class,'destroy']);
+    });
+
+    route::prefix('order')->group( function(){
+        route::get('/', function(){  return view('admin.order.index');});
+      
+    });
+
+    route::prefix('blog')->group( function(){
+        route::get('/', function(){  return view('admin.blog.index');});
+       
     });
 
     Route::get('/trangchu',function(){  return view('admin.trangchu');})->name('trangchu');
