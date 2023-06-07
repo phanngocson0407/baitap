@@ -64,9 +64,9 @@ Route::get('/cart', function(){
 //route for admin
 route::prefix('admin')->group( function()
 {
+
     route::prefix('product')->group( function(){
         route::get('/', [ProductController::class, 'show']);
-            
         route::get('/create',  [ProductController::class, 'create']);
         route::post('/create',  [ProductController::class, 'store']);
         Route::get('/edit/{id}',[ProductController::class,'edit']);
@@ -92,6 +92,15 @@ route::prefix('admin')->group( function()
         Route::delete('/delete/{idloaigiay}',[CategoryController::class,'destroy']);
     });
 
+    route::prefix('accout')->group( function(){
+        route::get('/', [AdminController::class, 'show']);
+        route::get('/create',  [AdminController::class, 'create']);
+        route::post('/create',  [AdminController::class, 'store']);
+        Route::get('/edit/{idloaigiay}',[AdminController::class,'edit']);
+        Route::put('/edit/{idloaigiay}',[AdminController::class,'update']);
+        Route::delete('/delete/{idloaigiay}',[AdminController::class,'destroy']);
+    });
+
     route::prefix('order')->group( function(){
         route::get('/', function(){  return view('admin.order.index');});
       
@@ -105,9 +114,10 @@ route::prefix('admin')->group( function()
     Route::get('/trangchu',function(){  return view('admin.trangchu');})->name('trangchu');
 
     Route::get('/login',[AdminController::class,'dangnhap']);
-
-    Route::post('/login',[AdminController::class,'kiemtraDN']);
+    Route::post('/push-login',[AdminController::class,'kiemtraDN']);
     
+
+
     Route::get('/logout', [AdminController::class, 'logout']);
 
 });

@@ -7,64 +7,52 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng SẢN PHẨM</strong>
-                            </div>
-                            <div class="col-lg-6 col-6 text-left">
-                                <form action="/admin/product/" method="get">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="kw" placeholder="Search for products">
-                                        <div class="input-group-append">
-                                            <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
-                                                
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
+                                <strong class="card-title">Bảng Accout Admin</strong>
                             </div>
                             <div class="card-body">
-                                <a href="{{URL::to('/admin/product/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Sản Phẩm</button>
+                                <a href="{{URL::to('/admin/category/create') }}">
+                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Loại Giày</button>
                                 </a>
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Tên loại</th>
-                                            <th>Giá</th>
-                                            <th>Mô tả </th>
-                                            <th>Ảnh</th>
-                                        
+                                            <th>Username</th>
+                                            <th>Password </th>
+                                            <th>Tên đầy đủ </th>
+                                            <th>Số điện thoại </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $n=0 ?>
-                                        @foreach ( $Product as $item)
-                                        <?php $n++ ?>
-                                        <td>{{$n}}</td>
-                                        <td> {{$item->name_product}}</td>
-                                        <td> {{$item->name_category}}</td>
-                                        <td>{{number_format($item->price).' '.'VNĐ' }}</td>
-                                        <td> {{$item->description}}</td>
-                                        <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"
-                                            alt=""></td> 
+                                       @foreach ($Admin as $item)
+                                       <?php $n++ ?>
+                                       <tr>
+                                            <td>{{$n}}</td>
+                                            <td>{{$item->username}}</td>
+                                            <td>{{$item->password}}</td>
+                                            <td>{{$item->fullname}}</td>
+                                            <td>{{$item->phone}}</td>
                                             <td>
-                                                <a href="product/edit/{{$item->id}}">
-                                                
+                                                <a href="">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
-                                                <form action="product/delete/{{$item->id}}" method="post">
+                                            </td>
+                                            <td>
+                                                <form action="" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
-                                             
                                             </td>
+                                        </tr>
+                                           
+                                       @endforeach
+                                       
                                     </tbody>
-                                    @endforeach
+                                
                                 </table>
-                                {{$Product->links()}}
                             </div>
                         </div>
                     </div>

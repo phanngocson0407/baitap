@@ -28,9 +28,13 @@
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 </head>
-
+<?php
+     $data=Session::get('data');
+    $role=Session::get('role');
+?>
 <body>
     <!-- Left Panel -->
+    
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -40,25 +44,44 @@
                     </li>
                     <li class="menu-title">Quản trị viên</li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="menu-icon fa fa-users"></i>Nhân viên</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="menu-icon fa fa-users"></i>Quản lí</a>
                         <ul class="sub-menu children dropdown-menu">
-                           
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/product')}}">Quản lí Sản phẩm</a></li>
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/thuonghieu')}}">Quản lí thương hiệu</a></li>
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/category')}}">Quản lí Loại sản phẩm</a></li>
+                            @foreach ($role as $k=>$v)
+                               
+                                @if($v->role_module=="role_product")
+                                    <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/product')}}">Quản lí Sản phẩm</a></li>
+                                @endif
+
+                                @if($v->role_module=="role_thuonghieu")
+                                    <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/thuonghieu')}}">Quản lí Thương Hiệu</a></li>     
+                                @endif
+
+                                @if($v->role_module=="role_category")
+                                    <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/category')}}">Quản lí Loại sản phẩm</a></li>
+                                @endif
+                                
+                                @if($v->role_module=="role_blog")
+                                    <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/blog')}}">Quản lí Blog</a></li>
+                                @endif
+
+                                @if($v->role_module=="role_donhang")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/order')}}">Quản lí Đơn hàng</a></li>
+                                @endif
+
+                                @if($v->role_module=="role_accout")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/accout')}}">Quản lí Acoout Admin</a></li>
+                                @endif
+
+                            @endforeach
+                                
+                            
+                            
+                            
                         </ul>
                     </li>
                    
 
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-male"></i>ADMIN</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/blog')}}">Quản lí Blog</a></li>
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/order')}}">Quản lí Đơn hàng</a></li>
-                            {{-- <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ route('quanli_blog') }}">Quản lí Blog</a></li>
-                            <li><i class="menu-icon fa fa-star-half-empty"></i><a href="{{ route('quanli_danhgia') }}">Quản lí Đánh Giá</a></li> --}}
-                        </ul>
-                    </li>
+                   
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -99,16 +122,14 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <?php
-                            $data=Session::get('data');
-                            ?>
+                           
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>{{$data->fullname??""}}</a>
 
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
-                            <a class="nav-link" href="{{URL::to('/logout') }}"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="{{URL::to('/admin/logout') }}"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
 
