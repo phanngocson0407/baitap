@@ -30,7 +30,7 @@
 					<img src="{{url('backend')}}/img/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="{{URL::to('/admin/login')}}" method="post">
+				<form class="login100-form validate-form" action="{{URL::to('/admin/push-login')}}" method="post">
 					@csrf
 					<span class="login100-form-title">
 						Admin Login

@@ -34,10 +34,16 @@ class AdminController extends Controller
         $username = $request->username;
         $password = md5($request->password);
         $result= DB::table('admin')->where('username',$username)->where('password',$password)->get();
-        
+        $data_admin=$result[0];
+
+        $role=
+        DB::table('role_admin')
+        ->join('role','role.id','=','role_admin.id_role')
+        ->where('role_admin.id_admin',$data_admin->id)->get();
         if(count($result)>0){
-           Session::put('data',$result[0]);
-            return view("/admin.trangchu");
+           Session::put('data',$data_admin);
+           Session::put('role',$role);
+            return redirect('admin/trangchu');
         }else{
            Session::put('message','Tài khoản hoặc mật khẩu sai');
            return view('admin.login');
@@ -47,6 +53,7 @@ class AdminController extends Controller
 
     public function logout(){
         Session::put('data',"");
+        Session::put('role',"");
         return view('admin.login');
     }
 
@@ -61,9 +68,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Admin $admin)
+    public function show()
     {
-        //
+        $Admin = Admin::all();
+        return view ('admin.accout_admin.index',['Admin'=>$Admin]);
     }
 
     /**
