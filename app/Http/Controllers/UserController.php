@@ -39,7 +39,7 @@ class UserController extends Controller
         $result= DB::table('user')->where('username',$username)->where('password',$password)->get();
         
         if(count($result)>0){
-           Session::put('data',$result[0]);
+           Session::put('data1',$result[0]);
             return redirect("/");
         }else{
            Session::put('message','Tài khoản hoặc mật khẩu sai');

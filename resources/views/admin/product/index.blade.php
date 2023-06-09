@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 @section('admin')
+<?php
+     $data=Session::get('data');
+    $role=Session::get('role');
+?>
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -22,9 +26,13 @@
                                 </form>
                             </div>
                             <div class="card-body">
+                                @foreach ($role as $k=>$v)
+                                    @if($v->role_module=="role_create_product")
                                 <a href="{{URL::to('/admin/product/create') }}">
                                     <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Sản Phẩm</button>
                                 </a>
+                                    @endif
+                                @endforeach
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
@@ -49,17 +57,22 @@
                                         <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"
                                             alt=""></td> 
                                             <td>
+                                                @foreach ($role as $k=>$v)
+                                                    @if($v->role_module=="role_edit_product")
                                                 <a href="product/edit/{{$item->id}}">
                                                 
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
+                                                     @endif
+                                                     @if($v->role_module=="role_delete_product")
                                                 <form action="product/delete/{{$item->id}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
-                                             
+                                                    @endif
+                                                @endforeach
                                             </td>
                                     </tbody>
                                     @endforeach

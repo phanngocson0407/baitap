@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 @section('admin')
+<?php
+     $data=Session::get('data');
+    $role=Session::get('role');
+?>
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -10,9 +14,13 @@
                                 <strong class="card-title">Bảng Thương Hiệu</strong>
                             </div>
                             <div class="card-body">
+                                @foreach ($role as $k=>$v)
+                                @if($v->role_module=="role_create_category")
                                 <a href="{{URL::to('/admin/category/create') }}">
                                     <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Loại Giày</button>
                                 </a>
+                                @endif
+                                @endforeach
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
@@ -28,19 +36,27 @@
                                        <td>{{$n}}</td>
                                         <td>{{$item->tenthuonghieu}}</td>
                                         <td>{{$item->name_category}}</td>
+                                        @foreach ($role as $k=>$v)
                                             <td>
+                                                
+                                                @if($v->role_module=="role_edit_category")
                                                 <a href="category/edit/{{$item->idloaigiay}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
+                                                @endif
                                             </td>
+                                            @if($v->role_module=="role_delete_category")
                                             <td>
+                                                
                                                 <form action="category/delete/{{$item->idloaigiay}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
                                             </td>
+                                            @endif
+                                            @endforeach
                                     </tbody>
                                     @endforeach
                                 </table>

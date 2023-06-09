@@ -29,7 +29,7 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 </head>
 <?php
-     $data=Session::get('data');
+   
     $role=Session::get('role');
 ?>
 <body>
@@ -120,7 +120,10 @@
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{url('backend')}}/img//admin.jpg" alt="User Avatar">
                         </a>
-
+                        <?php
+                        $data=Session::get('data');
+                        ?>
+                        
                         <div class="user-menu dropdown-menu">
                            
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>{{$data->fullname??""}}</a>
