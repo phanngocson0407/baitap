@@ -65,7 +65,7 @@
                                 <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
                                 @endif
                             </div>
-                            {{-- {{var_dump($item ->id_product)}}; --}}
+                            {{var_dump($item ->id_product)}};
                             
                         @endforeach
                     </form>

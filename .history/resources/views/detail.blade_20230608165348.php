@@ -54,22 +54,20 @@
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     
-                    <form>
-                        
-                        @foreach($size as $item)
-                       
-                            <div class="custom-control custom-radio custom-control-inline">
-                                @if($item->id_product == $item ->id)
-                                <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
-                                
-                                <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
-                                @endif
-                            </div>
-                            {{-- {{var_dump($item ->id_product)}}; --}}
-                            
-                        @endforeach
-                    </form>
-                
+    <form>
+        
+            <div class="custom-control custom-radio custom-control-inline">
+                @foreach($size as $item)
+                @if($item->id_size == $item->id_product)
+                <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name='' >
+                <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
+                @endif
+                @endforeach
+            </div>
+        
+    </form>
+
+
                 
                 </div>
                 <div class="d-flex mb-4">

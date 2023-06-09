@@ -55,18 +55,15 @@
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     
                     <form>
-                        
+                        {{dd($item->id_product)}}
                         @foreach($size as $item)
-                       
+                        @if($item->id_product==$item->id)
                             <div class="custom-control custom-radio custom-control-inline">
-                                @if($item->id_product == $item ->id)
                                 <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
-                                
                                 <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
-                                @endif
+                                
                             </div>
-                            {{-- {{var_dump($item ->id_product)}}; --}}
-                            
+                            @endif
                         @endforeach
                     </form>
                 

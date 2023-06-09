@@ -54,7 +54,8 @@ Route::get('/blog', function(){
 });
 Route::get('/detail', function(){
     return view('detail');
-});
+
+}
 
 
 Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');

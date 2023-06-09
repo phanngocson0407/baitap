@@ -13,23 +13,19 @@ class ProductController extends Controller
 {
 
 
-    public function detail($id)
+ 
+    public function detail($id )
     {
-        $size = Size::join("product", 'product.id', '=', 'size.id_product')
-            ->select(
-                'size.*',
-                'product.id'
-            )
-            ->where('size.id_product', $id)
-            ->get();
-        
-        // dd($size);
-        
+        $detail = Size::join("product_detail",'product_detail.id','=','size.id_Product_detail')
+        ->select(
+            'product_detail.*',
+            'size.number_size'
+        )
+        ->get();
         $detail = Product::find($id);
-        
-        return view('detail', ['detail' => $detail, 'size' => $size]);
-    }
-    
+              
+            return view('detail', [ 'detail' => $detail ],['size'=>$detail]);
+        }
     /**
      * Display a listing of the resource.
      *

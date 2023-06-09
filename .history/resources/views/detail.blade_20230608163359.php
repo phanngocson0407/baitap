@@ -51,27 +51,19 @@
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">{{number_format($detail->price).' '.'VNĐ' }}</h3>
                 <p class="mb-4">{{ $detail['description'] }} </p>
+                @foreach($size as $item)
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                    
                     <form>
-                        
-                        @foreach($size as $item)
-                       
-                            <div class="custom-control custom-radio custom-control-inline">
-                                @if($item->id_product == $item ->id)
-                                <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
-                                
-                                <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
-                                @endif
-                            </div>
-                            {{-- {{var_dump($item ->id_product)}}; --}}
-                            
-                        @endforeach
+                        {{-- @if($item->id == $item->id_product) --}}
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="size-1" name="size">
+                            <label class="custom-control-label" for="">{{$item->number_size}}</label>
+                        </div>
+                        {{-- @endif --}}
                     </form>
-                
-                
                 </div>
+                @endforeach
                 <div class="d-flex mb-4">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <form>

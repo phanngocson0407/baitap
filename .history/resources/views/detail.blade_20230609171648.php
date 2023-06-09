@@ -61,11 +61,10 @@
                             <div class="custom-control custom-radio custom-control-inline">
                                 @if($item->id_product == $item ->id)
                                 <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
-                                
+
                                 <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
                                 @endif
                             </div>
-                            {{-- {{var_dump($item ->id_product)}}; --}}
                             
                         @endforeach
                     </form>

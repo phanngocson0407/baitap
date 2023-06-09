@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Size;
 use Illuminate\Pagination\Paginator;
 
 use DB;
@@ -13,23 +12,14 @@ class ProductController extends Controller
 {
 
 
-    public function detail($id)
+ 
+    public function detail($id )
     {
-        $size = Size::join("product", 'product.id', '=', 'size.id_product')
-            ->select(
-                'size.*',
-                'product.id'
-            )
-            ->where('size.id_product', $id)
-            ->get();
-        
-        // dd($size);
-        
+
         $detail = Product::find($id);
-        
-        return view('detail', ['detail' => $detail, 'size' => $size]);
-    }
-    
+              
+            return view('detail', [ 'detail' => $detail ]);
+        }
     /**
      * Display a listing of the resource.
      *
