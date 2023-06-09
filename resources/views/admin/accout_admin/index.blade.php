@@ -9,30 +9,33 @@
                             <div class="card-header">
                                 <strong class="card-title">Bảng Accout Admin</strong>
                             </div>
+                           
                             <div class="card-body">
-                                <a href="{{URL::to('/admin/category/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Loại Giày</button>
+                                <a href="{{URL::to('/admin/accout_admin/create') }}">
+                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Accout</button>
                                 </a>
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
-                                            <th>STT</th>
+                                            <th>ID</th>
                                             <th>Username</th>
                                             <th>Password </th>
                                             <th>Tên đầy đủ </th>
                                             <th>Số điện thoại </th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $n=0 ?>
+                                       
                                        @foreach ($Admin as $item)
-                                       <?php $n++ ?>
                                        <tr>
-                                            <td>{{$n}}</td>
+                                            
+                                            <td>{{$item->id}}</td>
                                             <td>{{$item->username}}</td>
                                             <td>{{$item->password}}</td>
                                             <td>{{$item->fullname}}</td>
                                             <td>{{$item->phone}}</td>
+                                           
                                             <td>
                                                 <a href="">
                                                 <button  class="btn btn-outline-secondary">
@@ -53,6 +56,7 @@
                                     </tbody>
                                 
                                 </table>
+                               
                             </div>
                         </div>
                     </div>

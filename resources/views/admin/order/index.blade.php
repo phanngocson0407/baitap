@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 @section('admin')
+<?php
+     $data=Session::get('data');
+    $role=Session::get('role');
+?>
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -10,9 +14,13 @@
                                 <strong class="card-title">Bảng Blogu</strong>
                             </div>
                             <div class="card-body">
+                                @foreach ($role as $k=>$v)
+                                    @if($v->role_module=="role_create_order")
                                 <a href="{{URL::to('/admin/category/create') }}">
                                     <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Loại Giày</button>
                                 </a>
+                                @endif
+                                @endforeach
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
@@ -26,14 +34,17 @@
                                       
                                        <?php $n++ ?>
                                        <td>{{$n}}</td>
-                                        <td></td>
-                                      
+                                        <td>fsdfdsfsfdsf</td>
+                                        @foreach ($role as $k=>$v)
+                                            @if($v->role_module=="role_edit_order")
                                             <td>
                                                 <a href="">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
                                             </td>
+                                            @endif
+                                            @if($v->role_module=="role_delete_order")
                                             <td>
                                                 <form action="" method="post">
                                                     @csrf
@@ -41,6 +52,8 @@
                                                     <button class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
                                             </td>
+                                            @endif
+                                            @endforeach
                                     </tbody>
                                 
                                 </table>

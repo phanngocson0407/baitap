@@ -134,7 +134,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{URL('/')}}" class="nav-item nav-link active">Home</a>
                             <a href="{{URL('/shop')}}" class="nav-item nav-link">Shop</a>
-                            <a href="{{URL('/detail')}}" class="nav-item nav-link">Shop Detail</a>
+                            
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -147,15 +147,15 @@
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <?php
-                            $data=Session::get('data');
+                            $data1=Session::get('data1');
                             ?>
-                            @if($data=="")
+                            @if($data1=="")
                             <a href="{{URL::to('/login') }}" class="nav-item nav-link">Đăng nhập</a>
                             <a href="{{URL::to('/register') }}" class="nav-item nav-link">Đăng kí</a>
                     
                         </div>
                         @else<div class="navbar-nav ml-auto py-0">
-                            <a class="nav-item nav-link">Xin chào {{$data->fullname??""}}</a>
+                            <a class="nav-item nav-link">Xin chào {{$data1->fullname??""}}</a>
                             <a href="{{URL::to('/logoutuser') }}" class="nav-item nav-link">Đăng Xuất</a>
                         </div>
                         @endif

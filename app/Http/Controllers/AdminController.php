@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Illuminate\Pagination\Paginator;
 class AdminController extends Controller
 {
     /**
@@ -48,7 +49,7 @@ class AdminController extends Controller
            Session::put('message','Tài khoản hoặc mật khẩu sai');
            return view('admin.login');
         }
-       
+        
     }
 
     public function logout(){
@@ -68,9 +69,11 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Request $r)
     {
+       
         $Admin = Admin::all();
+     
         return view ('admin.accout_admin.index',['Admin'=>$Admin]);
     }
 
