@@ -1,0 +1,55 @@
+.container-fluid .aa ul {
+    display: flex;
+}
+.container-fluid .aa > ul li {
+    list-style: none; /* bỏ dấu chấm mặc định của li */
+    /* kẻ đường bên trái và bên phải của li */
+    z-index: 1000;
+}
+.container-fluid .aa > ul li a {
+    display: block;
+    padding: 0 25px;
+    line-height: 50px;
+    color: #f1f2f3;
+    text-decoration: none;
+}
+.container-fluid .aa ul li:first-child {
+    border-left: none; /* bỏ đường kè trái của phần tử đầu tiên */
+}
+.container-fluid .aa > ul li:first-child a {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+/* Khi hover đến li, tô màu cho thẻ a */
+.container-fluid .aa ul li:hover > a {
+    background: red;
+    opacity: 0.7;
+    color: yellow;
+}
+/*menu con*/
+/*Ẩn các menu con cấp 1,2,3*/
+.container-fluid .aa li ul {
+    display: none;
+    min-width: 350px;
+    position: absolute;
+}
+.container-fluid .aa li > ul li {
+    width: 100%;
+    border: none;
+
+    background: #999;
+    text-align: left;
+}
+.container-fluid .aa li > ul li:first-child a {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.container-fluid .aa li > ul li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.container-fluid .aa li > ul li:last-child a {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+/*khi hover thì hiện menu con*/
