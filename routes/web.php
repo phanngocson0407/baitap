@@ -69,6 +69,7 @@ Route::get('/cart', function(){
 Route::get('/Add-Cart/{id}', [CartController::class, 'AddCart'] );
 Route::get('/Delete-Item-Cart/{id}', [CartController::class, 'DeleteItemCart'] );
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
+Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::get('/Delete-List-Item-Cart/{id}', [CartController::class, 'DeleteListItemCart'] );
 Route::get('/Save-List-Item-Cart/{id}/{quanty}', [CartController::class, 'SaveListItemCart'] );
 // Route::get('/', [CartController::class, 'AddCart'] );
