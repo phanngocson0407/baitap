@@ -8,7 +8,7 @@ use App\Models\Order;
 use App\Models\Order_Detail;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Constraint\Count;
-
+session_start();
 class CartController extends Controller
 {
     public function AddCart(Request $request,$id){
@@ -47,21 +47,22 @@ class CartController extends Controller
     {
         $data = $r->all();
         // $data['order_id']= (String)Str::uuid();
-        $data['id']= time();
-        if (Order::create($data))
+        $order=Order::create($data);
+        if ($order)
         {
             
             foreach (Session::get('Cart')->products as $item) {
-                // dd(Session::get('Cart')->products);
+               // dd(Session::get('Cart'));
+                $data['id_order']=$order->id;
                 $data['id_product']= $item['productInfo']->id;
-                
-                //'quantity' => $data['quantity'][$index],
+                //dd( $data['id_product']);
+                $data['quantity']=$item['quanty'];
                 $data['price']= $item['productInfo']->price;
                 Order_Detail::create($data);
             }
            
         //     Mail::to($data['email'])->send(new CheckoutMail(['nguoigui'=>'Giam doc Ng VAn A'] ));
-        //     Cart::clear();
+            Session::put('Cart',null);
         //     session()->flash('message', 'Cam on ban da dat hang. Checkmail de biet chi tiet');
             return redirect('/thank');
         }

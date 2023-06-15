@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SizeController;  
 use App\Http\Controllers\ColorController;  
 use App\Http\Controllers\CartController;  
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +48,7 @@ Route::get('/logoutuser', [UserController::class, 'logout']);
          return view('shop');
  });
  Route::get('/checkout', function(){
+    //Session::put('Cart',null);
     return view('checkout');
 });
 Route::get('/contact', function(){
@@ -72,6 +74,9 @@ Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::get('/Delete-List-Item-Cart/{id}', [CartController::class, 'DeleteListItemCart'] );
 Route::get('/Save-List-Item-Cart/{id}/{quanty}', [CartController::class, 'SaveListItemCart'] );
+Route::get('/thank', function(){
+    return view('thank');
+});
 // Route::get('/', [CartController::class, 'AddCart'] );
  
 
