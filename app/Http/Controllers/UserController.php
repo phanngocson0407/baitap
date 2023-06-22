@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use App\Models\User;
+use Illuminate\Pagination\Paginator;
 class UserController extends Controller
 {
     /**
@@ -21,6 +23,30 @@ class UserController extends Controller
     }
     
     public function register(Request $request){
+        $v = $request->validate([
+            'email'=>'required|unique:user',
+            'username'=>'required|unique:user',
+            'password'=>'required', 
+            'fullname'=>'required',
+            'address'=>'required',   
+            'phone'=>'required',
+        ],
+        [
+            'email.required'=>'Điền email',
+            'email.unique'=>'Đã có người sử dụng email này rồi',
+           
+            'username.required'=>'Điền tài khoản',
+            'username.unique'=>'tài khoản này có rồi',
+
+            'phone.required'=>'Điền số điện thoại',
+
+            'password.required'=>'Điền mật khẩu',
+            
+            'fullname.required'=>'Điền họ và tên đầy đủ',
+
+            'address.required'=>'Điền địa chỉ',
+        ]
+    );
         $data =array();
         $data['fullname']=$request->fullname;
         $data['email']=$request->email;
@@ -58,7 +84,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.addUser');
     }
 
     /**
@@ -69,7 +95,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $v = $request->validate([
+            'email'=>'required|unique:user',
+            'username'=>'required|unique:user',
+          
+        ],
+        [
+            'email.required'=>'Điền email',
+            'email.unique'=>'Đã có người sử dụng email này rồi',
+           
+            'username.required'=>'Điền tài khoản',
+            'username.unique'=>'Tài khoản này có rồi',
+        ]
+    );
+        $data1 =array();
+        $data1['id']=$request->id; 
+        $data1['fullname']=$request->fullname;
+        $data1['email']=$request->email;
+        $data1['phone']=$request->phone;
+        $data1['address']=$request->address;
+        $data1['username']=$request->username;
+        $data1['password']=md5($request->password);
+      
+        DB::table('user')->insert($data1);
+  
+        return redirect('/admin/khachhang/');
     }
 
     /**
@@ -78,9 +128,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $r)
     {
-        //
+        $kw = $r->kw?$r->kw:'';
+        $kw="%".$kw."%";
+        $user =User::where('fullname','like',$kw)->paginate(4);
+        $user->appends(['kw'=>$r->kw]);
+       
+        return view('admin.user.index',['user'=>$user]);
     }
 
     /**
@@ -91,7 +146,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $khachhang=User::find($id);
+        return view('admin.user.edit',['data'=>$khachhang]);
     }
 
     /**
@@ -103,7 +159,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data_khachhang =array();
+        $data_khachhang['fullname']=$request->fullname;
+      
+       
+        $data_khachhang['email']=$request->email;
+        $data_khachhang['phone']=$request->phone;
+        $data_khachhang['address']=$request->address;
+        $data_khachhang['username']=$request->username;
+        $data_khachhang['password']=md5($request->password);
+        DB::table('user')->where('id',$request->id)->update($data_khachhang);
+        return Redirect('/admin/khachhang/');
     }
 
     /**

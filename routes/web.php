@@ -135,6 +135,13 @@ route::prefix('admin')->group( function()
         Route::put('/edit/{idloaigiay}',[AdminController::class,'update']);
         Route::delete('/delete/{idloaigiay}',[AdminController::class,'destroy']);
     });
+    route::prefix('khachhang')->group( function(){
+        route::get('/', [UserController::class, 'show']);
+        route::get('/create',  [UserController::class, 'create']);
+        route::post('/create',  [UserController::class, 'store']);
+        Route::get('/edit/{id}',[UserController::class,'edit']);
+        Route::put('/edit/{id}',[UserController::class,'update']);
+    });
 
     route::prefix('order')->group( function(){
         route::get('/', function(){  return view('admin.order.index');});

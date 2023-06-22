@@ -38,7 +38,14 @@ class ThuongHieuController extends Controller
     public function store(Request $request)
     {
         
- 
+        $v = $request->validate([
+            'tenthuonghieu'=>'unique:thuonghieu',
+        ],
+        [
+            'tenthuonghieu.unique'=>'Không được trùng tên thương hiệu đã có sẵn',
+           
+        ]
+    );
         $data1 =array();
         $data1['idthuonghieu']=$request->idthuonghieu; 
         $data1['tenthuonghieu']=$request->tenthuonghieu;

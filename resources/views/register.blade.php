@@ -44,35 +44,58 @@
                         <h2 class="form-title">TẠO TÀI KHOẢN</h2>
                          <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
                             <span class="label-input100">Họ và Tên</span>
-                            <input class="input100" type="text" name="fullname" placeholder="Nhập họ và tên">
+                            <input class="input100" type="text" name="fullname" placeholder="Nhập họ và tên"
+                            class="@error('fullname') form-control is-invalid @enderror">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
-    
+                        @error('fullname') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                         <div class="wrap-input100 validate-input" >
                             <span class="label-input100">Email</span>
-                            <input class="input100" type="email" name="email" placeholder="Nhập email">
+                            <input class="input100" type="email" name="email" placeholder="Nhập email"
+                            class="@error('email') form-control is-invalid @enderror">
                             <span class="focus-input100" data-symbol="&#9993;"></span>
                         </div>
+                        @error('email') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                         <div class="wrap-input100 validate-input" >
                             <span class="label-input100">Số điện thoại</span>
-                            <input class="input100" type="number" name="phone" placeholder="Nhập số điện thoại">
+                            <input class="input100" type="number" name="phone" placeholder="Nhập số điện thoại"
+                            class="@error('phone') form-control is-invalid @enderror">
                             <span class="focus-input100" data-symbol="&#9742;"></span>
                         </div>
+                        @error('phone') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                         <div class="wrap-input100 validate-input" >
                             <span class="label-input100">Địa chỉ</span>
-                            <input class="input100" type="text" name="address" placeholder="Nhập địa chỉ">
+                            <input class="input100" type="text" name="address" placeholder="Nhập địa chỉ"
+                            class="@error('address') form-control is-invalid @enderror">
                             <span class="focus-input100" data-symbol="&#9750;"></span>
                         </div>
+                        @error('address') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                         <div class="wrap-input100 validate-input" >
                             <span class="label-input100">Tên tài khoản</span>
-                            <input class="input100" type="text" name="username" placeholder="Nhập tên tài  khoản">
+                            <input class="input100" type="text" name="username" placeholder="Nhập tên tài  khoản"
+                            class="@error('username') form-control is-invalid @enderror">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
+                            @error('username') 
+                            <div class="" style="color:red">{{$message}} </div>
+                            @enderror
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
                             <span class="label-input100">Mật khẩu</span>
-                            <input class="input100" type="password" name="password" placeholder="Nhập mật khẩu">
+                            <input class="input100" type="password" name="password" placeholder="Nhập mật khẩu"
+                            class="@error('password') form-control is-invalid @enderror">
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
+                        @error('password') 
+                            <div class="" style="color:red">{{$message}} </div>
+                            @enderror
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>Tôi đồng ý với điều khoản <a href="#" class="term-service">Terms of service</a></label>

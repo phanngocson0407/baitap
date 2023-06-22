@@ -12,8 +12,11 @@
                     <label for="name">Tên thương hiệu :</label>
 
                     <input required="true" name="tenthuonghieu" type="text" class="form-control" id="title" name="title"
-                        value=" ">
+                    class="@error('tenthuonghieu') form-control is-invalid @enderror"   >
                 </div>
+                @error('tenthuonghieu') 
+                <div class="" style="color:red">{{$message}} </div>
+                @enderror
                 <button class="btn btn-success">Lưu</button>
             </form>
         </div>

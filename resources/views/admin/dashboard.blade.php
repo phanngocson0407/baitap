@@ -78,9 +78,8 @@
                                 @if($v->role_module=="role_accout")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/accout')}}">Quản lí Acoout Admin</a></li>
                                 @endif
-
                             @endforeach
-                                
+                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
                             
                             
                             
