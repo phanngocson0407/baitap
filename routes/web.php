@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SizeController;  
 use App\Http\Controllers\ColorController;  
 use App\Http\Controllers\CartController;  
+use App\Http\Controllers\CommentController;  
 use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
@@ -69,8 +70,12 @@ Route::get('/Delete-Item-Cart/{id}', [ProductController::class, 'DeleteItemCart'
 Route::get('/cart', function(){
     return view('cart');
 });
+//đánh giá sản phẩm
+Route::post('/detail/{id}', [CommentController::class, 'store'] );
 
- 
+
+
+
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::get('/Delete-List-Item-Cart/{id}', [CartController::class, 'DeleteListItemCart'] );

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Size;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Pagination\Paginator;
@@ -46,11 +47,16 @@ class ProductController extends Controller
         'product.id')
         ->where('color.id_product',$id)
         ->get();
-    
-        
+        $comment = Comment::join('product','product.id','=','comment.product_id')
+        ->select('comment.*',
+        'product.id')
+        ->where('comment.product_id',$id)
+        ->get();
+
+     
         $detail = Product::find($id);
-        
-        return view('detail', ['detail' => $detail ,'size' => $size ,'color' => $color ,'product'=>$product]);
+       
+        return view('detail', ['detail' => $detail ,'size' => $size ,'color' => $color ,'product'=>$product,'comment' =>$comment]);
     }
     
     /**
