@@ -64,8 +64,7 @@ Route::get('/detail', function(){
 
 Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
 Route::get('/shop/{id}', [CategoryController::class, 'shop'] );
-Route::get('/Add-Cart/{id}', [ProductController::class, 'AddCart'] );
-Route::get('/Delete-Item-Cart/{id}', [ProductController::class, 'DeleteItemCart'] );
+
 Route::get('/cart', function(){
     return view('cart');
 });

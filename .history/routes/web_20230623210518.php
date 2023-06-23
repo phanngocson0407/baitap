@@ -64,13 +64,15 @@ Route::get('/detail', function(){
 
 Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
 Route::get('/shop/{id}', [CategoryController::class, 'shop'] );
+ 
 Route::get('/Add-Cart/{id}', [ProductController::class, 'AddCart'] );
 Route::get('/Delete-Item-Cart/{id}', [ProductController::class, 'DeleteItemCart'] );
 Route::get('/cart', function(){
     return view('cart');
 });
 
- 
+Route::get('/Add-Cart/{id}', [CartController::class, 'AddCart'] );
+Route::get('/Delete-Item-Cart/{id}', [CartController::class, 'DeleteItemCart'] );
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::get('/Delete-List-Item-Cart/{id}', [CartController::class, 'DeleteListItemCart'] );

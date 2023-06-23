@@ -1,21 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Size;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Pagination\Paginator;
 
-use DB;
+ 
+use Illuminate\Support\Facades\DB as FacadesDB;
+
 class ProductController extends Controller
 {
 
 
     public function detail($id)
     {
+        $product = DB::table('product')
+        ->leftjoin('size','size.id_product','=','product.id')
+        // ->select(
+        //             'size.*',
+        //             'product.*'
+        //         )
+        ->leftjoin('color','color.id_product','=','product.id')
+        // ->select('color.*',
+        // 'product.*')
+
+        ->where('size.id_product', $id)
+        ->where('color.id_product',$id)
+        ->get();
+        // dd($product);
         $size = Size::join("product", 'product.id', '=', 'size.id_product')
             ->select(
                 'size.*',
@@ -32,7 +50,7 @@ class ProductController extends Controller
         
         $detail = Product::find($id);
         
-        return view('detail', ['detail' => $detail, 'size' => $size, 'color' => $color]);
+        return view('detail', ['detail' => $detail ,'size' => $size ,'color' => $color ,'product'=>$product]);
     }
     
     /**
@@ -165,5 +183,38 @@ class ProductController extends Controller
         $Product = Product::find($id);
         $Product->delete();
         return redirect('/admin/product/');
+    }
+
+
+    
+    public function AddCart(Request $request, $id){
+        $product = DB::table('product')->join('size','size.id_product','=','product.id')->join('color','color.id_product','=','product.id')->where('id',$id)->first();
+        // dd($product);
+        if($product!= null){
+              
+                    $oldCart = Session('Cart')?Session('Cart'):null;
+                    $newCart =  new Cart($oldCart);
+                    $newCart->AddCart($product,$id);
+                    $request ->Session()->put('Cart',$newCart);
+            //    dd($newCart);
+        }
+        return view('cart1' );
+    }
+    public function DeleteItemCart(Request $request,$id){
+        // $product =DB::table('product')->where('id',$id)->first();
+        
+              
+                    $oldCart = Session('Cart')?Session('Cart'):null;
+                    $newCart =  new Cart($oldCart);
+                    $newCart->DeleteItemCart( $id);
+
+                     if(Count($newCart->products)>0){
+                        $request ->Session()->put('Cart',$newCart);
+                     }else{
+                        $request ->Session()->forget('Cart');
+                     }
+            //    dd($newCart);
+        
+        return view('cart1' );
     }
 }

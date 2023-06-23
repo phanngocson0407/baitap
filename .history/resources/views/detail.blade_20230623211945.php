@@ -122,7 +122,7 @@
                 
             </div> --}}
             <a   onclick="AddCart({{ $detail['id'] }})"  href="javascript:" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm Vào Giỏ Hàng</a>
-            <a href="" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</a>
+            <a href="{{url('/List-Cart')}}" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</a>
 
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

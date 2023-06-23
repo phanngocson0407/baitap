@@ -156,8 +156,7 @@
                                         </div>
                                         <div class="select-button">
                                             <a  href="{{url('/List-Cart')}}" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Xem giỏ hàng</a>
-                <a href="" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua
-                    Ngay</a>
+               
                                         </div>
                                         
                                     </div>                           
