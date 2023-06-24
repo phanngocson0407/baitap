@@ -131,9 +131,10 @@
                                                         </td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                
-                                                                <p  >{{$item['productInfo']->number_size}}  </p>
-                                                             
+                                                               
+                                                               
+                                                                <p  > {{Session::get('Cart')->numberSize}} </p>
+                                                          
                                                             </div>
                                                         </td>
                                                         {{-- <td class="si-text">

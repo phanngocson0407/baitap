@@ -71,7 +71,7 @@
                 
                 
                 </div>
-                {{-- <div class="d-flex mb-4">
+                <div class="d-flex mb-4">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <form>
                         @foreach($color as $data)
@@ -82,7 +82,7 @@
                         </div>
                         @endforeach
                     </form>
-                </div> --}}
+                </div>
                 {{-- <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">

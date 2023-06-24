@@ -1,6 +1,58 @@
 @extends('user.dashboard')
 @section('user')
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
 
+h1 {
+    text-align: center;
+}
+
+#comment-form {
+    margin-bottom: 20px;
+}
+#comment-form input,
+#comment-form textarea,
+#comment-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#comment-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#comments {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.comment {
+    margin-bottom: 10px;
+}
+
+.comment .username {
+    font-weight: bold;
+}
+
+.comment .rating {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.comment .content {
+    margin-top: 5px;
+}
+
+
+</style>
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -51,27 +103,26 @@
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">{{number_format($detail->price).' '.'VNĐ' }}</h3>
                 <p class="mb-4">{{ $detail['description'] }} </p>
-                <div class="d-flex mb-3">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+
+
+                    <div class="d-flex mb-3">
+                        <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>          
+                        @foreach($size->sortBy('number_size') as $key => $item)
+                        <div class="custom-control custom-radio custom-control-inline">
+                            @if($key === 0)
+                                <input   type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
+                            @else
+                                <input type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
+                            @endif
+                            <label class="custom-control-label" for=" {{$item->id_size}}">{{$item->number_size}}</label>
+                            
+                        </div>
+                    @endforeach
+                
                     
-             
-                        
-                    @foreach($size->sortBy('number_size') as $key => $item)
-                    <div class="custom-control custom-radio custom-control-inline">
-                        @if($key === 0)
-                            <input   type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
-                        @else
-                            <input type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
-                        @endif
-                        <label class="custom-control-label" for=" {{$item->id_size}}">{{$item->number_size}}</label>
-                        
+                    
                     </div>
-                @endforeach
-               
-                
-                
-                </div>
-                {{-- <div class="d-flex mb-4">
+                <div class="d-flex mb-4">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <form>
                         @foreach($color as $data)
@@ -82,7 +133,7 @@
                         </div>
                         @endforeach
                     </form>
-                </div> --}}
+                </div>
                 {{-- <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
@@ -144,8 +195,38 @@
             </div>
             
         </div>
+        <style>
+            .style_comment{
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background: #ccc;
+            }
+        </style>
         
+        <div>
+            <p><b>Hiển thị đánh giá</b></p>
+            <div class="style_comment">
+                <?php $n=0 ?>
+                @foreach($comment as $item)
+                <?php $n++ ?>
+                
+                <div>{{$n}}: {{$item->comment_name}}</div>
+                <div>Bình luận: {{$item->comment}}</div>
+                @endforeach
+            </div>
             
+        </div>
+
+        <div>
+            <p><b>Viết đánh giá của bạn</b></p>
+            <form id="comment-form"  method="post" action="{{URL::to('/detail/{id}')}}">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $detail['id'] }}">
+                <input type="text" name="comment_name" id="username" placeholder="Tên người dùng" required>
+                <textarea id="content" name="comment" placeholder="Nội dung bình luận" required></textarea>
+                <button type="submit">Gửi bình luận</button>
+            </form>
+        </div>
 
 
     <!-- Products Start -->
@@ -248,6 +329,9 @@
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <!-- Template Javascript -->
+   
+    {{-- Code phần đánh giá --}}
+    
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
         function AddCart(id){

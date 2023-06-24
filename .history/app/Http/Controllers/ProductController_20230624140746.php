@@ -195,15 +195,15 @@ class ProductController extends Controller
     
     public function AddCart(Request $request, $id){
         $product = DB::table('product')->join('size','size.id_product','=','product.id')->join('color','color.id_product','=','product.id')->where('id',$id)->first();
-        // dd($product);
-        if($product!= null){
+        dd($product);
+        // if($product!= null){
               
-                    $oldCart = Session('Cart')?Session('Cart'):null;
-                    $newCart =  new Cart($oldCart);
-                    $newCart->AddCart($product,$id);
-                    $request ->Session()->put('Cart',$newCart);
-            //    dd($newCart);
-        }
+        //             $oldCart = Session('Cart')?Session('Cart'):null;
+        //             $newCart =  new Cart($oldCart);
+        //             $newCart->AddCart($product,$id);
+        //             $request ->Session()->put('Cart',$newCart);
+        //     //    dd($newCart);
+        // }
         return view('cart1' );
     }
     public function DeleteItemCart(Request $request,$id){

@@ -21,18 +21,17 @@
                 </td>
                 <td class="si-text">
                     <div class="product-selected">
-                       
-                    
-                        <p >{{$item['productInfo']->number_size}}  </p>
-                  
+                      
+                        <p>{{$item['productInfo']->number_size}}  </p>
+                      
                     </div>
                 </td>
-                {{-- <td class="si-text">
+                <td class="si-text">
                     <div class="product-selected">
                         <p>{{$item['productInfo']->name_color}}  </p>
                          
                     </div>
-                </td> --}}
+                </td>
                 <td class="si-text delete">
                      <p class="xoa" data-id ="{{$item['productInfo']->id}}" >xoa</p>
                 </td>

@@ -22,8 +22,8 @@
                 <td class="si-text">
                     <div class="product-selected">
                        
-                    
-                        <p >{{$item['productInfo']->number_size}}  </p>
+                       
+                        <p>{{$item['productInfo']->number_size}}  </p>
                   
                     </div>
                 </td>

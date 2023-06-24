@@ -22,8 +22,8 @@
                 <td class="si-text">
                     <div class="product-selected">
                        
-                    
-                        <p >{{$item['productInfo']->number_size}}  </p>
+                       
+                        <p  value="{{Session::get('Cart')->numberSize}}">  </p>
                   
                     </div>
                 </td>

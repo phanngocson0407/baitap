@@ -26,10 +26,8 @@
         $newProduct['price'] =$newProduct['quanty']*$product->price;
         $this->products[$id] = $newProduct;
         $this->totalPrice += $product->price;
- 
-
-            $this->numberSize = $product->number_size;
-   
+        if($id==$product->id_product)
+        $this->numberSize = $product->number_size;
 
         $this->totalQuanty++ ;
 

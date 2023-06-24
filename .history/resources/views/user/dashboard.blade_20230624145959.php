@@ -131,8 +131,8 @@
                                                         </td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                
-                                                                <p  >{{$item['productInfo']->number_size}}  </p>
+                                                         
+                                                                <p data-id="{{$item['productInfo']->id_size}}>{{$item['productInfo']->number_size}}  </p>
                                                              
                                                             </div>
                                                         </td>

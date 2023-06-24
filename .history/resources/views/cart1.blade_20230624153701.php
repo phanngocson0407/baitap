@@ -23,7 +23,7 @@
                     <div class="product-selected">
                        
                     
-                        <p >{{$item['productInfo']->number_size}}  </p>
+                        <p >{{$item['productInfo']->radio('number_size')}}  </p>
                   
                     </div>
                 </td>

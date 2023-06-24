@@ -21,10 +21,11 @@
                 </td>
                 <td class="si-text">
                     <div class="product-selected">
-                       
-                    
-                        <p >{{$item['productInfo']->number_size}}  </p>
-                  
+                        @foreach($size as $data)
+                        @if($item['productInfo']->id_size == $data->id_size)
+                        <p>{{$item['productInfo']->number_size}}  </p>
+                 
+                        @endif
                     </div>
                 </td>
                 {{-- <td class="si-text">

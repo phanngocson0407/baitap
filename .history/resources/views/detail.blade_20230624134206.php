@@ -59,11 +59,11 @@
                     @foreach($size->sortBy('number_size') as $key => $item)
                     <div class="custom-control custom-radio custom-control-inline">
                         @if($key === 0)
-                            <input   type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
+                            <input   type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
                         @else
-                            <input type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
+                            <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
                         @endif
-                        <label class="custom-control-label" for=" {{$item->id_size}}">{{$item->number_size}}</label>
+                        <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
                         
                     </div>
                 @endforeach
@@ -71,7 +71,7 @@
                 
                 
                 </div>
-                {{-- <div class="d-flex mb-4">
+                <div class="d-flex mb-4">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <form>
                         @foreach($color as $data)
@@ -82,7 +82,7 @@
                         </div>
                         @endforeach
                     </form>
-                </div> --}}
+                </div>
                 {{-- <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">

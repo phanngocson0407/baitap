@@ -56,17 +56,15 @@
                     
              
                         
-                    @foreach($size->sortBy('number_size') as $key => $item)
                     <div class="custom-control custom-radio custom-control-inline">
-                        @if($key === 0)
-                            <input   type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
-                        @else
-                            <input type="radio" class="custom-control-input" id=" {{$item->id_size}}" name=" {{$item->id_product}}">
-                        @endif
-                        <label class="custom-control-label" for=" {{$item->id_size}}">{{$item->number_size}}</label>
+                        @foreach($product  as $key => $item)
+                       
+                            <input type="radio" class="custom-control-input" id="{{$item->id_size}}" name="{{$item->id_product}}">
+                         
+                            @endforeach
+                        <label class="custom-control-label" for="{{$item->id_size}}">{{$item->number_size}}</label>
                         
                     </div>
-                @endforeach
                
                 
                 

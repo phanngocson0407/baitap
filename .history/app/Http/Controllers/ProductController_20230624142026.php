@@ -23,10 +23,10 @@ class ProductController extends Controller
     {
         $product = DB::table('product')
         ->leftjoin('size','size.id_product','=','product.id')
-        ->select(
-                    'size.*',
-                    'product.*'
-                )
+        // ->select(
+        //             'size.*',
+        //             'product.*'
+        //         )
         ->leftjoin('color','color.id_product','=','product.id')
         // ->select('color.*',
         // 'product.*')
