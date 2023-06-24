@@ -111,9 +111,9 @@ h1 {
                     @foreach($size->sortBy('number_size') as $key => $item)
                     <div class="custom-control custom-radio custom-control-inline">
                         @if($key === 0)
-                            <input   type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
+                            <input   type="radio" class="custom-control-input" id="size-{{$item->id_size}}" value="{{$item->id_size}}" name="size">
                         @else
-                            <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" name="size-{{$item->id_product}}">
+                            <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" value="{{$item->id_size}}" name="size">
                         @endif
                         <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
                         
@@ -128,7 +128,7 @@ h1 {
                     <form>
                         @foreach($color as $data)
                         <div class="custom-control custom-radio custom-control-inline">
-                        <input  type="radio" class="custom-control-input" id="color-{{$data->id_color}}" name="color-{{$data->id_product}}">
+                        <input  type="radio" class="custom-control-input" id="color-{{$data->id_color}}" value="{{$data->id_color}}" name="color">
                                 
                                 <label class="custom-control-label" for="color-{{$data->id_color}}">{{$data->name_color}}</label>
                         </div>
@@ -337,11 +337,16 @@ h1 {
     <script>
         function AddCart(id){
             // console.log(id);
+            let id_color=$("input[name=color]:checked");
+            let id_size=$("input[name=size]:checked");
             $.ajax({
                 type: "GET",
+                data:{
+                    id_color:id_color.val(),
+                    id_size:id_size.val()
+                },
                 url:"/Add-Cart/"+id,
             }).done(function(response){
-                //  console.log(response);
                 RenderCart(response);
                 alertify.success('Thêm sản phẩm vào giỏ hàng thành công');
                 

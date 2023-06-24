@@ -1,4 +1,4 @@
- 
+
 @if(Session::has('Cart') != null)
   
 <div class="select-items" style="margin-left: 20px;  ">
