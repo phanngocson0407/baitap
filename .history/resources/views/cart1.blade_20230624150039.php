@@ -1,4 +1,4 @@
-
+ 
 @if(Session::has('Cart') != null)
   
 <div class="select-items" style="margin-left: 20px;  ">
@@ -22,8 +22,8 @@
                 <td class="si-text">
                     <div class="product-selected">
                        
-                    
-                        <p >{{$item['productInfo']->number_size}}  </p>
+                       
+                        <p data-id="{{$item['productInfo']->id_size}}">{{$item['productInfo']->number_size}}  </p>
                   
                     </div>
                 </td>

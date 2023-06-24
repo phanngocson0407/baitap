@@ -194,21 +194,13 @@ class ProductController extends Controller
 
     
     public function AddCart(Request $request, $id){
-        // $request ->Session()->put('Cart',null);
-        $id_color=$request->id_color??"";
-        $id_size=$request->id_size??"";
-        $product = DB::table('product')
-        ->join('size','size.id_product','=','product.id')
-        ->join('color','color.id_product','=','product.id')
-        ->where('size.id_size',$id_size)
-        ->where('color.id_color',$id_color)
-        ->where('product.id',$id)
-        ->first();
+        $product = DB::table('product')->join('size','size.id_product','=','product.id')->join('color','color.id_product','=','product.id')->where('id',$id)->first();
+        dd($product);
         if($product!= null){
-
+              
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->AddCart($product,$id.$id_size.$id_color);
+                    $newCart->AddCart($product,$id);
                     $request ->Session()->put('Cart',$newCart);
             //    dd($newCart);
         }

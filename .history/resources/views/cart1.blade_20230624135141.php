@@ -1,4 +1,4 @@
-
+ 
 @if(Session::has('Cart') != null)
   
 <div class="select-items" style="margin-left: 20px;  ">
@@ -21,10 +21,12 @@
                 </td>
                 <td class="si-text">
                     <div class="product-selected">
-                       
-                    
-                        <p >{{$item['productInfo']->number_size}}  </p>
-                  
+                        
+                        @if($item['productInfo']->id_size == $item['productInfo']->id_product)
+                        <p>{{$item['productInfo']->number_size}}  </p>
+                        <p>{{$item['productInfo']->id_size}}  </p>
+                        <p>{{$item['productInfo']->id_product}}  </p>
+                        @endif
                     </div>
                 </td>
                 {{-- <td class="si-text">

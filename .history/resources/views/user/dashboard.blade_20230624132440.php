@@ -110,17 +110,6 @@
 
                                         <div class="select-items" style="margin-left: 20px;  ">
                                             <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th>Ảnh</th>
-                                                        <th>Tên</th>
-                                                        <th>Giá </th>
-                                                        <th>Size</th>
-                                                        <th>Màu</th>
-                                                        <th>Nút</th>
-                                                       
-                                                    </tr>
-                                                </thead>
                                                 <tbody>
                                                     @foreach(Session::get('Cart')->products as $item)
                                                     <tr>
@@ -142,17 +131,17 @@
                                                         </td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                
-                                                                <p  >{{$item['productInfo']->number_size}}  </p>
-                                                             
+                                                                @if($size)
+                                                                <p>{{$item['productInfo']->number_size}}  </p>
+                                                                 @endif
                                                             </div>
                                                         </td>
-                                                        {{-- <td class="si-text">
+                                                        <td class="si-text">
                                                             <div class="product-selected">
                                                                 <p>{{$item['productInfo']->name_color}}  </p>
                                                                  
                                                             </div>
-                                                        </td> --}}
+                                                        </td>
                                                         <td class="si-text delete">
                                                             <p class="xoa" data-id="{{$item['productInfo']->id}}">xoa
                                                             </p>

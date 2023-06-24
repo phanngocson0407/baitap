@@ -4,7 +4,6 @@
     public $products = null;
     public $totalPrice = 0;
     public $totalQuanty = 0;
-    public $numberSize = 0;
    public function __construct($cart)
    {
     if($cart){
@@ -26,10 +25,7 @@
         $newProduct['price'] =$newProduct['quanty']*$product->price;
         $this->products[$id] = $newProduct;
         $this->totalPrice += $product->price;
- 
-
-            $this->numberSize = $product->number_size;
-   
+        $this->totalPrice += $product->number_size;
 
         $this->totalQuanty++ ;
 
