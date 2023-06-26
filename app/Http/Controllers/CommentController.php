@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Models\Comment;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -33,10 +34,10 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         
-
+        
         $comment = new Comment;
   
         $comment->comment = $request->comment;
@@ -46,7 +47,17 @@ class CommentController extends Controller
         
         $comment->save();
 
-        return Redirect('/');
+        return Redirect('/detail/'.$id);
+    }
+
+    public function insert_rating(Request $r) {
+        $data=$r->all();
+       
+        $rating=new Rating();
+        $rating->id_product=$data['id_product'];
+        $rating->rating=$data['index'];
+        $rating->save();
+        echo 'done';
     }
 
     /**

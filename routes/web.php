@@ -72,7 +72,7 @@ Route::get('/cart', function(){
 });
 //đánh giá sản phẩm
 Route::post('/detail/{id}', [CommentController::class, 'store'] );
-
+Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
 
 
 

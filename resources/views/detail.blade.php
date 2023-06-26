@@ -54,6 +54,7 @@ h1 {
 
 </style>
     <!-- Page Header Start -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
@@ -92,14 +93,12 @@ h1 {
             <div class="col-lg-7 pb-5">
                 <h3 class="font-weight-semi-bold">{{ $detail['name_product'] }}</h3>
                 <div class="d-flex mb-3">
-                    <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
+                    <div class="text-primary mr-2" style="with:20%;position:relative">
+                        <span class="fa fa-star" style="font-size: 50px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
+                     
+                        
                     </div>
-                    <small class="pt-1">(50 Reviews)</small>
+                    <small class="pt-1" style="font-size: 30px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">{{number_format($detail->price).' '.'VNĐ' }}</h3>
                 <p class="mb-4">{{ $detail['description'] }} </p>
@@ -202,8 +201,39 @@ h1 {
                 border-radius: 10px;
                 background: #ccc;
             }
+            .rating {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 30px;
+           
+            cursor: pointer;
+            }
         </style>
-        
+        <div>
+            <p><b>Đánh giá sao</b></p>
+            <ul class="list-inline" title="Averge Rating">
+                @for($count=1;$count<=5;$count++)
+                @php
+                    if($count<=$rating){
+                        $color = 'color:rgb(209,156,151)';
+                    }
+                    else{
+                        $color = 'color:#ccc';
+                    }
+                @endphp
+                <li title="star_rating"
+                id="{{$detail['id']}}-{{$count}}"
+                data-index="{{$count}}"
+                data-id_product="{{$detail['id']}}"
+                data-rating="{{$rating}}"
+                class="rating"
+                style="{{$color}}">
+                &#9733;
+                </li>
+                @endfor
+            </ul>
+        </div>
+
         <div>
             <p><b>Hiển thị đánh giá</b></p>
             <div class="style_comment">
@@ -211,7 +241,7 @@ h1 {
                 @foreach($comment as $item)
                 <?php $n++ ?>
                 
-                <div>{{$n}}: {{$item->comment_name}}</div>
+                <div>{{$n}}: {{$item->comment_name}}. Ngày: {{$item->comment_date}}</div>
                 <div>Bình luận: {{$item->comment}}</div>
                 @endforeach
             </div>
@@ -220,7 +250,7 @@ h1 {
 
         <div>
             <p><b>Viết đánh giá của bạn</b></p>
-            <form id="comment-form"  method="post" action="{{URL::to('/detail/{id}')}}">
+            <form id="comment-form"  method="post" action="{{URL::to('/detail/'.$detail['id'])}}">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $detail['id'] }}">
                 <input type="text" name="comment_name" id="username" placeholder="Tên người dùng" required>
@@ -377,6 +407,58 @@ h1 {
                     $('#total-quanty-show').text( '0');
                 }
                 console.log( $('#total-quanty-cart').val());
-    }
+        }
+        //đánh giá sao
+        function remove_background(id_product){
+            for(var count=1; count<=5; count++){
+                $('#'+id_product+'-'+count).css('color','#ccc');
+            }
+        }
+        //hower chuột đánh giá sao 
+        $(document).on('mouseenter','.rating',function(){
+            var index=$(this).data("index");
+            var id_product=$(this).data("id_product");
+            remove_background(id_product);
+            for(var count=1; count<=index; count++){
+                $('#'+id_product+'-'+count).css('color','rgb(209,156,151)');
+            }
+        });
+        //nhả chuột đánh giá sao
+        $(document).on('mouseleave','.rating',function(){
+            var index=$(this).data("index");
+            var id_product=$(this).data("id_product");
+            var rating=$(this).data("rating");
+            remove_background(id_product);
+            for(var count = 1; count <= rating; count++){
+                $('#' + id_product + '-' + count).css('color','rgb(209,156,151)');
+            }
+        });
+        //click đánh giá sao 
+        $(document).on('click','.rating',function(){
+            var index=$(this).data("index");
+            var id_product=$(this).data("id_product");
+            console.log($(this))
+           // var _token=$('input[name="_token"]').val();
+            $.ajax({
+                url:"{{url('insert-rating')}}",
+                method:"POST",
+                data:{
+                        index:index,
+                        id_product:id_product
+                    },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(data){
+                  
+                    if(data=='done'){
+                        alert("Bạn đã đánh giá " + index + "trên 5");
+                    }
+                    else{
+                        ("Lỗi đánh giá");
+                    }
+                }
+            })
+        });
     </script>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Size;
+use App\Models\Rating;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 
@@ -53,10 +54,17 @@ class ProductController extends Controller
         ->where('comment.product_id',$id)
         ->get();
 
-     
+        $rating = Rating::join('product','product.id','=','rating.id_product')
+        ->select('rating.*',
+        'product.id')
+        ->where('rating.id_product',$id)
+        ->get()->avg('rating');
+        $rating = round($rating);
+        $count = DB::table('rating')->where('rating.id_product',$id)->count();
+   
         $detail = Product::find($id);
-       
-        return view('detail', ['detail' => $detail ,'size' => $size ,'color' => $color ,'product'=>$product,'comment' =>$comment]);
+        
+        return view('detail', ['detail' => $detail ,'size' => $size ,'color' => $color ,'product'=>$product,'comment' =>$comment, 'rating'=>$rating,'count'=>$count]);
     }
     
     /**
