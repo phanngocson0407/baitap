@@ -9,6 +9,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SizeController;  
 use App\Http\Controllers\ColorController;  
 use App\Http\Controllers\CartController;  
+use App\Http\Controllers\RoleController;  
+use App\Http\Controllers\RoleAdminController; 
 use App\Http\Controllers\CommentController;  
 use Illuminate\Support\Facades\Session;
 /*
@@ -137,9 +139,9 @@ route::prefix('admin')->group( function()
         route::get('/', [AdminController::class, 'show']);
         route::get('/create',  [AdminController::class, 'create']);
         route::post('/create',  [AdminController::class, 'store']);
-        Route::get('/edit/{idloaigiay}',[AdminController::class,'edit']);
-        Route::put('/edit/{idloaigiay}',[AdminController::class,'update']);
-        Route::delete('/delete/{idloaigiay}',[AdminController::class,'destroy']);
+        Route::get('/edit/{id}',[AdminController::class,'edit']);
+        Route::put('/edit/{id}',[AdminController::class,'update']);
+        Route::delete('/delete/{id}',[AdminController::class,'destroy']);
     });
     route::prefix('khachhang')->group( function(){
         route::get('/', [UserController::class, 'show']);
@@ -148,6 +150,25 @@ route::prefix('admin')->group( function()
         Route::get('/edit/{id}',[UserController::class,'edit']);
         Route::put('/edit/{id}',[UserController::class,'update']);
     });
+
+    route::prefix('role')->group( function(){
+        route::get('/', [RoleController::class, 'show']);
+        route::get('/create',  [RoleController::class, 'create']);
+        route::post('/create',  [RoleController::class, 'store']);
+        Route::get('/edit/{id}',[RoleController::class,'edit']);
+        Route::put('/edit/{id}',[RoleController::class,'update']);
+        Route::delete('/delete/{id}',[RoleController::class,'destroy']);
+    });
+
+    route::prefix('role_admin')->group( function(){
+        route::get('/', [RoleAdminController::class, 'show']);
+        route::get('/create',  [RoleAdminController::class, 'create']);
+        route::post('/create',  [RoleAdminController::class, 'store']);
+        Route::get('/edit/{id}',[RoleAdminController::class,'edit']);
+        Route::put('/edit/{id}',[RoleAdminController::class,'update']);
+        Route::delete('/delete/{id}',[RoleAdminController::class,'destroy']);
+    });
+
 
     route::prefix('order')->group( function(){
         route::get('/', function(){  return view('admin.order.index');});

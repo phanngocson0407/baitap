@@ -11,7 +11,7 @@
                             </div>
                            
                             <div class="card-body">
-                                <a href="{{URL::to('/admin/accout_admin/create') }}">
+                                <a href="{{URL::to('/admin/accout/create') }}">
                                     <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Accout</button>
                                 </a>
                                 <table class="table table-striped table-bordered"> 
@@ -37,16 +37,16 @@
                                             <td>{{$item->phone}}</td>
                                            
                                             <td>
-                                                <a href="">
+                                                <a href="accout/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="" method="post">
+                                                <form action="accout/delete/{{$item->id}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
-                                                    <button class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
+                                                    <button onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
                                             </td>
                                         </tr>

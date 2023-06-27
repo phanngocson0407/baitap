@@ -1,9 +1,5 @@
 @extends('admin.dashboard')
 @section('admin')
-<?php
-     $data=Session::get('data');
-    $role=Session::get('role');
-?>
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -11,55 +7,68 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Color</strong>
+                                <strong class="card-title">Bảng Role</strong>
+                            </div>
+                            <div class="col-lg-6 col-6 text-left">
+                                <form action="/admin/role/" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm tên quyền">
+                                        <div class="input-group-append">
+                                            <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="ks" placeholder="Tìm kiếm các module quyền">
+                                        <div class="input-group-append">
+                                            <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div class="card-body">
-                                @foreach ($role as $k=>$v)
-                                @if($v->role_module=="role_create_color")
-                                <a href="{{URL::to('/admin/color/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Color</button>
+                                <a href="{{URL::to('/admin/role/create') }}">
+                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Quyền</button>
                                 </a>
-                                @endif
-                                @endforeach
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
-                                            <th>STT</th>
-                                            <th>Tên Giày</th>
-                                            <th>Tên Màu</th>
+                                            <th>ID</th>
+                                            <th>Tên Quyền</th>
+                                            <th>Module </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $n=0 ?>
-                                       @foreach ($Color as $item)
-                                       <?php $n++ ?>
-                                       <td>{{$n}}</td>
-                                       <td>{{$item->name_product}}</td>
-                                        <td>{{$item->name_color}}</td>
-                                        @foreach ($role as $k=>$v)
-                                        @if($v->role_module=="role_update_color")
+                                       
+                                       @foreach ($role as $item)
+                                       <tr>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->name_role}}</td>
+                                            <td>{{$item->role_module}}</td>
                                             <td>
-                                                
-                                                <a href="color/edit/{{$item->id_color}}">
+                                                <a href="role/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
                                             </td>
-                                            @endif
-                                            @if($v->role_module=="role_delete_color")
                                             <td>
-                                                
-                                                <form action="color/delete/{{$item->id_color}}" method="post">
+                                                <form action="role/delete/{{$item->id}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
                                             </td>
-                                            @endif
-                                            @endforeach
+                                        </tr>
+                                           
+                                       @endforeach
+                                       
                                     </tbody>
-                                    @endforeach
+                                
                                 </table>
+                                {{$role->links()}}
                             </div>
                         </div>
                     </div>

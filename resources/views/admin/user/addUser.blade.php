@@ -3,7 +3,7 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="text-center">Thêm Thương Hiệu</h2>
+            <h2 class="text-center">Thêm User</h2>
         </div>
         <div class="panel-body">
             <form method="post" action="{{URL::to('/admin/khachhang/create')}}" enctype="multipart/form-data">

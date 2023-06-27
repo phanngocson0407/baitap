@@ -78,8 +78,20 @@
                                 @if($v->role_module=="role_accout")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/accout')}}">Quản lí Acoout Admin</a></li>
                                 @endif
+
+                                @if($v->role_module=="role_user")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
+                                @endif
+
+                                @if($v->role_module=="role_role")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role')}}">Quản lí Quyền</a></li>
+                                @endif
+
+                                @if($v->role_module=="role_role-admin")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role_admin')}}">Quản lí Quyền Admin</a></li>
+                                @endif
                             @endforeach
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
+                          
                             
                             
                             
