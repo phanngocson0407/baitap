@@ -37,6 +37,21 @@
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group" >
+                 
+                    <select class="form-control select-filter" id="select-filter" >
+                        <option value="0">---Lọc theo---</option>
+                        <option value="?kytu=asc">Từ A-Z</option>
+                        <option value="?kytu=desc">Từ Z-A</option>
+                        <option value="?gia=asc">Giá tăng dần</option>
+                        <option value="?gia=asc">Giá giảm dần</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
         <div class="row px-xl-5 pb-3">
             @foreach ($data  as $item)
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -231,4 +246,17 @@
                 console.log( $('#total-quanty-cart').val());
     }
     </script> --}}
+    <script>
+        $('.select-filter').change(function(){
+            var value =$(this).find(':selected').val();
+            //alert(value);
+            if(value!=0){
+                var url =value;
+                window.location.replace(url);
+            }
+            else{
+                alert('Hãy lọc');
+            }
+        });
+    </script>
 @endsection

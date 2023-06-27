@@ -78,6 +78,24 @@ class ProductController extends Controller
         $kw="%".$kw."%";
         $data =Product::where('name_product','like',$kw)->paginate(8);
         $data->appends(['kw'=>$r->kw]);
+
+        //filter
+        // if(isset($_GET['kytu'])){
+        //     $kytu =$_GET['kytu'];
+        //     $this->data['allproductbycate_pagination']=$this->getCateKytuPagination($kytu)->paginate(8);
+        // }
+        // elseif(isset($_GET['gia'])){
+        //     $gia =$_GET['gia'];
+        //     $this->data['allproductbycate_pagination']=$this->getCatePricePagination($gia)->paginate(8);
+        // }
+        // elseif(isset($_GET['to']) && $_GET['from']){
+        //     $from_price =$_GET['from'];
+        //     $to_price =$_GET['to'];
+        //     $this->data['allproductbycate_pagination']=$this->getCatePriceRangePagination($from_price,$to_price)->paginate(8);
+        // }
+        // else{
+        //     $this->data['allproductbycate_pagination']=$this->getCatePagination()->paginate(8);
+        // }
         // $data=DB::table('product')->get();
         return view('/index',['data'=>$data]);
         //kh có tìm kiếm
