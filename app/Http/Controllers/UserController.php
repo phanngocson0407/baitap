@@ -73,7 +73,7 @@ class UserController extends Controller
         }
     }
     public function logout(){
-        Session::put('data',"");
+        Session::put('data1',"");
         return view('login');
     }
 

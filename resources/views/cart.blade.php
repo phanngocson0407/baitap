@@ -92,7 +92,16 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice))}} VNĐ</h5>
                         </div>
+                        <?php
+                        $data1=Session::get('data1');
+                        ?>
+                        @if( $data1 == null)
+                            <a href="{{URL::to('/login') }}" class="nav-item nav-link"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
+                        
+                        @else
                         <a href="{{URL('/checkout')}}"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
+                        
+                        @endif
                     </div>
                 </div>
             </div>
