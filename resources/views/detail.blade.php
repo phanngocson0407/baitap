@@ -382,17 +382,15 @@ h1 {
                 
             });
         }
-        $('#change-item-cart').on('click', '.delete p', function(){
-            // console.log($(this).data('id'));
-            let id_color=$("input[name=color]:checked");
-            let id_size=$("input[name=size]:checked");
+        $('#change-item-cart').on('click', '.btn-xoa-cart', function(){
+            //console.log($(this).data('id'));
             $.ajax({
                 type: "GET",
                 data:{
-                    id_color:id_color.val(),
-                    id_size:id_size.val()
+                    id_color_size:$(this).val()
                 },
-                url: "/Delete-Item-Cart/"+$(this).data('id'),
+                url: "/Delete-Item-Cart/"+$(this).attr('data'),
+                
             }).done(function(response){
                  
                 RenderCart(response);

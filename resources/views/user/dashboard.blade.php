@@ -124,13 +124,13 @@
                                                 <tbody>
                                                     @foreach(Session::get('Cart')->products as $item)
                                                     <tr>
+                                                        
                                                         <td class="si-pic"><img style="height: 50px;"
                                                                 src="/frontend/img/{{$item['productInfo']->image}}"
                                                                 alt="" /></td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
                                                                 <p>{{$item['productInfo']->name_product}} </p>
-
                                                             </div>
                                                         </td>
                                                         <td class="si-text">
@@ -154,14 +154,17 @@
                                                             </div>
                                                         </td>
                                                         <td class="si-text delete">
-                                                            <p class="xoa" data-id="{{$item['productInfo']->id}}">xoa
-                                                            </p>
+                                                            
+                                                            <button class="btn-xoa-cart" data="{{$item['productInfo']->id}}" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">Xoa</button>
                                                         </td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <?php
+                                        // dd(Session('Cart'))
+                                        ?>
                                         <div class="select-total">
                                             <span>total:</span>
                                             <h5>{{(number_format(Session::get('Cart')->totalPrice))}}VNĐ</h5>
@@ -189,7 +192,7 @@
     </div>
     </div>
     <!-- Topbar End -->
-
+  
 
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">

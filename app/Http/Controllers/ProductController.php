@@ -242,19 +242,16 @@ class ProductController extends Controller
     }
     public function DeleteItemCart(Request $request,$id){
         // $product =DB::table('product')->where('id',$id)->first();
-        $id_color=$request->id_color??"";
-        $id_size=$request->id_size??"";
-              
+        $id_color_size=$request->id_color_size??"";
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->DeleteItemCart($id.$id_size.$id_color);
+                    $newCart->DeleteItemCart($id.$id_color_size);
                      if(Count($newCart->products)>0){
                         $request ->Session()->put('Cart',$newCart);
                      }else{
                         $request ->Session()->forget('Cart');
                      }
-            //    dd($newCart);
-        
+               // dd($newCart);
         return view('cart1' );
     }
 }

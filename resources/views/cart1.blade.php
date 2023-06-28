@@ -47,8 +47,7 @@
                     </div>
                 </td>
                 <td class="si-text delete">
-                    <p class="xoa" data-id="{{$item['productInfo']->id}}">xoa
-                    </p>
+                    <button class="btn-xoa-cart" data="{{$item['productInfo']->id}}" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">Xoa</button>
                 </td>
             </tr>
             @endforeach
