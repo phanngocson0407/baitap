@@ -9,6 +9,7 @@ use App\Models\Color;
 use App\Models\Size;
 use App\Models\Rating;
 use App\Models\Comment;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Pagination\Paginator;
@@ -248,6 +249,7 @@ class ProductController extends Controller
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
                     $newCart->DeleteItemCart($id.$id_size.$id_color);
+
                      if(Count($newCart->products)>0){
                         $request ->Session()->put('Cart',$newCart);
                      }else{
@@ -255,6 +257,6 @@ class ProductController extends Controller
                      }
             //    dd($newCart);
         
-        return view('cart1' );
+        return view('cart1');
     }
 }

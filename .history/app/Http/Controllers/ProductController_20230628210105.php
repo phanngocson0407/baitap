@@ -9,6 +9,7 @@ use App\Models\Color;
 use App\Models\Size;
 use App\Models\Rating;
 use App\Models\Comment;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Pagination\Paginator;
@@ -242,12 +243,12 @@ class ProductController extends Controller
     }
     public function DeleteItemCart(Request $request,$id){
         // $product =DB::table('product')->where('id',$id)->first();
-        $id_color=$request->id_color??"";
-        $id_size=$request->id_size??"";
+        
               
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->DeleteItemCart($id.$id_size.$id_color);
+                    $newCart->DeleteItemCart( $id);
+
                      if(Count($newCart->products)>0){
                         $request ->Session()->put('Cart',$newCart);
                      }else{

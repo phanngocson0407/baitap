@@ -242,12 +242,17 @@ class ProductController extends Controller
     }
     public function DeleteItemCart(Request $request,$id){
         // $product =DB::table('product')->where('id',$id)->first();
-        $id_color=$request->id_color??"";
-        $id_size=$request->id_size??"";
+        // $product = DB::table('product')
+        // ->join('size','size.id_product','=','product.id')
+        // ->join('color','color.id_product','=','product.id')
+        // ->where('size.id_size',$id_size)
+        // ->where('color.id_color',$id_color)
+        // ->where('product.id',$id)
+        // ->first();
               
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->DeleteItemCart($id.$id_size.$id_color);
+                    $newCart->DeleteItemCart($id);
                      if(Count($newCart->products)>0){
                         $request ->Session()->put('Cart',$newCart);
                      }else{

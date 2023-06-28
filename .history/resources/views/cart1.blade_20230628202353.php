@@ -47,7 +47,7 @@
                     </div>
                 </td>
                 <td class="si-text delete">
-                    <p class="xoa" data-id="{{$item['productInfo']->id}}">xoa
+                    <p class="xoa"  data-id="{{$item['productInfo']->id}}">xoa
                     </p>
                 </td>
             </tr>

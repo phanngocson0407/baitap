@@ -23,8 +23,6 @@
                         <tr>
                             <th>Products</th>
                             <th>Price</th>
-                            <th>Size</th>
-                            <th>Color</th>
                             <th>Quantity</th>
                             <th>Total</th>
                             <th>Remove</th>
@@ -36,19 +34,6 @@
                         <tr>
                             <td class="align-middle"><img src="/frontend/img/{{$item['productInfo']->image}}" alt="" style="width: 50px;">{{$item['productInfo']->name_product}}</td>
                             <td class="align-middle">{{(number_format($item['productInfo']->price))}} VNĐ</td>
-                        
-                            <td class="align-middle">
-                              
-                                    {{$item['productInfo']->number_size}}  
-                                     
-                              
-                            </td>
-                            <td class="align-middle">
-                            
-                                    {{$item['productInfo']->name_color}}  
-                                     
-                                
-                            </td>
                             <td class="align-middle">
                                 <div class="input-group quantityy mx-auto" style="width: 100px;">
                                     <div class="input-group quantityy mr-3" style="width: 130px;">

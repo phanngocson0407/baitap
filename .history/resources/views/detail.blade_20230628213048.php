@@ -371,10 +371,10 @@ h1 {
             let id_size=$("input[name=size]:checked");
             $.ajax({
                 type: "GET",
-                data:{
-                    id_color:id_color.val(),
-                    id_size:id_size.val()
-                },
+                // data:{
+                //     id_color:id_color.val(),
+                //     id_size:id_size.val()
+                // },
                 url:"/Add-Cart/"+id,
             }).done(function(response){
                 RenderCart(response);
@@ -384,14 +384,10 @@ h1 {
         }
         $('#change-item-cart').on('click', '.delete p', function(){
             // console.log($(this).data('id'));
-            let id_color=$("input[name=color]:checked");
-            let id_size=$("input[name=size]:checked");
+          
             $.ajax({
                 type: "GET",
-                data:{
-                    id_color:id_color.val(),
-                    id_size:id_size.val()
-                },
+             
                 url: "/Delete-Item-Cart/"+$(this).data('id'),
             }).done(function(response){
                  

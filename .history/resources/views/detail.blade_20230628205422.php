@@ -102,7 +102,7 @@ h1 {
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">{{number_format($detail->price).' '.'VNĐ' }}</h3>
                 <p class="mb-4">{{ $detail['description'] }} </p>
-                <div class="d-flex mb-3">
+                {{-- <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     
              
@@ -133,7 +133,7 @@ h1 {
                         </div>
                         @endforeach
                     </form>
-                </div>
+                </div> --}}
                 {{-- <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
@@ -384,15 +384,10 @@ h1 {
         }
         $('#change-item-cart').on('click', '.delete p', function(){
             // console.log($(this).data('id'));
-            let id_color=$("input[name=color]:checked");
-            let id_size=$("input[name=size]:checked");
             $.ajax({
                 type: "GET",
-                data:{
-                    id_color:id_color.val(),
-                    id_size:id_size.val()
-                },
-                url: "/Delete-Item-Cart/"+$(this).data('id'),
+                
+                url: "Delete-Item-Cart/" +$(this).data('id'),
             }).done(function(response){
                  
                 RenderCart(response);

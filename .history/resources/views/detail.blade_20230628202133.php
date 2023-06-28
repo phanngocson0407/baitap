@@ -328,7 +328,7 @@ h1 {
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
-                {{-- <img class="img-fluid" src="{{url('frontend')}}/img/payments.png" alt=""> --}}
+                <img class="img-fluid" src="{{url('frontend')}}/img/payments.png" alt="">
             </div>
         </div>
     </div>
@@ -383,16 +383,11 @@ h1 {
             });
         }
         $('#change-item-cart').on('click', '.delete p', function(){
-            // console.log($(this).data('id'));
-            let id_color=$("input[name=color]:checked");
-            let id_size=$("input[name=size]:checked");
+            console.log($(this).data('id'));
             $.ajax({
                 type: "GET",
-                data:{
-                    id_color:id_color.val(),
-                    id_size:id_size.val()
-                },
-                url: "/Delete-Item-Cart/"+$(this).data('id'),
+                
+                url: "Delete-Item-Cart/" +$(this).data('id'),
             }).done(function(response){
                  
                 RenderCart(response);
@@ -412,7 +407,7 @@ h1 {
                 else{
                     $('#total-quanty-show').text( '0');
                 }
-                // console.log( $('#total-quanty-cart').val());
+                console.log( $('#total-quanty-cart').val());
         }
         //đánh giá sao
         function remove_background(id_product){

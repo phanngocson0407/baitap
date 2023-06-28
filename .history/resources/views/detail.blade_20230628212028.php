@@ -392,7 +392,7 @@ h1 {
                     id_color:id_color.val(),
                     id_size:id_size.val()
                 },
-                url: "/Delete-Item-Cart/"+$(this).data('id'),
+                url: "Delete-Item-Cart/"+$(this).data('id'),
             }).done(function(response){
                  
                 RenderCart(response);

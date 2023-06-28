@@ -234,7 +234,7 @@ class ProductController extends Controller
 
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->AddCart($product,$id.$id_size.$id_color);
+                    $newCart->AddCart($product,$id);
                     $request ->Session()->put('Cart',$newCart);
             //    dd($newCart);
         }
@@ -242,12 +242,11 @@ class ProductController extends Controller
     }
     public function DeleteItemCart(Request $request,$id){
         // $product =DB::table('product')->where('id',$id)->first();
-        $id_color=$request->id_color??"";
-        $id_size=$request->id_size??"";
+ 
               
                     $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->DeleteItemCart($id.$id_size.$id_color);
+                    $newCart->DeleteItemCart($id);
                      if(Count($newCart->products)>0){
                         $request ->Session()->put('Cart',$newCart);
                      }else{
