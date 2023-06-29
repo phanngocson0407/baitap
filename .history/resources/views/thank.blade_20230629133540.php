@@ -21,9 +21,6 @@
             </div>
             <div class="col-lg-5 mb-5">
                 <h5 class="font-weight-semi-bold mb-3">Nội Dung đơn hàng</h5>
-                <p>Khách hàng</p>
-                <p>Địa chỉ</p>
-                <p>Số điện thoại</p>
                 <p>Mã đơn hàng</p>
                 <p>ngày Mua</p>                
             </div>

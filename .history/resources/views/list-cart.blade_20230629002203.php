@@ -4,8 +4,6 @@
             <tr>
                 <th>Products</th>
                 <th>Price</th>
-                <th>Size</th>
-                <th>Color</th>
                 <th>Quantity</th>
                 <th>Total</th>
                 <th>Remove</th>
@@ -48,21 +46,13 @@
                     </div>
                 </td>
                 <td class="align-middle">{{(number_format($item['price']))}} VNĐ</td>
-                <td class="align-middle"><button data="{{$item['productInfo']->id}}"  class="btn btn-sm btn-primary btn_delete_list" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
-                    <i  
-         
+                <td class="align-middle"><button class="btn btn-sm btn-primary btn_delete_list">
+                    <i data="{{$item['productInfo']->id}}" 
+                         {{-- onclick="DeleteListItemCart({{$item['productInfo']->id}});"  --}}
                          class="fa fa-times"
-      
+                         value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                          ></i></button></td>
-                         <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
-                            {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
-                            {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
-                            data="{{$item['productInfo']->id}}"
-                            value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
-                            >
-                            
-                            <i  class="">Cập nhật</i>
-                        </button></td>
+                <td class="align-middle"><button class="btn btn-sm btn-primary"><i onclick="SaveListItemCart({{$item['productInfo']->id}});"  id="save-cart-item-{{$item['productInfo']->id}}" class="">Cập nhật</i></button></td>
              </tr>
             @endforeach
             @else

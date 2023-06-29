@@ -73,9 +73,9 @@
                                      class="fa fa-times"
                   
                                      ></i></button></td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
-                                {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
-                                {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"
+                                onclick="SaveListItemCart({{$item['productInfo']->id}});"  
+                                id="save-cart-item-{{$item['productInfo']->id}}" 
                                 data="{{$item['productInfo']->id}}"
                                 value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                                 >
@@ -263,7 +263,21 @@
         }
     </script>
     <script>
- 
+        // function DeleteListItemCart(id){
+        //     // console.log(id);
+        //     $.ajax({
+        //         type: "GET",
+        //         data:{
+        //             id_color_size:$(this).val()
+        //         },
+        //         url: "/Delete-List-Item-Cart/" +attr('data'),
+        //     }).done(function(response){
+                 
+        //         RenderListCart(response);
+        //         alertify.success('Xóa sản phẩm trong  giỏ hàng thành công');
+                
+        //     });
+        // }
         $('#change-list-cart').on('click', '.btn_delete_list', function(){
             //console.log($(this).data('id'));
             $.ajax({
@@ -280,37 +294,22 @@
                 
             });
         });
-        $('#change-list-cart').on('click', '.btn_update_list', function(){
-            //console.log($(this).data('id'));
+        function SaveListItemCart(id){
+            // console.log(id);    
+             console.log($('#quantityInput_'+id).val());
             $.ajax({
                 type: "GET",
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_'+$(this).attr('data')).val(),
+                url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
             }).done(function(response){
                  
                 RenderListCart(response);
                 alertify.success('Cập nhật  giỏ hàng thành công');
                 
             });
-        });
-        // function SaveListItemCart(id){
-        //     // console.log(id);    
-        //      console.log($('#quantityInput_'+id).val());
-        //     $.ajax({
-        //         type: "GET",
-        //         data:{
-        //             id_color_size:$(this).val()
-        //         },
-        //         url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
-        //     }).done(function(response){
-                 
-        //         RenderListCart(response);
-        //         alertify.success('Cập nhật  giỏ hàng thành công');
-                
-        //     });
-        // }
+        }
         function RenderListCart(response){
             $('#list-cart').empty();
             $('#list-cart').html(response);

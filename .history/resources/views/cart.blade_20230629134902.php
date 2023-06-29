@@ -280,37 +280,38 @@
                 
             });
         });
-        $('#change-list-cart').on('click', '.btn_update_list', function(){
+        $('#change-list-cart').on('click', '.btn_delete_list', function(){
             //console.log($(this).data('id'));
             $.ajax({
                 type: "GET",
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_'+$(this).attr('data')).val(),
+                url: "/Delete-List-Item-Cart/"+$(this).attr('data'),
+            }).done(function(response){
+               
+                 
+                RenderListCart(response);
+                alertify.success('Xóa sản phẩm trong  giỏ hàng thành công');
+                
+            });
+        });
+        function SaveListItemCart(id){
+            // console.log(id);    
+             console.log($('#quantityInput_'+id).val());
+            $.ajax({
+                type: "GET",
+                data:{
+                    id_color_size:$(this).val()
+                },
+                url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
             }).done(function(response){
                  
                 RenderListCart(response);
                 alertify.success('Cập nhật  giỏ hàng thành công');
                 
             });
-        });
-        // function SaveListItemCart(id){
-        //     // console.log(id);    
-        //      console.log($('#quantityInput_'+id).val());
-        //     $.ajax({
-        //         type: "GET",
-        //         data:{
-        //             id_color_size:$(this).val()
-        //         },
-        //         url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
-        //     }).done(function(response){
-                 
-        //         RenderListCart(response);
-        //         alertify.success('Cập nhật  giỏ hàng thành công');
-                
-        //     });
-        // }
+        }
         function RenderListCart(response){
             $('#list-cart').empty();
             $('#list-cart').html(response);

@@ -54,15 +54,8 @@
                          class="fa fa-times"
       
                          ></i></button></td>
-                         <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
-                            {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
-                            {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
-                            data="{{$item['productInfo']->id}}"
-                            value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
-                            >
-                            
-                            <i  class="">Cập nhật</i>
-                        </button></td>
+                <td class="align-middle"><button class="btn btn-sm btn-primary" onclick="SaveListItemCart({{$item['productInfo']->id}});"  
+                    id="save-cart-item-{{$item['productInfo']->id}}" ><i  class="">Cập nhật</i></button></td>
              </tr>
             @endforeach
             @else

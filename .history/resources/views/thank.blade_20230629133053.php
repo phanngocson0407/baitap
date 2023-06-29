@@ -7,25 +7,23 @@
     <!-- Contact Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2"> THANKS</span></h2>
+            <h2 class="section-title px-5"><span class="px-2"></span></h2>
         </div>
-        <div class="row px-xl-5 ">
-            <div class="col-lg-7 mb-5 align-middle">
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
                 <div class="col-lg-5 pb-5">
-               
+                    <div class="" data-ride="carousel">
                        
-                         <h4>QUÝ KHÁCH ĐÃ THANH TOÁN THÀNH CÔNG</h4>
-                         <h5><a href="{{url("/")}}">Tiếp tục mua hàng</a></h5>
-                
+                            <div class="carousel-item active">
+                                <img class="w-100 h-100" src="{{url('frontend')}}/img/product-1.jpg" alt="Image">
+                            </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-5 mb-5">
-                <h5 class="font-weight-semi-bold mb-3">Nội Dung đơn hàng</h5>
-                <p>Khách hàng</p>
-                <p>Địa chỉ</p>
-                <p>Số điện thoại</p>
-                <p>Mã đơn hàng</p>
-                <p>ngày Mua</p>                
+                <h5 class="font-weight-semi-bold mb-3">Nội Dung</h5>
+                <p>Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo amet et. Est elitr dolor elitr erat sit sit. Dolor diam et erat clita ipsum justo sed.</p>
+                
             </div>
         </div>
     </div>

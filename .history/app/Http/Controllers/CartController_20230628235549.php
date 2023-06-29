@@ -86,10 +86,10 @@ class CartController extends Controller
     }
     public function SaveListItemCart(Request $request,$id,$quanty){
         // $product =DB::table('product')->where('id',$id)->first();
-        $id_color_size=$request->id_color_size??"";
+        
                $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->UpdateItemCart($id.$id_color_size,$quanty);
+                    $newCart->UpdateItemCart( $id,$quanty);
 
                   
                     $request ->Session()->put('Cart',$newCart);

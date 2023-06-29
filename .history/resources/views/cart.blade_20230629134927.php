@@ -287,7 +287,7 @@
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_'+$(this).attr('data')).val(),
+                url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
             }).done(function(response){
                  
                 RenderListCart(response);
@@ -295,22 +295,22 @@
                 
             });
         });
-        // function SaveListItemCart(id){
-        //     // console.log(id);    
-        //      console.log($('#quantityInput_'+id).val());
-        //     $.ajax({
-        //         type: "GET",
-        //         data:{
-        //             id_color_size:$(this).val()
-        //         },
-        //         url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
-        //     }).done(function(response){
+        function SaveListItemCart(id){
+            // console.log(id);    
+             console.log($('#quantityInput_'+id).val());
+            $.ajax({
+                type: "GET",
+                data:{
+                    id_color_size:$(this).val()
+                },
+                url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
+            }).done(function(response){
                  
-        //         RenderListCart(response);
-        //         alertify.success('Cập nhật  giỏ hàng thành công');
+                RenderListCart(response);
+                alertify.success('Cập nhật  giỏ hàng thành công');
                 
-        //     });
-        // }
+            });
+        }
         function RenderListCart(response){
             $('#list-cart').empty();
             $('#list-cart').html(response);

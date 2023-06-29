@@ -18,7 +18,7 @@
     <div class="container-fluid pt-5">
         <div class="row px-xl-5" id="list-cart">
             <div class="col-lg-8 table-responsive mb-5"  >
-                <table class="table table-bordered text-center mb-0" id="change-list-cart">
+                <table class="table table-bordered text-center mb-0">
                     <thead class="bg-secondary text-dark">
                         <tr>
                             <th>Products</th>
@@ -30,7 +30,7 @@
                             <th>Remove</th>
                         </tr>
                     </thead>
-                    <tbody class="align-middle"  >
+                    <tbody class="align-middle" id="change-list-cart">
                         @if(Session::has('Cart') != null)
                         @foreach(Session::get('Cart')->products as $item)
                         <tr>
@@ -67,21 +67,13 @@
                                 </div>
                             </td>
                             <td class="align-middle">{{(number_format($item['price']))}} VNĐ</td>
-                            <td class="align-middle"><button data="{{$item['productInfo']->id}}"  class="btn btn-sm btn-primary btn_delete_list" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
-                                <i  
-                     
+                            <td class="align-middle"><button class="btn btn-sm btn-primary btn_delete_list">
+                                <i data="{{$item['productInfo']->id}}" 
+                                     {{-- onclick="DeleteListItemCart({{$item['productInfo']->id}});"  --}}
                                      class="fa fa-times"
-                  
+                                     value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                                      ></i></button></td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
-                                {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
-                                {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
-                                data="{{$item['productInfo']->id}}"
-                                value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
-                                >
-                                
-                                <i  class="">Cập nhật</i>
-                            </button></td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i onclick="SaveListItemCart({{$item['productInfo']->id}});"  id="save-cart-item-{{$item['productInfo']->id}}" class="">Cập nhật</i></button></td>
                         </tr>
                     @endforeach
                          @endif
@@ -263,7 +255,21 @@
         }
     </script>
     <script>
- 
+        // function DeleteListItemCart(id){
+        //     // console.log(id);
+        //     $.ajax({
+        //         type: "GET",
+        //         data:{
+        //             id_color_size:$(this).val()
+        //         },
+        //         url: "/Delete-List-Item-Cart/" +attr('data'),
+        //     }).done(function(response){
+                 
+        //         RenderListCart(response);
+        //         alertify.success('Xóa sản phẩm trong  giỏ hàng thành công');
+                
+        //     });
+        // }
         $('#change-list-cart').on('click', '.btn_delete_list', function(){
             //console.log($(this).data('id'));
             $.ajax({
@@ -272,45 +278,27 @@
                     id_color_size:$(this).val()
                 },
                 url: "/Delete-List-Item-Cart/"+$(this).attr('data'),
+                
             }).done(function(response){
-               
                  
                 RenderListCart(response);
                 alertify.success('Xóa sản phẩm trong  giỏ hàng thành công');
                 
             });
         });
-        $('#change-list-cart').on('click', '.btn_update_list', function(){
-            //console.log($(this).data('id'));
+        function SaveListItemCart(id){
+            // console.log(id);    
+             console.log($('#quantityInput_'+id).val());
             $.ajax({
                 type: "GET",
-                data:{
-                    id_color_size:$(this).val()
-                },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_'+$(this).attr('data')).val(),
+                url: "/Save-List-Item-Cart/" +id+'/'+$('#quantityInput_'+id).val(),
             }).done(function(response){
                  
                 RenderListCart(response);
                 alertify.success('Cập nhật  giỏ hàng thành công');
                 
             });
-        });
-        // function SaveListItemCart(id){
-        //     // console.log(id);    
-        //      console.log($('#quantityInput_'+id).val());
-        //     $.ajax({
-        //         type: "GET",
-        //         data:{
-        //             id_color_size:$(this).val()
-        //         },
-        //         url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
-        //     }).done(function(response){
-                 
-        //         RenderListCart(response);
-        //         alertify.success('Cập nhật  giỏ hàng thành công');
-                
-        //     });
-        // }
+        }
         function RenderListCart(response){
             $('#list-cart').empty();
             $('#list-cart').html(response);

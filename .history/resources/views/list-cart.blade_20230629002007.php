@@ -1,35 +1,20 @@
 <div class="col-lg-8 table-responsive mb-5" id="list-cart" >
-    <table class="table table-bordered text-center mb-0" id="change-list-cart">
+    <table class="table table-bordered text-center mb-0">
         <thead class="bg-secondary text-dark">
             <tr>
                 <th>Products</th>
                 <th>Price</th>
-                <th>Size</th>
-                <th>Color</th>
                 <th>Quantity</th>
                 <th>Total</th>
                 <th>Remove</th>
             </tr>
         </thead>
-        <tbody class="align-middle" >
+        <tbody class="align-middle" id="change-list-cart">
             @if(Session::has('Cart') != null)
             @foreach(Session::get('Cart')->products as $item)
             <tr>
                 <td class="align-middle"><img src="/frontend/img/{{$item['productInfo']->image}}" alt="" style="width: 50px;">{{$item['productInfo']->name_product}}</td>
                 <td class="align-middle">{{(number_format($item['productInfo']->price))}} VNĐ</td>
-                
-                <td class="align-middle" value="{{$item['productInfo']->id_size}}">
-                              
-                    {{$item['productInfo']->number_size}}  
-                     
-              
-            </td>
-            <td class="align-middle"value="{{$item['productInfo']->id_color}}" >
-            
-                    {{$item['productInfo']->name_color}}  
-                     
-                
-            </td>
                 <td class="align-middle">
                     <div class="input-group quantityy mx-auto" style="width: 100px;">
                         <div class="input-group quantityy mr-3" style="width: 130px;">
@@ -48,21 +33,8 @@
                     </div>
                 </td>
                 <td class="align-middle">{{(number_format($item['price']))}} VNĐ</td>
-                <td class="align-middle"><button data="{{$item['productInfo']->id}}"  class="btn btn-sm btn-primary btn_delete_list" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
-                    <i  
-         
-                         class="fa fa-times"
-      
-                         ></i></button></td>
-                         <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
-                            {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
-                            {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
-                            data="{{$item['productInfo']->id}}"
-                            value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
-                            >
-                            
-                            <i  class="">Cập nhật</i>
-                        </button></td>
+                <td class="align-middle"><button class="btn btn-sm btn-primary"><i data-id="{{$item['productInfo']->id}} "   onclick="DeleteListItemCart({{$item['productInfo']->id}});" class="fa fa-times"></i></button></td>
+                <td class="align-middle"><button class="btn btn-sm btn-primary"><i onclick="SaveListItemCart({{$item['productInfo']->id}});"  id="save-cart-item-{{$item['productInfo']->id}}" class="">Cập nhật</i></button></td>
              </tr>
             @endforeach
             @else
