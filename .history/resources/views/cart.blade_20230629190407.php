@@ -57,8 +57,7 @@
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
-                                        value="{{$item['quanty']}}">
+                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" value="{{$item['quanty']}}">
                                         <div class="input-group-btn">
                                             <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
                                                 <i class="fa fa-plus"></i>
@@ -282,7 +281,7 @@
             });
         });
         $('#change-list-cart').on('click', '.btn_update_list', function(){
-            
+            console.log(data);
             $.ajax({
                 type: "GET",
                 data:{

@@ -66,8 +66,6 @@
                     </button></td>
                 </tr>
             @endforeach
-            @else
-            <tr><h1>Quay lại chọn sản phẩm   <a href="{{url('/')}}">trang chủ</a></h1></tr>
                  @endif
             </tbody>
         </table>
@@ -85,7 +83,6 @@
             <div class="card-header bg-secondary border-0">
                 <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
             </div>
-            @if(Session::has('Cart') != null)
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-3 pt-1">
                     <h6 class="font-weight-medium">Total Quanty</h6>
@@ -105,43 +102,17 @@
                     <h5 class="font-weight-bold">Total</h5>
                     <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice))}} VNĐ</h5>
                 </div>
-     
-            </div>
-            @else 
-            <div class="card-body">
-                <div class="d-flex justify-content-between mb-3 pt-1">
-                    <h6 class="font-weight-medium">Total Quanty</h6>
+                <?php
+                $data1=Session::get('data1');
+                ?>
+                @if( $data1 == null)
+                    <a href="{{URL::to('/login') }}" class="nav-item nav-link"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
                 
-                    <h6 class="font-weight-medium" id="total-list-item"> 0 Product</h6>
-         
-               
-                </div>
-                <div class="d-flex justify-content-between mb-3 pt-1">
-                    <h6 class="font-weight-medium">Subtotal</h6>
-                    <h6 class="font-weight-medium"> 0 VNĐ</h6>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-weight-medium">Shipping</h6>
-                    <h6 class="font-weight-medium"> </h6>
-                </div>
+                @else
+                <a href="{{URL('/checkout')}}"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
+                
+                @endif
             </div>
-            <div class="card-footer border-secondary bg-transparent">
-                <div class="d-flex justify-content-between mt-2">
-                    <h5 class="font-weight-bold">Total</h5>
-                    <h5 class="font-weight-bold"> 0 VNĐ</h5>
-                </div>
-            </div>
-            @endif
-            <?php
-            $data1=Session::get('data1');
-            ?>
-            @if( $data1 == null)
-                <a href="{{URL::to('/login') }}" class="nav-item nav-link"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
-            
-            @else
-            <a href="{{URL('/checkout')}}"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
-            
-            @endif
         </div>
     </div>
 </div>

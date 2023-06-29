@@ -58,7 +58,7 @@
                                             </button>
                                         </div>
                                         <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
-                                        value="{{$item['quanty']}}">
+                                        value="{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color.$item['quanty']}}">
                                         <div class="input-group-btn">
                                             <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
                                                 <i class="fa fa-plus"></i>
