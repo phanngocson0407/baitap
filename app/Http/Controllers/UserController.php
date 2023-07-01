@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Models\User;
+use App\Models\Social; //sử dụng model Social
+use Socialite; //sử dụng Socialite
+
 use Illuminate\Pagination\Paginator;
 class UserController extends Controller
 {
@@ -182,4 +185,48 @@ class UserController extends Controller
     {
         //
     }
+
+    public function login_facebook(){
+        return Socialite::driver('facebook')->redirect();
+        }
+        
+    public function callback_facebook(){
+        $provider = Socialite::driver('facebook')->user();
+        $account = Social::where('provider','facebook')->where('provider_user_id',$provider->getId())
+        ->first();
+        if($account){
+        //login in vao trang quan tri
+        $account_name = User::where('id',$account->id_user)->first();
+        Session::put('data1',$result[0]);
+       
+        return redirect("/")->with('message', 'Đăng nhập Admin thành công');
+        }else{
+        
+        $son = new Social([
+        'provider_user_id' => $provider->getId(),
+        'provider' => 'facebook'
+        ]);
+        
+        $orang = User::where('email',$provider->getEmail())->first();
+        
+        if(!$orang){
+        $orang = User::create([
+        
+        'fullname' => $provider->getName(),
+        'email' => $provider->getEmail(),
+        'username' => '',
+        'password' => '',
+        'phone' => '',
+        'address' => '',
+        ]);
+        }
+        $son->login()->associate($orang);
+        $son->save();
+        
+        $account_name = User::where('id',$account->id_user)->first();
+        Session::put('data1',$result[0]);
+       
+        return redirect("/")->with('message', 'Đăng nhập Admin thành công');
+        }
+        }
 }

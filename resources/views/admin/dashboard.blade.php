@@ -34,7 +34,7 @@
 ?>
 <body>
     <!-- Left Panel -->
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">

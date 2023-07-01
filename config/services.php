@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' =>[
+       'client_id' => '1320604325545415',
+       'client_secret' => 'e9a68b91f50921527c40ca8d0f043164',
+       'redirect' => 'http://giaynew.demo.com/login/callback'
+    ]
 ];

@@ -63,10 +63,14 @@
                         <h5 class="font-weight-medium mb-3">Products</h5>
                         @if(Session::has('Cart') != null)
                         @foreach(Session::get('Cart')->products as $item)
+                        
                         <div class="d-flex justify-content-between">
                             <p hidden name="id_product" >{{$item['productInfo']->id}}</p>
-                            <p>{{$item['productInfo']->name_product}}</p>
+                            <p name="name_product">{{$item['productInfo']->name_product}}</p>
                             <p name="quantity">{{$item['quanty']}}</p>
+                            <p name="size">{{$item['productInfo']->number_size}}</p>
+                            <p name="color">{{$item['productInfo']->name_color}}</p>
+                           
                             <p name="price">{{$item['productInfo']->price}}</p>
                         </div>
                         @endforeach

@@ -1,7 +1,6 @@
 @extends('user.dashboard')
 @section('user')
 
-
     <!-- Featured Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
@@ -38,18 +37,34 @@
             <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
         </div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" style=" display: flex;justify-content: space-between;">
                 <div class="form-group" >
-                 
-                    <select class="form-control select-filter" id="select-filter" >
-                        <option value="0">---Lọc theo---</option>
-                        <option value="?kytu=asc">Từ A-Z</option>
-                        <option value="?kytu=desc">Từ Z-A</option>
-                        <option value="?gia=asc">Giá tăng dần</option>
-                        <option value="?gia=asc">Giá giảm dần</option>
+                    <form >
+                        @csrf
+                    <select class="form-control select-filter" name="sort" id="sort"  style="width: 170px;">
+                        <option value="{{Request::url()}}?sort_by=none">---Lọc theo---</option>
+                        <option value="{{Request::url()}}?sort_by=kytu_az">Từ A-Z</option>
+                        <option value="{{Request::url()}}?sort_by=kytu_za">Từ Z-A</option>
+                        <option value="{{Request::url()}}?sort_by=tang_dan">Giá tăng dần</option>
+                        <option value="{{Request::url()}}?sort_by=giam_dan">Giá giảm dần</option>
                     </select>
-
+                </form>
                 </div>
+                <div>
+                    <form action="/" method="get" style="width: 500px;">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm sản phẩm">
+                            <input type="text" class="form-control" name="price" placeholder="Tìm kiếm theo giá">
+                         
+                            <div class="input-group-append">
+                                <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
+    
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
             </div>
         </div>
         <div class="row px-xl-5 pb-3">
@@ -76,6 +91,7 @@
             
         </div>
         {{$data->links()}};
+       
     </div>
     <!-- Products End -->
 
@@ -247,16 +263,14 @@
     }
     </script> --}}
     <script>
-        $('.select-filter').change(function(){
-            var value =$(this).find(':selected').val();
-            //alert(value);
-            if(value!=0){
-                var url =value;
-                window.location.replace(url);
-            }
-            else{
-                alert('Hãy lọc');
-            }
+        $(document).ready(function(){
+            $('#sort').on('change',function(){
+                var url = $(this).val();
+                if(url){
+                    window.location = url;
+                }
+                return false;
+            });
         });
     </script>
 @endsection

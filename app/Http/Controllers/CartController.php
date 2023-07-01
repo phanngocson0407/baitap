@@ -56,7 +56,10 @@ class CartController extends Controller
                 $data['id_order']=$order->id;
                 $data['id_product']= $item['productInfo']->id;
                 //dd( $data['id_product']);
+                $data['name_product']=$item['productInfo']->name_product;
                 $data['quantity']=$item['quanty'];
+                $data['size']=$item['productInfo']->number_size;
+                $data['color']=$item['productInfo']->name_color;
                 $data['price']= $item['productInfo']->price;
                 Order_Detail::create($data);
             }

@@ -12,6 +12,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\RoleController;  
 use App\Http\Controllers\RoleAdminController; 
 use App\Http\Controllers\CommentController;  
+use App\Http\Controllers\OrderController;  
+use App\Http\Controllers\OrderDetailController;  
 use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
@@ -86,8 +88,9 @@ Route::get('/thank', function(){
     return view('thank');
 });
 // Route::get('/', [CartController::class, 'AddCart'] );
- 
-
+//đăng nhập fb
+Route::get('/login-facebook',[UserController::class,'login_facebook']);
+Route::get('/admin/callback',[UserController::class,'callback_facebook']);
 //route for admin
 route::prefix('admin')->group( function()
 {
@@ -171,7 +174,15 @@ route::prefix('admin')->group( function()
 
 
     route::prefix('order')->group( function(){
-        route::get('/', function(){  return view('admin.order.index');});
+        route::get('/', [OrderController::class, 'show']);
+        route::get('/create',  [OrderController::class, 'create']);
+        route::post('/create',  [OrderController::class, 'store']);
+        Route::get('/edit/{id}',[OrderController::class,'edit']);
+        Route::put('/edit/{id}',[OrderController::class,'update']);
+        Route::delete('/delete/{id}',[OrderController::class,'destroy']);
+        route::get('/order-detail/{id}', [OrderController::class, 'show_detail']);
+        route::post('/update-status', [OrderController::class, 'update_status']);
+        //Route::get('/order-detail/{id}',[OrderController::class,'show_detail_id']);
       
     });
 
@@ -190,5 +201,4 @@ route::prefix('admin')->group( function()
     Route::get('/logout', [AdminController::class, 'logout']);
 
 });
-
  
