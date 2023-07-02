@@ -91,6 +91,9 @@ Route::get('/thank', function(){
 //đăng nhập fb
 Route::get('/login-facebook',[UserController::class,'login_facebook']);
 Route::get('/admin/callback',[UserController::class,'callback_facebook']);
+//đăng nhập google
+Route::get('/login/login-google',[UserController::class,'login_google']);
+Route::get('/login/google/callback',[UserController::class,'callback_google']);
 //route for admin
 route::prefix('admin')->group( function()
 {

@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+
 use App\Models\User;
 use App\Models\Social; //sử dụng model Social
-use Socialite; //sử dụng Socialite
+use Laravel\Socialite\Facades\Socialite;
 
 use Illuminate\Pagination\Paginator;
 class UserController extends Controller
@@ -197,6 +198,8 @@ class UserController extends Controller
         if($account){
         //login in vao trang quan tri
         $account_name = User::where('id',$account->id_user)->first();
+
+       
         Session::put('data1',$result[0]);
        
         return redirect("/")->with('message', 'Đăng nhập Admin thành công');
@@ -228,5 +231,54 @@ class UserController extends Controller
        
         return redirect("/")->with('message', 'Đăng nhập Admin thành công');
         }
-        }
+    }
+    //đăng nhập gg
+    public function login_google(){
+        return Socialite::driver('google')->redirect();
+    }
+    public function callback_google(){
+        $users = Socialite::driver('google')
+        ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))
+        ->user();
+        $authUser = $this->findOrCreateUser($users,'google');
+        return $authUser;
+    }
+    public function findOrCreateUser($user_social,$provider){
+            $authUser = Social::where('provider_user_id', $user_social->id)->first();
+            if($authUser){
+                $account_name = User::where('id',$authUser->id_user)->first();
+              
+                Session::put('data1',$account_name);
+                Session::put('id',$account_name->id);
+                return redirect('/')->with('message', 'Đăng nhập Admin thành công');
+            }
+            else
+            {
+                $son = new Social([
+                    'provider_user_id' => $user_social->id,
+                    'provider' => strtoupper($provider)
+                    
+                    ]);
+                   
+                $orang = User::where('email',$user_social->email)->first();
+                
+                if(!$orang){
+                    $orang=new User();
+                    $orang->fullname=$user_social->name;
+                    $orang->email=$user_social->email;
+                    $orang->save();
+                    $id_user=$orang->id;
+                }
+                else
+                {
+                    $id_user=$orang->id;
+                }
+                $son->id_user=$id_user;
+                $son->save();
+                $account_name = User::where('id',$son->id_user)->first();
+                Session::put('data1',$account_name);
+                Session::put('id',$account_name->id);
+                return redirect('/')->with('message', 'Đăng nhập Admin thành công');
+            }   
+    }
 }

@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         View()->share('category',DB::table('category_product')->get());
         View()->share('product',DB::table('product')->get());
         View()->share('size',DB::table('size')->get());
+        
         Paginator::useBootstrap();
     }
 }
