@@ -23,6 +23,7 @@
                 <tr>
                    
                     <th>ID Đơn Hàng</th>
+                    <th>Ảnh sản phẩm</th>
                     <th>Tên sản phẩm</th>
                     <th>Số lượng</th>
                     <th>Giá</th>
@@ -35,8 +36,8 @@
                 @foreach($order_detail as $item)
          <tr>
           
-       
             <td>{{$item->id_order}}</td>
+            <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"></td>
             <td>{{$item->name_product}}</td>
              <td>{{$item->quantity}}</td>
              <td>{{$item->price}}</td>

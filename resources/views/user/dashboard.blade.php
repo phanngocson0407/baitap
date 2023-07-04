@@ -258,7 +258,7 @@
                             @if( $data1 == null)
                             <a href="{{URL::to('/login')}}" class="nav-item nav-link">Xem Đơn Hàng</a>
                             @else
-                            <a href="/donhang/{{$data1->id??""}}" class="nav-item nav-link">Xem Đơn Hàng</a>
+                            <a href="/donhang/{{$data1->id??""}}" class="nav-item nav-link">Lịch sử Đơn Hàng</a>
                             @endif
                         </div>
                         <div class="navbar-nav ml-auto py-0">
