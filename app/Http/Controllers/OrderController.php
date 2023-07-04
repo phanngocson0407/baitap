@@ -144,7 +144,7 @@ class OrderController extends Controller
     }
     public function donhang($id){
         $order = Order::join('user','user.id','=','order.id_user')
-        ->select('order.*','user.*')
+        ->select('order.*')
         ->where('order.id_user',$id)
         ->get();
        
