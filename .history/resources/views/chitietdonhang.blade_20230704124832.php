@@ -4,11 +4,11 @@
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông Tin Đơn Hàng</h1>
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Chi Tiết Đơn Hàng</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="">Home</a></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0">Thông Tin Đơn Hàng</p>
+                <p class="m-0">Chi Tiết Đơn Hàng</p>
             </div>
         </div>
     </div>
@@ -18,50 +18,36 @@
     <!-- Contact Start -->
     <div class="container-fluid py-5 d-flex justify-content-center">
     <div class="justify-content-center">
-         <table class="table table-striped table-bordered">
-            <tr>
-                <th>ID Đơn Hàng</th>
-                <th>Họ Tên Khách Hàng</th>
-                <th>Số điện Thoại</th>
-                <th>Email</th>
-                <th>Địa chỉ</th>
-                <th>Ngày đặt hàng</th>
-                <th>Trạng thái</th>
-                <th>Chi tiết đơn hàng</th>
-            </tr>
-           @foreach ($order as $item)
-            {{-- @if($item->id_user == $item->id) --}}
-            <tr>
-                <td>{{$item->id}}</td>
-             
-                <td>{{$item->consingnee_name}}</td>
-                <td>{{$item->consingnee_phone}}</td>
-                <td>{{$item->consingnee_email}}</td>
-                <td>{{$item->consingnee_address}}</td>
-                <td>{{$item->date_payment}}</td>    
-                <td>     <?php
-                    if($item->status==0){
-                        echo 'Đang chờ duyệt';
-                    }elseif($item->status==1){
-                        echo 'Duyệt đơn hàng';
-                    }elseif($item->status==2){
-                        echo 'Đang vận chuyển';
-                    }elseif($item->status==3){
-                        echo 'Giao Hàng';
-                    }
-                ?></td>
+        <table class="table table-striped table-bordered"> 
+                <tr><th>ID Đơn Hàng</th>
+                
+            <td>{{$item->id_order}}</td></tr>
+                <tr>
+                   
+                     
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Màu</th>
+                    <th>Size</th>
+                  
+                </tr>
+           
          
-                <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
-            </tr>
-            {{-- @else
-            <tr>
-                <td>Bạn chưa đặt đơn hàng nào</td>
-            </tr> --}}
-            
-            {{-- @endif --}}
+                @foreach($order_detail as $item)
+         <tr>
+          
+        
+            <td>{{$item->name_product}}</td>
+             <td>{{$item->quantity}}</td>
+             <td>{{$item->price}}</td>
+             <td>{{$item->color}}</td>
+             <td>{{$item->size}}</td>
    
-           @endforeach
-         </table>
+         
+            </tr>
+            @endforeach
+        </table>
     </div>
 </div>
     <!-- Contact End -->

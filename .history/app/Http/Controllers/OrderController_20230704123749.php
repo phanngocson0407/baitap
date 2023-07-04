@@ -152,14 +152,14 @@ class OrderController extends Controller
     }
     public function chitiet($id){
         $order_detail = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
-       
+        ->join("user", 'user.id', '=', 'order.id_user')
         ->select(
-           
+            'user.*',
             'order_detail.*',
             'order.id'
         )
         ->where('order_detail.id_order', $id)
         ->get();
-        return view('chitietdonhang',[ 'order_detail'=>$order_detail ]);
+        return view('chitiet',[ 'order_detail'=>$order_detail ]);
     }
 }

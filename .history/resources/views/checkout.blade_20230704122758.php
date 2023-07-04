@@ -1,70 +1,121 @@
-
 @extends('user.dashboard')
 @section('user')
+
+
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông Tin Đơn Hàng</h1>
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Checkout</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="">Home</a></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0">Thông Tin Đơn Hàng</p>
+                <p class="m-0">Checkout</p>
             </div>
         </div>
     </div>
     <!-- Page Header End -->
 
 
-    <!-- Contact Start -->
-    <div class="container-fluid py-5 d-flex justify-content-center">
-    <div class="justify-content-center">
-         <table class="table table-striped table-bordered">
-            <tr>
-                <th>ID Đơn Hàng</th>
-                <th>Họ Tên Khách Hàng</th>
-                <th>Số điện Thoại</th>
-                <th>Email</th>
-                <th>Địa chỉ</th>
-                <th>Ngày đặt hàng</th>
-                <th>Trạng thái</th>
-                <th>Chi tiết đơn hàng</th>
-            </tr>
-           @foreach ($order as $item)
-            {{-- @if($item->id_user == $item->id) --}}
-            <tr>
-                <td>{{$item->id}}</td>
-             
-                <td>{{$item->consingnee_name}}</td>
-                <td>{{$item->consingnee_phone}}</td>
-                <td>{{$item->consingnee_email}}</td>
-                <td>{{$item->consingnee_address}}</td>
-                <td>{{$item->date_payment}}</td>    
-                <td>     <?php
-                    if($item->status==0){
-                        echo 'Đang chờ duyệt';
-                    }elseif($item->status==1){
-                        echo 'Duyệt đơn hàng';
-                    }elseif($item->status==2){
-                        echo 'Đang vận chuyển';
-                    }elseif($item->status==3){
-                        echo 'Giao Hàng';
-                    }
-                ?></td>
-         
-                <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
-            </tr>
-            {{-- @else
-            <tr>
-                <td>Bạn chưa đặt đơn hàng nào</td>
-            </tr> --}}
-            
-            {{-- @endif --}}
-   
-           @endforeach
-         </table>
+    <!-- Checkout Start -->
+    <div class="container-fluid pt-5">
+        <form action="/List-Cart" method="post">
+            @csrf
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <div class="mb-4">
+
+                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <?php
+                    $data1=Session::get('data1');
+                    ?>
+                    <div class="row">
+                        <input type="text" name="id_user" value="{{$data1->id}}" hidden>
+                        <div class="col-md-6 form-group">
+                            <label>Họ tên</label>
+                            <input class="form-control" name="consingnee_name" type="text"  value="{{$data1->fullname}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Email</label>
+                            <input class="form-control" name="consingnee_email" type="text"  value="{{$data1->email}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Phone</label>
+                            <input class="form-control" name="consingnee_phone" type="number"  value="{{$data1->phone}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Address</label>
+                            <input class="form-control" name="consingnee_address" type="text"  value="{{$data1->address}}">
+                        </div>
+                        
+                        
+                      
+                    </div>
+                
+                </div>
+               
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="font-weight-medium mb-3">Products</h5>
+                        @if(Session::has('Cart') != null)
+                        @foreach(Session::get('Cart')->products as $item)
+                        
+                        <div class="d-flex justify-content-between">
+                            <p hidden name="id_product" >{{$item['productInfo']->id}}</p>
+                            <p name="name_product">{{$item['productInfo']->name_product}}</p>
+                            <p name="quantity">{{$item['quanty']}}</p>
+                            <p name="size">{{$item['productInfo']->number_size}}</p>
+                            <p name="color">{{$item['productInfo']->name_color}}</p>
+                           
+                            <p name="price">{{$item['productInfo']->price}}</p>
+                        </div>
+                        @endforeach
+                         @endif
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice))}}VND</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Payment</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
+                                <label class="custom-control-label" for="paypal">Paypal</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
+                                <label class="custom-control-label" for="directcheck">Direct Check</label>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
+                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Thanh Toán"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
     </div>
-</div>
-    <!-- Contact End -->
+    <!-- Checkout End -->
 
 
     <!-- Footer Start -->

@@ -239,15 +239,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{{URL('/cart')}}" class="dropdown-item">Giỏ Hàng</a>
-                                    <?php
-                                    $data1=Session::get('data1');
-                                    ?>
-                                    <!-- Checkout Start -->
-                                    @if( $data1 == null)
-                                    <a href="{{URL::to('/login')}}" class="dropdown-item">Thanh Toán</a>
-                                    @else
                                     <a href="{{URL('/checkout')}}" class="dropdown-item">Thanh Toán</a>
-                                    @endif
                                 </div>
                             </div>
                             <a href="{{URL('/contact')}}" class="nav-item nav-link">Liên Hệ</a>
@@ -255,11 +247,7 @@
                             <?php
                             $data1=Session::get('data1');
                             ?>
-                            @if( $data1 == null)
-                            <a href="{{URL::to('/login')}}" class="nav-item nav-link">Xem Đơn Hàng</a>
-                            @else
                             <a href="/donhang/{{$data1->id??""}}" class="nav-item nav-link">Xem Đơn Hàng</a>
-                            @endif
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <?php

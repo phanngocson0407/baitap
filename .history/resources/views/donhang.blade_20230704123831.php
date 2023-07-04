@@ -33,7 +33,7 @@
             {{-- @if($item->id_user == $item->id) --}}
             <tr>
                 <td>{{$item->id}}</td>
-             
+                <td>{{$item->id_user}}</td>
                 <td>{{$item->consingnee_name}}</td>
                 <td>{{$item->consingnee_phone}}</td>
                 <td>{{$item->consingnee_email}}</td>

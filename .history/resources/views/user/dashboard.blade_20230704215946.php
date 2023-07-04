@@ -255,11 +255,7 @@
                             <?php
                             $data1=Session::get('data1');
                             ?>
-                            @if( $data1 == null)
-                            <a href="{{URL::to('/login')}}" class="nav-item nav-link">Xem Đơn Hàng</a>
-                            @else
                             <a href="/donhang/{{$data1->id??""}}" class="nav-item nav-link">Xem Đơn Hàng</a>
-                            @endif
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <?php

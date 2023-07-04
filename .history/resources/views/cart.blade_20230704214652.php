@@ -13,7 +13,7 @@
     </div>
     <!-- Page Header End -->
 
-    @if(Session::has('Cart') != null)
+    @if(Session::get('Cart')->totalQuanty == null)
     <!-- Cart Start -->
     <div class="container-fluid pt-5" id="change-list-cart">
         <div class="row px-xl-5" id="list-cart">
@@ -138,9 +138,9 @@
     </div>
     @else
     <div class="container-fluid py-5 d-flex justify-content-center">
-        <p>bạn chưa có sản phẩm nào trong trong hàng <a href="{{"/"}}">Quay lại trang Mua hàng</a></p>
+        <p>bạn chưa có sản phẩm nào trong trong hàng</p>
     </div>
-@endif
+
     <!-- Cart End -->
 
 

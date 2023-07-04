@@ -138,7 +138,7 @@
     </div>
     @else
     <div class="container-fluid py-5 d-flex justify-content-center">
-        <p>bạn chưa có sản phẩm nào trong trong hàng <a href="{{"/"}}">Quay lại trang Mua hàng</a></p>
+        <p>bạn chưa có sản phẩm nào trong trong hàng</p>
     </div>
 @endif
     <!-- Cart End -->
