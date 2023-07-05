@@ -91,7 +91,7 @@
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role_admin')}}">Quản lí Quyền Admin</a></li>
                                 @endif
                             @endforeach
-                          
+                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/comment')}}">Quản lí Đánh giá</a></li>
                             
                             
                             

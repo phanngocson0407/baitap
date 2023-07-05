@@ -142,6 +142,13 @@ class OrderController extends Controller
         $order->delete();
         return redirect('/admin/order/');
     }
+    public function destroy_huydonhang($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+        return redirect('/');
+    }
+    
     public function donhang($id){
         $order = Order::join('user','user.id','=','order.id_user')
         ->select('order.*' )

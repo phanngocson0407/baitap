@@ -12,5 +12,5 @@ class Comment extends Model
     protected $table='comment';
     protected $primaryKey='id';
     public $timestamps=false;
-    public $fillable =['id', 'comment','comment_name','comment_data','product_id'];
+    public $fillable =['id', 'comment','comment_name','comment_data','status','product_id'];
 }

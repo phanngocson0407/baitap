@@ -42,7 +42,7 @@ class CommentController extends Controller
   
         $comment->comment = $request->comment;
         $comment->comment_name = $request->comment_name;
-    
+        $comment->status =0;
         $comment->product_id = $request->product_id;
         
         $comment->save();
@@ -66,9 +66,10 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $cm = Comment::all();
+        return view('admin.comment.index',['cm'=>$cm]);
     }
 
     /**
@@ -91,7 +92,20 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+     
+    }
+    public function unactive(Request $request, $id)
+    {
+        $data =array();
+        $data['status'] = $request->status; 
+    
+        DB::table('comment')->where('id',$request->id)->update([$data=1]);
+       
+        return Redirect('/admin/comment/');
+    }
+
+    public function active(Request $request, $id)
+    {
     }
 
     /**
@@ -102,6 +116,8 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect('/admin/comment/');
     }
 }

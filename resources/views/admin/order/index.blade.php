@@ -126,7 +126,7 @@
 
       $(document).ready(function() {
         $('.update_status').change(function() {
-            console.log("fefef");
+           
             var selectedValue = $(this).val();
             var id_order=$(this).parent().find("input[name=id_order]").val();
             // Gửi yêu cầu AJAX để cập nhật trạng thái

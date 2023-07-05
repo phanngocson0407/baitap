@@ -68,9 +68,11 @@ Route::get('/blog', function(){
 Route::get('/detail', function(){
     return view('detail');
 });
-
+//Lịch sử đơn hàng
 Route::get('/donhang/{id}', [OrderController::class, 'donhang']);
 Route::get('/chitietdonhang/{id}', [OrderController::class, 'chitiet']);
+Route::delete('/delete/{id}', [OrderController::class, 'destroy_huydonhang']);
+//
 
 Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
 Route::get('/shop/{id}', [CategoryController::class, 'shop'] );
@@ -192,6 +194,12 @@ route::prefix('admin')->group( function()
         route::post('/update-status', [OrderController::class, 'update_status']);
         //Route::get('/order-detail/{id}',[OrderController::class,'show_detail_id']);
       
+    });
+    route::prefix('comment')->group( function(){
+        Route::get('/', [CommentController::class, 'show']);
+        Route::get('/unactive/{id}', [CommentController::class, 'unactive']);
+        Route::get('/active/{id}', [CommentController::class, 'active']);
+        Route::delete('/delete/{id}',[CommentController::class,'destroy']);
     });
 
     route::prefix('blog')->group( function(){

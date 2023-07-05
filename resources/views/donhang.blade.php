@@ -27,6 +27,7 @@
                 <th>Địa chỉ</th>
                 <th>Ngày đặt hàng</th>
                 <th>Trạng thái</th>
+                <th>Hủy đơn hàng</th>
                 <th>Chi tiết đơn hàng</th>
             </tr>
            @foreach ($order as $item)
@@ -50,8 +51,23 @@
                         echo 'Giao Hàng';
                     }
                 ?></td>
-         
+                @if($item->status==0){
+                <td>
+                    <form action="/delete/{{$item->id}}" method="post">
+                        @csrf
+                        <input type="hidden" name="_method" value="delete">
+                    <button 
+                    onclick="return confirm('Bạn chắc chắn muốn hủy đơn hàng này?')"
+                    style=" border: 0px solid #b1154a; color:rgb(209,156,151)">
+                    Hủy đơn</button>
+                    </form>
+                </td>
                 <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
+                }@else{
+                    <td><button style="display: none">Hủy đơn</button></td>
+                    <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
+                }
+                @endif
             </tr>
             {{-- @else
             <tr>
