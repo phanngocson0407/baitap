@@ -87,17 +87,24 @@ class OrderController extends Controller
     {
         $Order = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
         ->join("user", 'user.id', '=', 'order.id_user')
+        ->join("product", 'product.id', '=', 'order_detail.id_product')
         ->select(
             'user.*',
             'order_detail.*',
-            'order.id'
+            'order.id',
+            'product.image',
         )
         ->where('order_detail.id_order', $id)
         ->get();
-        
-       
+
+        $total = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
+        ->select(
+            'order_detail.*',
+        )
+        ->where('order_detail.id_order', $id)
+        ->sum(DB::raw('price * quantity'));
         $Order_detail = Order::find($id);
-        return view('admin.order.show_detail',['order_detail'=>$Order_detail,'order'=>$Order]);
+        return view('admin.order.show_detail',['order_detail'=>$Order_detail,'order'=>$Order,'total'=>$total]);
     }
     /**
      * Show the form for editing the specified resource.
@@ -167,7 +174,14 @@ class OrderController extends Controller
         )
         ->where('order_detail.id_order', $id)
         ->get();
+
+        $total = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
+        ->select(
+            'order_detail.*'
+        )
+        ->where('order_detail.id_order', $id)
+        ->sum(DB::raw('price * quantity'));
      
-        return view('chitietdonhang',[ 'order_detail'=>$order_detail ]);
+        return view('chitietdonhang',[ 'order_detail'=>$order_detail,'total'=>$total]);
     }
 }

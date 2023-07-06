@@ -236,16 +236,18 @@ h1 {
 
         <div>
             <p><b>Hiển thị đánh giá</b></p>
+            
             <div class="style_comment" id="scrollableDiv" style="max-height: 200px; overflow-y: scroll;">
                 <?php $n=0 ?>
                 @foreach($comment as $item)
+                @if($item->status==1)
                 <?php $n++ ?>
-                
                 <div>{{$n}}: {{$item->comment_name}}. Ngày: {{$item->comment_date}}</div>
                 <div>Bình luận: {{$item->comment}}</div>
+                @endif
                 @endforeach
             </div>
-            
+           
         </div>
 
         <div>

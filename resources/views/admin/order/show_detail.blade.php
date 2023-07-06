@@ -21,6 +21,7 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>ID Đơn Hàng</th>
+                                            <th>Hình ảnh</th>
                                             <th>Tên sản phẩm</th>
                                             <th>Số lượng</th>
                                             <th>Giá</th>
@@ -35,9 +36,10 @@
                                        <?php $n++ ?>
                                        <td>{{$n}}</td>
                                        <td>{{$item->id_order}}</td>
+                                       <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"></td>
                                        <td>{{$item->name_product}}</td>
                                         <td>{{$item->quantity}}</td>
-                                        <td>{{$item->price}}</td>
+                                        <td>{{number_format($item->price)}} VNĐ</td>
                                         <td>{{$item->color}}</td>
                                         <td>{{$item->size}}</td>
                                     </tbody>
@@ -46,8 +48,7 @@
                                 </table>
                                <div>
                                
-                                    <td>Số lượng:</td>
-                                    <td>giá:</td>
+                                  <td>Tổng giá: {{number_format($total)}} VNĐ</td>  
                                   
                                 </div>
                                 <div>

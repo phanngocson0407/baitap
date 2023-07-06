@@ -98,9 +98,7 @@ class CommentController extends Controller
     {
         $data =array();
         $data['status'] = $request->status; 
-    
-        DB::table('comment')->where('id',$request->id)->update([$data=1]);
-       
+        DB::table('comment')->where('id',$id)->update($data);
         return Redirect('/admin/comment/');
     }
 

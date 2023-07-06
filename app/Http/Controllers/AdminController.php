@@ -14,7 +14,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        
+        $count = DB::table('order')
+        ->join('order_detail','order.id','=','order_detail.id_order')
+        ->select(
+            'order_detail.price',
+            'order.*'
+        )->sum('price');
+       
+        return view('admin/trangchu',['count'=>$count]);
     }
 
     /**

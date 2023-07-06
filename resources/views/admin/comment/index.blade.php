@@ -27,12 +27,12 @@
                                        <td>{{$n}}</td>
                                        <td>
                                         @if($item->status==0)
-                                            <a href="comment/active/{{$item->id}}">
-                                                <option class="fa fa-thumbs-o-down" name="status" value='{{$item->status}}'style="font-size:30px; color:red"></option>
+                                            <a href="comment/unactive/{{$item->id}}?status=1">
+                                                <div class="fa fa-thumbs-o-down" style="font-size:30px; color:red"></div>
                                             </a>
                                         @else
-                                            <a href="comment/unactive/{{$item->id}}">
-                                                <option class="fa fa-thumbs-o-up" name="status" value='{{$item->status}}' style="font-size:30px; color:green"></option>
+                                            <a href="comment/unactive/{{$item->id}}?status=0">
+                                                <div class="fa fa-thumbs-o-up" style="font-size:30px; color:green"></div>
                                             </a>
                                         
                                         @endif

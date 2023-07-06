@@ -51,7 +51,7 @@
                         echo 'Giao Hàng';
                     }
                 ?></td>
-                @if($item->status==0){
+                @if($item->status==0)
                 <td>
                     <form action="/delete/{{$item->id}}" method="post">
                         @csrf
@@ -63,10 +63,10 @@
                     </form>
                 </td>
                 <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
-                }@else{
+                @else
                     <td><button style="display: none">Hủy đơn</button></td>
                     <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
-                }
+                
                 @endif
             </tr>
             {{-- @else

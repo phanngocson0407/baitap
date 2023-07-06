@@ -43,11 +43,13 @@
              <td>{{$item->price}}</td>
              <td>{{$item->color}}</td>
              <td>{{$item->size}}</td>
-   
-         
+             
             </tr>
             @endforeach
+            <th>Tổng giá:</th>
+            <th>{{number_format($total)}} VNĐ</th>
         </table>
+       
     </div>
 </div>
     <!-- Contact End -->

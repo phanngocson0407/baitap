@@ -14,6 +14,7 @@ use App\Http\Controllers\RoleAdminController;
 use App\Http\Controllers\CommentController;  
 use App\Http\Controllers\OrderController;  
 use App\Http\Controllers\OrderDetailController;  
+use App\Http\Controllers\MapController;  
 use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
@@ -207,7 +208,7 @@ route::prefix('admin')->group( function()
        
     });
 
-    Route::get('/trangchu',function(){  return view('admin.trangchu');})->name('trangchu');
+    Route::get('/trangchu',[AdminController::class,'index']);
 
     Route::get('/login',[AdminController::class,'dangnhap']);
     Route::post('/push-login',[AdminController::class,'kiemtraDN']);
@@ -217,4 +218,5 @@ route::prefix('admin')->group( function()
     Route::get('/logout', [AdminController::class, 'logout']);
 
 });
+Route::get('/map', [MapController::class,'showMap'])->name('map');
  
