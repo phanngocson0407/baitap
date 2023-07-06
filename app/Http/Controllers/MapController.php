@@ -8,6 +8,7 @@ class MapController extends Controller
 {
     public function showMap()
     {
+        //hello
         return view('map');
     }
 }
