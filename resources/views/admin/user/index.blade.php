@@ -12,7 +12,7 @@
                             <div class="col-lg-6 col-6 text-left">
                                 <form action="/admin/khachhang/" method="get">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="kw" placeholder="Search for products">
+                                        <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm tên khách hàng">
                                         <div class="input-group-append">
                                             <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
                                                 
