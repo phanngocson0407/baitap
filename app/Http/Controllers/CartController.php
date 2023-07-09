@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\Order_Detail;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Constraint\Count;
+use Mail;
+use App\Mail\CheckoutMail;
 session_start();
 class CartController extends Controller
 {
@@ -64,9 +66,9 @@ class CartController extends Controller
                 Order_Detail::create($data);
             }
            
-        //     Mail::to($data['email'])->send(new CheckoutMail(['nguoigui'=>'Giam doc Ng VAn A'] ));
+        Mail::to($data['consingnee_email'])->send(new CheckoutMail(['nguoigui'=>'Shop giay new'] ));
             Session::put('Cart',null);
-        //     session()->flash('message', 'Cam on ban da dat hang. Checkmail de biet chi tiet');
+        session()->flash('message', 'Cam on ban da dat hang. Checkmail de biet chi tiet');
             return redirect('/thank');
         }
     }

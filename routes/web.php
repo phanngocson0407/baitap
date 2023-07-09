@@ -220,3 +220,7 @@ route::prefix('admin')->group( function()
 });
 Route::get('/map', [MapController::class,'showMap'])->name('map');
  
+
+Route::get('/hihi', function(){
+    return view('mails.checkout');
+});

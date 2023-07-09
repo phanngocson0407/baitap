@@ -14,7 +14,7 @@
                 <div class="col-lg-5 pb-5">
                
                        
-                         <h4>QUÝ KHÁCH ĐÃ THANH TOÁN THÀNH CÔNG</h4>
+                         <h4>QUÝ KHÁCH ĐÃ THANH TOÁN THÀNH CÔNG CÓ THỂ VÀO MAIL ĐỂ KIỂM TRA.</h4>
                          <h5><a href="{{url("/")}}">Tiếp tục mua hàng</a></h5>
                 
                 </div>
