@@ -149,10 +149,12 @@ class OrderController extends Controller
         $order->delete();
         return redirect('/admin/order/');
     }
-    public function destroy_huydonhang($id)
+
+    public function huy_trangthai(Request $request, $id)
     {
-        $order = Order::find($id);
-        $order->delete();
+        $order = array();
+        $order['status_huy'] = $request->status_huy; 
+        DB::table('order')->where('id',$id)->update($order);
         return redirect('/');
     }
     

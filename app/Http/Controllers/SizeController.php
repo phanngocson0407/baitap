@@ -41,16 +41,17 @@ class SizeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $r)
     {
-       
+        $kw = $r->kw?$r->kw:'';
+        $kw="%".$kw."%";
         $Size = Size::join('product','product.id','=','size.id_product')
         ->select(
             'product.*',
             'size.*',
             )
-            ->get();
-            
+            ->where('id_product','like',$kw)->paginate(10);
+            $Size->appends(['kw'=>$r->kw]);
           
         return view('admin.size.index',['Size'=>$Size] );
     }

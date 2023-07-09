@@ -77,34 +77,38 @@ class ProductController extends Controller
         $kw = $r->kw?$r->kw:'';
         $kw="%".$kw."%";
         $price =is_numeric($r->price)?$r->price:-1;
+        $product=Product::select("*");
         if($price>0)
-            $data = Product::where([ 
-                ['name_product','like',$kw], ['price','=',$r->price]
-                ])
-                ->paginate(8);
-        else{
-            $data =Product::where('name_product','like',$kw)->paginate(8);
-            $param =['kw'=>$r->kw,'price'=>$price];
+        {
+            $product->where([ 
+                ['name_product','like',$kw], ['price','>=',$r->price],['price', '<=', $r->price + 100000] 
+            ]);
         }
-      
+        else{
+            $product->where('name_product','like',"$kw");
+            $param =['kw'=>$r->kw,'price'=>$price];
+           
+        }
+       
        //filter
         if(isset($_GET['sort_by'])){
+            
             $sort_by =$_GET['sort_by'];
             if($sort_by=='giam_dan'){
-                $data = Product::orderBy('price','DESC')->paginate(8)->appends(request()->query());
+                $product->orderBy('price','DESC');//->paginate(8)->appends(request()->query());
             } elseif($sort_by=='tang_dan'){
-                $data = Product::orderBy('price','ASC')->paginate(8)->appends(request()->query());
+                $product->orderBy('price','ASC');//->paginate(8)->appends(request()->query());
             }   
             elseif($sort_by=='kytu_za'){
-                $data = Product::orderBy('name_product','DESC')->paginate(8)->appends(request()->query());
+                $product->orderBy('name_product','DESC');//->paginate(8)->appends(request()->query());
             }  
             elseif($sort_by=='kytu_az'){
-                $data = Product::orderBy('name_product','ASC')->paginate(8)->appends(request()->query());
+                $product->orderBy('name_product','ASC');//->paginate(8)->appends(request()->query());
             }  
         }else{
-            $data = Product::orderBy('id','DESC')->paginate(8);
+            $product->orderBy('id','DESC');//->paginate(8);
         }
-
+        $data=$product->paginate(8);
         $data->appends(['param']);
         session()->flash('kw',$r->kw);  
         session()->flash('price',$r->price);
@@ -262,5 +266,28 @@ class ProductController extends Controller
                      }
                // dd($newCart);
         return view('cart1' );
+    }
+
+    public function show_size($id){
+        $show_size = Product::join("size", 'product.id', '=', 'size.id_product')
+        ->select(
+            'size.number_size',
+            'product.*',
+        )
+        ->where('size.id_product', $id)
+        ->get();
+        return view('admin.size.show_size',['show_size'=>$show_size]);
+    }
+
+    
+    public function show_color($id){
+        $show_color = Product::join("color", 'product.id', '=', 'color.id_product')
+        ->select(
+            'color.name_color',
+            'product.*',
+        )
+        ->where('color.id_product', $id)
+        ->get();
+        return view('admin.color.show_color',['show_color'=>$show_color]);
     }
 }

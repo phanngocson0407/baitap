@@ -26,6 +26,7 @@
                                             <th>Địa chỉ</th>
                                             <th>Số điện Thoại</th>
                                             <th>Trạng thái</th>
+                                            <th>Trạng thái hủy đơn</th>
                                             <th>Chọn trạng thái</th>
                                         </tr>
                                     </thead>
@@ -58,6 +59,16 @@
                                             ?>
                                         </td>
                                         <td>
+                                            <?php
+                                                if($item->status_huy==0){
+                                                    echo 'Đơn hàng chưa được hủy';
+                                                }elseif($item->status_huy==1){
+                                                    echo 'Khách hàng đã hủy';
+                                                }
+                                            ?>
+
+                                        </td>
+                                        <td>
                                             <input type="hidden" value="{{$item->id}}" name="id_order">
                                             <select name="" id="status" class="update_status">
                                                 <option value="">---Chọn trạng thái---</option>
@@ -76,6 +87,8 @@
                                                 </a>
                                             </td>
                                             @endif
+
+                                     
                                             @endforeach
                                         </tr>
                                     </tbody>

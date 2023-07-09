@@ -72,7 +72,8 @@ Route::get('/detail', function(){
 //Lịch sử đơn hàng
 Route::get('/donhang/{id}', [OrderController::class, 'donhang']);
 Route::get('/chitietdonhang/{id}', [OrderController::class, 'chitiet']);
-Route::delete('/delete/{id}', [OrderController::class, 'destroy_huydonhang']);
+Route::get('/huy-trangthai/{id}', [OrderController::class, 'huy_trangthai']);
+
 //
 
 Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
@@ -113,7 +114,8 @@ route::prefix('admin')->group( function()
         Route::get('/edit/{id}',[ProductController::class,'edit']);
         Route::put('/edit/{id}',[ProductController::class,'update']);
         Route::delete('/delete/{id}',[ProductController::class,'destroy']);
-
+        route::get('/show_size/{id}', [ProductController::class, 'show_size']);
+        route::get('/show_color/{id}', [ProductController::class, 'show_color']);
     });
     route::prefix('thuonghieu')->group( function(){
         route::get('/', [ThuongHieuController::class, 'show']);

@@ -13,6 +13,18 @@
                             <div class="card-header">
                                 <strong class="card-title">Bảng Size</strong>
                             </div>
+                            <div class="col-lg-6 col-6 text-left">
+                                <form action="/admin/size/" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm id sản phẩm">
+                                        <div class="input-group-append">
+                                            <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-body">
                                 @foreach ($role as $k=>$v)
                                 @if($v->role_module=="role_create_size")
@@ -37,7 +49,7 @@
                                        <?php $n++ ?>
                                        <td>{{$n}}</td>
                                     
-                                       <td>{{$item->name_product}}</td>
+                                       <td>{{$item->id_product}} - {{$item->name_product}}</td>
                                      
                                         <td>{{$item->number_size}}</td>
                                         @foreach ($role as $k=>$v)
@@ -65,6 +77,7 @@
                                     </tbody>
                                     @endforeach
                                 </table>
+                                {{$Size->links()}}
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
     <div class="panel panel-primary">
         
         <div class="panel-heading">
-            <h2 class="text-center">Thêm Loại Sản Phẩm</h2>
+            <h2 class="text-center">Thêm Size Giày</h2>
             
         </div>
         <div class="panel-body">
@@ -15,7 +15,7 @@
                 <select name="id_product"  class="form-control">
                     <option value=" ">Chọn Sản Phẩm </option>
                     @foreach ( $Product as $item)
-                    <option value="{{ $item->id }}">{{ $item->name_product }}</option>
+                    <option value="{{ $item->id }}">{{ $item->id }} - {{ $item->name_product }}</option>
                     @endforeach
                     
                   

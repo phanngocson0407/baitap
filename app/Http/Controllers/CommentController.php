@@ -98,13 +98,12 @@ class CommentController extends Controller
     {
         $data =array();
         $data['status'] = $request->status; 
+      
         DB::table('comment')->where('id',$id)->update($data);
         return Redirect('/admin/comment/');
     }
 
-    public function active(Request $request, $id)
-    {
-    }
+   
 
     /**
      * Remove the specified resource from storage.

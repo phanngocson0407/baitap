@@ -31,36 +31,8 @@
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row bg-secondary py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-dark" href="">FAQs</a>
-                    <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="">Help</a>
-                    <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="">Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-dark px-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-dark px-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-dark px-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-dark px-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-dark pl-2" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+     
+            
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="{{URL('/')}}" class="text-decoration-none">
@@ -232,11 +204,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{URL('/')}}" class="nav-item nav-link active">Home</a>
+                            <a href="{{URL('/')}}" class="nav-item nav-link active">Trang chủ</a>
                             {{-- <a href="{{URL('/shop')}}" class="nav-item nav-link">Shop</a> --}}
 
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{{URL('/cart')}}" class="dropdown-item">Giỏ Hàng</a>
                                     <?php
@@ -251,7 +223,7 @@
                                 </div>
                             </div>
                             <a href="{{URL('/contact')}}" class="nav-item nav-link">Liên Hệ</a>
-                            <a href="{{URL('/blog')}}" class="nav-item nav-link">Bài Viết</a>
+                           
                             <?php
                             $data1=Session::get('data1');
                             ?>
@@ -280,25 +252,15 @@
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="{{url('frontend')}}/img/carousel-1.jpg" alt="Image">
+                            <img class="img-fluid" src="{{url('frontend')}}/img/bitis.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                                        Order</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                </div>
+                            
                             </div>
                         </div>
                         <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="{{url('frontend')}}/img/carousel-2.jpg" alt="Image">
+                            <img class="img-fluid" src="{{url('frontend')}}/img/bitis1.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                                        Order</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -318,6 +280,53 @@
     </div>
     <!-- Navbar End -->
     @yield('user')
+
+
+    <!-- Footer Start -->
+
+<div class="container-fluid bg-secondary text-dark custom-footer">
+    <div class="row px-xl-5 pt-5">
+        <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+            <a href="" class="text-decoration-none">
+                <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
+            </a>
+            <p>Cửa hàng SHOP GIÀY NEW uy tín hàng đầu. Chất lượng sản phẩm, giá thành phải chăng được nhiều người tin dùng và ủng hộ.</p>
+            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>180 Cao Lỗ, P4, Q8, TPHCM</p>
+            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>shopgiay5797@gmail.com</p>
+            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0334653923</p>
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h5 class="font-weight-bold text-dark mb-4">
+                        Đường Dẫn Nhanh</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-dark mb-2" href="{{URL('/')}}"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
+                    
+                        <a class="text-dark mb-2" href="{{URL('/contact')}}"><i class="fa fa-angle-right mr-2"></i>Liên Hệ</a>
+                        <a class="text-dark mb-2" href="{{URL('/cart')}}"><i class="fa fa-angle-right mr-2"></i>Giỏ hàng</a>
+                        <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}"><i class="fa fa-angle-right mr-2"></i>Lịch sử đơn hàng</a>
+                        <?php
+                        $data1=Session::get('data1');
+                        ?>
+                        <!-- Checkout Start -->
+                        @if( $data1 == null)
+                        <a class="text-dark" href="{{URL::to('/login')}}"><i class="fa fa-angle-right mr-2"></i>Thanh toán</a>
+                        @else
+                        <a class="text-dark" href="{{URL('/checkout')}}"><i class="fa fa-angle-right mr-2"></i>Thanh toán</a>
+                        @endif
+                      
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!-- Footer End -->
+
+
 
 </body>
 

@@ -59,10 +59,6 @@
                                 @if($v->role_module=="role_category")
                                     <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/category')}}">Quản lí Loại sản phẩm</a></li>
                                 @endif
-                                
-                                @if($v->role_module=="role_blog")
-                                    <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/blog')}}">Quản lí Blog</a></li>
-                                @endif
 
                                 @if($v->role_module=="role_donhang")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/order')}}">Quản lí Đơn hàng</a></li>
@@ -72,11 +68,11 @@
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/size')}}">Quản lí Size</a></li>
                                 @endif
                                 @if($v->role_module=="role_color")
-                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/color')}}">Quản lí Color</a></li>
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/color')}}">Quản lí Màu</a></li>
                                 @endif
 
                                 @if($v->role_module=="role_accout")
-                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/accout')}}">Quản lí Acoout Admin</a></li>
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/accout')}}">Quản lí Tài khoản Admin</a></li>
                                 @endif
 
                                 @if($v->role_module=="role_user")
@@ -145,11 +141,6 @@
                         <div class="user-menu dropdown-menu">
                            
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>{{$data->fullname??""}}</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
                             <a class="nav-link" href="{{URL::to('/admin/logout') }}"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>

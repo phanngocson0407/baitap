@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 @section('admin')
+<?php
+     $data=Session::get('data');
+    $role=Session::get('role');
+?>
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -7,42 +11,33 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Blogu</strong>
+                                <strong class="card-title">Bảng Color</strong>
                             </div>
                             <div class="card-body">
-                                <a href="{{URL::to('/admin/category/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Loại Giày</button>
+                                @foreach ($role as $k=>$v)
+                                @if($v->role_module=="role_create_color")
+                                <a href="{{URL::to('/admin/color/create') }}">
+                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Color</button>
                                 </a>
+                                @endif
+                                @endforeach
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Nội dung</th>
-                                            <th>Hình ảnh </th>
+                                          
+                                            <th>Tên Màu</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $n=0 ?>
-                                      
+                                       @foreach ($show_color as $item)
                                        <?php $n++ ?>
                                        <td>{{$n}}</td>
-                                        <td></td>
-                                        <td></td>
-                                            <td>
-                                                <a href="">
-                                                <button  class="btn btn-outline-secondary">
-                                                <i class="fa fa-edit"></i>Sửa</button>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <form action="" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="delete">
-                                                    <button class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
-                                                </form>
-                                            </td>
+                                        <td>{{$item->name_color}}</td>
+                                      
                                     </tbody>
-                                
+                                    @endforeach
                                 </table>
                             </div>
                         </div>

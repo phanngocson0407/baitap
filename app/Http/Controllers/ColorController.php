@@ -41,15 +41,17 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $r)
     {
+        $kw = $r->kw?$r->kw:'';
+        $kw="%".$kw."%";
         $Color = Color::join('product','product.id','=','color.id_product')
         ->select(
             'product.*',
             'color.*',
         )
-        ->get();
-        
+        ->where('id_product','like',$kw)->paginate(10);
+        $Color->appends(['kw'=>$r->kw]);
         return view('admin.color.index',['Color'=>$Color]);
     }
 
