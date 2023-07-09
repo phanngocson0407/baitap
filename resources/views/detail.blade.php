@@ -237,7 +237,7 @@ h1 {
         <div>
             <p><b>Hiển thị đánh giá</b></p>
             
-            <div class="style_comment" id="scrollableDiv" style="max-height: 200px; overflow-y: scroll;">
+            <div class="style_comment" id="scrollableDiv" style="max-height: 200px; overflow-y: scroll;background-color:white">
                 <?php $n=0 ?>
                 @foreach($comment as $item)
                 @if($item->status==1)
