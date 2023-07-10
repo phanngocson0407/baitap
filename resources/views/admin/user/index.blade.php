@@ -35,6 +35,7 @@
                                             <th>Dịa chỉ</th>
                                             <th>Tài khoản</th>
                                             <th>Mật khẩu</th>
+                                            <th>Đăng nhập trên</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +49,7 @@
                                         <td>{{$item->address}}</td>
                                         <td>{{$item->username}}</td>
                                         <td>{{$item->password}}</td>   
+                                        <td>{{$item->provider}}</td>
                                             <td>
                                                 <a href="khachhang/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">

@@ -162,11 +162,7 @@ class ProductController extends Controller
     public function show(Request $r)
     {
         $kw = $r->kw?$r->kw:'';
-        $kw="%".$kw."%";
-        // $data=DB::table('product')->get();
-        //return view('/index',['data'=>$data]);
-        //kh có tìm kiếm
-        //return view('/index',['data'=>Product::paginate(4)]);    
+        $kw="%".$kw."%";   
         $Product = Product::join("category_product",'category_product.idloaigiay','=','product.idloaigiay')
         ->select(
             'product.*',

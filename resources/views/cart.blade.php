@@ -21,13 +21,13 @@
                 <table class="table table-bordered text-center mb-0"  >
                     <thead class="bg-secondary text-dark">
                         <tr>
-                            <th>Products</th>
-                            <th>Price</th>
+                            <th>Sản phẩm</th>
+                            <th>Giá</th>
                             <th>Size</th>
-                            <th>Color</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Remove</th>
+                            <th>Màu</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng giá</th>
+                            <th>Xóa</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle"  >
@@ -94,41 +94,41 @@
                     <div class="input-group">
                         <input type="text" class="form-control p-4" placeholder="Coupon Code">
                         <div class="input-group-append">
-                            <button class="btn btn-primary">Apply Coupon</button>
+                            <button class="btn btn-primary">Mã giảm giá</button>
                         </div>
                     </div>
                 </form>
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                        <h4 class="font-weight-semi-bold m-0">Thông tin giỏ hàng</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Total Quanty</h6>
-                            <h6 class="font-weight-medium">{{Session::get('Cart')->totalQuanty}} Product</h6>
+                            <h6 class="font-weight-medium">Tổng sản phẩm</h6>
+                            <h6 class="font-weight-medium">{{Session::get('Cart')->totalQuanty}} Sản phẩm</h6>
                         </div>
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium">Giá</h6>
                             <h6 class="font-weight-medium">{{(number_format(Session::get('Cart')->totalPrice))}}VNĐ</h6>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">Giao hàng</h6>
                             <h6 class="font-weight-medium"> </h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">Tổng giá sản phẩm</h5>
                             <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice))}} VNĐ</h5>
                         </div>
                         <?php
                         $data1=Session::get('data1');
                         ?>
                         @if( $data1 == null)
-                            <a href="{{URL::to('/login') }}" class="nav-item nav-link"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
+                            <a href="{{URL::to('/login') }}" class="nav-item nav-link"><button class="btn btn-block btn-primary my-3 py-3">Thanh toán</button></a>
                         
                         @else
-                        <a href="{{URL('/checkout')}}"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
+                        <a href="{{URL('/checkout')}}"><button class="btn btn-block btn-primary my-3 py-3">Thanh toán</button></a>
                         
                         @endif
                     </div>

@@ -3,7 +3,7 @@
 @section('user')
 <head>
     <!-- ... -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc7PnOq3Hxzq6dxeUVaY8WGLHIePl0swY"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Yr2Au2WEhR7dRyUfMUQdp4jCx3d2ORo" height="450" width="600"></script>
 </head>
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
@@ -83,5 +83,5 @@
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc7PnOq3Hxzq6dxeUVaY8WGLHIePl0swY&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Yr2Au2WEhR7dRyUfMUQdp4jCx3d2ORo&callback=initMap" async defer></script>
 @endsection

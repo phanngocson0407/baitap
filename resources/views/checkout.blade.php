@@ -27,7 +27,7 @@
             <div class="col-lg-8">
                 <div class="mb-4">
 
-                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Thông tin đơn hàng</h4>
                    
                     <div class="row">
                         <input type="text" name="id_user" value="{{$data1->id}}" hidden>
@@ -58,10 +58,10 @@
             <div class="col-lg-4">
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+                        <h4 class="font-weight-semi-bold m-0">Tổng đơn hàng</h4>
                     </div>
                     <div class="card-body">
-                        <h5 class="font-weight-medium mb-3">Products</h5>
+                        <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
                         @if(Session::has('Cart') != null)
                         @foreach(Session::get('Cart')->products as $item)
                         
@@ -79,38 +79,17 @@
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">Tổng giá</h5>
                             <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice))}}VND</h5>
                         </div>
                     </div>
                 </div>
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Payment</h4>
+                
+                    <div class="card-footer border-secondary bg-transparent" style="display:flex;">
+                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Thanh Toán bằng tiền mặt"> 
+                   
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Thanh Toán"> 
-                    </div>
+                     
                 </div>
             </div>
         </div>
