@@ -15,8 +15,10 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
+                                            @if($status == 3)
                                             <div class="stat-text"><span class="count">{{$count}}</span> VND</div>
                                             <div class="stat-heading">Doanh thu</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

@@ -14,14 +14,15 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $status = 3;
         $count = DB::table('order')
         ->join('order_detail','order.id','=','order_detail.id_order')
+        ->where('order.status', $status)
         ->select(
             'order_detail.price',
             'order.*'
         )->sum('price');
-       
-        return view('admin/trangchu',['count'=>$count]);
+        return view('admin/trangchu',['count'=>$count, 'status' => $status]);
     }
 
     /**

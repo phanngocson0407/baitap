@@ -39,7 +39,7 @@ class CategoryController extends Controller
         
         $shop = Category::find($id);
         
-        return view('shop', ['shop' => $shop,'shopProduct'=>$shopProduct ]);
+        return view('shop', ['shop' => $shop,'shopProduct'=>$shopProduct]);
     }
     public function create()
     {

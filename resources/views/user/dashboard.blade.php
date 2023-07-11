@@ -206,8 +206,17 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{URL('/')}}" class="nav-item nav-link active">Trang chủ</a>
                             {{-- <a href="{{URL('/shop')}}" class="nav-item nav-link">Shop</a> --}}
-
-                            <div class="nav-item dropdown">
+                            <a href="{{URL('/cart')}}" class="nav-item nav-link">Giỏ Hàng</a>
+                            <?php
+                            $data1=Session::get('data1');
+                            ?>
+                            <!-- Checkout Start -->
+                            @if( $data1 == null)
+                            <a href="{{URL::to('/login')}}" class="nav-item nav-link">Thanh Toán</a>
+                            @else
+                            <a href="{{URL('/checkout')}}" class="nav-item nav-link">Thanh Toán</a>
+                            @endif
+                            {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{{URL('/cart')}}" class="dropdown-item">Giỏ Hàng</a>
@@ -221,7 +230,7 @@
                                     <a href="{{URL('/checkout')}}" class="dropdown-item">Thanh Toán</a>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                             <a href="{{URL('/contact')}}" class="nav-item nav-link">Liên Hệ</a>
                            
                             <?php

@@ -58,7 +58,7 @@
                                                 }
                                             ?>
                                         </td>
-                                        <td>
+                                        <td style="color: red">
                                             <?php
                                                 if($item->status_huy==0){
                                                     echo 'Đơn hàng chưa được hủy';

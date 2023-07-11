@@ -29,13 +29,13 @@
                 <th>Ngày đặt hàng</th>
                 <th>Trạng thái</th>
                 <th>Hủy đơn hàng</th>
-                <th>Chi tiết đơn hàng</th>
+                <th>Xem chi tiết</th>
             </tr>
            @foreach ($order as $item)
             {{-- @if($item->id_user == $item->id) --}}
+            @if($item->status_huy==0)
             <tr>
                 <td>{{$item->id}}</td>
-             
                 <td>{{$item->consingnee_name}}</td>
                 <td>{{$item->consingnee_phone}}</td>
                 <td>{{$item->consingnee_email}}</td>
@@ -54,7 +54,6 @@
                 ?></td>
                 @if($item->status==0)
                 <td>
-                   
                     @if($item->status_huy==0)
                     <a href="/huy-trangthai/{{$item->id}}?status_huy=1">
                     <button 
@@ -64,18 +63,17 @@
                     </a>
                     <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
                     @else
-                    <a>Đã hủy chờ người kiểm duyệt xóa</a>
-                    <td><a>Không thể xem chi tiết</></td>
                     @endif
                 </td>
-                
                 @else
-                    
                     <td><button style="display: none">Hủy đơn</button></td>
                     <td><a href="/chitietdonhang/{{$item->id}}">Xem chi tiết</a></td>
-                
                 @endif
             </tr>
+            @else
+                <tr style="display: none">
+                </tr>
+        @endif
             {{-- @else
             <tr>
                 <td>Bạn chưa đặt đơn hàng nào</td>

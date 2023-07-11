@@ -40,5 +40,11 @@ return [
     'client_id' => '381378445544-e5shaj4vefq5sj909r02tm80f27b5gok.apps.googleusercontent.com',
     'client_secret' => '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',
     'redirect' => 'http://giaynew.demo.com/login/google/callback'
-],
+    ],
+
+    'google1' => [
+        'client_id' => '8970498824-2gop0n44ajc7adr6q98q4ji873qmvhro.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://giaynew.demo.com/login/google/callback'
+        ],
 ];
