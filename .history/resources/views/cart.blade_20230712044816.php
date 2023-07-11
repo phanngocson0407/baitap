@@ -187,31 +187,32 @@
     <!-- Template Javascript -->
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
- function increaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
-    quantityInput.val(currentQuantity + 1);
-}
-
-function decreaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
-    if (currentQuantity > 1) {
-        quantityInput.val(currentQuantity - 1);
-    }
-}
-
+        function decreaseQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var currentValue = parseInt(quantityInput.value);
     
-        // function updateQuantity(productId) {
-        //     var quantityInput = document.getElementById('quantityInput_' + productId);
-        //     var newQuantity = parseInt(quantityInput.value);
-        //     console.log(quantityInput.value);
-        //     // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
-        //     // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+    
+        function increaseQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+            console.log(quantityInput.value);
+        }
+    
+        function updateQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var newQuantity = parseInt(quantityInput.value);
             
-        //     // For demonstration purposes, let's log the new quantity in the console
-        //     console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
-        // }
+            // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
+            // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
+            
+            // For demonstration purposes, let's log the new quantity in the console
+            console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
+        }
     </script>
     <script>
  
@@ -238,7 +239,7 @@ function decreaseQuantity(itemId) {
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput').val(),
+                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput'+id_color_size).val(),
             }).done(function(response){
                  
                 RenderListCart(response);

@@ -57,7 +57,7 @@
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
+                                        <input type="text" class="form-control bg-secondary text-center quantityInput" data-item="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
                                         value="{{$item['quanty']}}">
                                         <div class="input-group-btn">
                                             <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
@@ -238,7 +238,7 @@ function decreaseQuantity(itemId) {
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput').val(),
+                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput').val(),
             }).done(function(response){
                  
                 RenderListCart(response);

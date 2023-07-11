@@ -234,17 +234,15 @@ function decreaseQuantity(itemId) {
         $('#change-list-cart').on('click', '.btn_update_list', function(){
             
             $.ajax({
-                type: "GET",
-                data:{
-                    id_color_size:$(this).val()
-                },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput').val(),
-            }).done(function(response){
-                 
-                RenderListCart(response);
-                alertify.success('Cập nhật  giỏ hàng thành công');
-                
-            });
+    type: "GET",
+    data: {
+        id_color_size: $(this).val()
+    },
+    url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + $(('#quantityInput_')+$(this).attr('data')),
+}).done(function(response) {
+    RenderListCart(response);
+    alertify.success('Cập nhật giỏ hàng thành công');
+});
         });
         // function SaveListItemCart(id){
         //     // console.log(id);    

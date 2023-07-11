@@ -57,7 +57,7 @@
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
+                                        <input type="text" class="form-control bg-secondary text-center updateQuantity" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
                                         value="{{$item['quanty']}}">
                                         <div class="input-group-btn">
                                             <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
@@ -81,7 +81,8 @@
                             <td class="align-middle"><button 
                                 data="{{$item['productInfo']->id}}"
                                 class="btn btn-sm btn-primary btn_update_list"
-  
+                                {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
+                                {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
                                  
                                 value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                                 >
@@ -187,31 +188,31 @@
     <!-- Template Javascript -->
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
- function increaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
-    quantityInput.val(currentQuantity + 1);
-}
-
-function decreaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
-    if (currentQuantity > 1) {
-        quantityInput.val(currentQuantity - 1);
-    }
-}
-
+        function decreaseQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var currentValue = parseInt(quantityInput.value);
     
-        // function updateQuantity(productId) {
-        //     var quantityInput = document.getElementById('quantityInput_' + productId);
-        //     var newQuantity = parseInt(quantityInput.value);
-        //     console.log(quantityInput.value);
-        //     // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
-        //     // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+    
+        function increaseQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        }
+    
+        function updateQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var newQuantity = parseInt(quantityInput.value);
             
-        //     // For demonstration purposes, let's log the new quantity in the console
-        //     console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
-        // }
+            // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
+            // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
+            
+            // For demonstration purposes, let's log the new quantity in the console
+            console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
+        }
     </script>
     <script>
  
@@ -238,7 +239,7 @@ function decreaseQuantity(itemId) {
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput').val(),
+                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$(this).attr('data'),
             }).done(function(response){
                  
                 RenderListCart(response);

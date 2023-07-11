@@ -187,31 +187,31 @@
     <!-- Template Javascript -->
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
- function increaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
-    quantityInput.val(currentQuantity + 1);
+        function increaseQuantity(inputId) {
+    var quantityInput = document.getElementById('quantityInput_'+inputId);
+    var currentQuantity = parseInt(quantityInput.value);
+    quantityInput.value = currentQuantity + 1;
 }
 
-function decreaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
+// Khi giảm số lượng
+function decreaseQuantity(inputId) {
+    var quantityInput = document.getElementById('quantityInput_'+inputId);
+    var currentQuantity = parseInt(quantityInput.value);
     if (currentQuantity > 1) {
-        quantityInput.val(currentQuantity - 1);
+        quantityInput.value = currentQuantity - 1;
     }
 }
-
     
-        // function updateQuantity(productId) {
-        //     var quantityInput = document.getElementById('quantityInput_' + productId);
-        //     var newQuantity = parseInt(quantityInput.value);
-        //     console.log(quantityInput.value);
-        //     // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
-        //     // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
+        function updateQuantity(inputId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var newQuantity = parseInt(quantityInput.value);
+            console.log(quantityInput.value);
+            // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
+            // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
             
-        //     // For demonstration purposes, let's log the new quantity in the console
-        //     console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
-        // }
+            // For demonstration purposes, let's log the new quantity in the console
+            console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
+        }
     </script>
     <script>
  
@@ -232,20 +232,20 @@ function decreaseQuantity(itemId) {
             });
         });
         $('#change-list-cart').on('click', '.btn_update_list', function(){
-            
-            $.ajax({
-                type: "GET",
-                data:{
-                    id_color_size:$(this).val()
-                },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput').val(),
-            }).done(function(response){
-                 
-                RenderListCart(response);
-                alertify.success('Cập nhật  giỏ hàng thành công');
-                
-            });
-        });
+    var inputId = $(this).attr('data');
+    var quantityInput = $('#quantityInput_' + inputId).val();
+
+    $.ajax({
+        type: "GET",
+        data:{
+            id_color_size: inputId
+        },
+        url: "/Save-List-Item-Cart/" + inputId + '/' + quantityInput,
+    }).done(function(response){
+        RenderListCart(response);
+        alertify.success('Cập nhật giỏ hàng thành công');
+    });
+});
         // function SaveListItemCart(id){
         //     // console.log(id);    
         //      console.log($('#quantityInput_'+id).val());

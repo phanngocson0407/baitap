@@ -187,31 +187,31 @@
     <!-- Template Javascript -->
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
- function increaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
-    quantityInput.val(currentQuantity + 1);
+        function increaseQuantity(inputId) {
+    var quantityInput = document.getElementById(inputId);
+    var currentQuantity = parseInt(quantityInput.value);
+    quantityInput.value = currentQuantity + 1;
 }
 
-function decreaseQuantity(itemId) {
-    var quantityInput = $('#quantityInput_' + itemId);
-    var currentQuantity = parseInt(quantityInput.val());
+// Khi giảm số lượng
+function decreaseQuantity(inputId) {
+    var quantityInput = document.getElementById(inputId);
+    var currentQuantity = parseInt(quantityInput.value);
     if (currentQuantity > 1) {
-        quantityInput.val(currentQuantity - 1);
+        quantityInput.value = currentQuantity - 1;
     }
 }
-
     
-        // function updateQuantity(productId) {
-        //     var quantityInput = document.getElementById('quantityInput_' + productId);
-        //     var newQuantity = parseInt(quantityInput.value);
-        //     console.log(quantityInput.value);
-        //     // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
-        //     // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
+        function updateQuantity(productId) {
+            var quantityInput = document.getElementById('quantityInput_' + productId);
+            var newQuantity = parseInt(quantityInput.value);
+            console.log(quantityInput.value);
+            // Perform an AJAX request or any necessary update operation to update the quantity on the server-side
+            // Example: You can use fetch() or jQuery.ajax() to send the updated quantity to the server
             
-        //     // For demonstration purposes, let's log the new quantity in the console
-        //     console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
-        // }
+            // For demonstration purposes, let's log the new quantity in the console
+            console.log('Updated quantity for product ID ' + productId + ': ' + newQuantity);
+        }
     </script>
     <script>
  

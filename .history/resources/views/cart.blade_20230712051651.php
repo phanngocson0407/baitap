@@ -238,7 +238,7 @@ function decreaseQuantity(itemId) {
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('.quantityInput').val(),
+                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_').val(),
             }).done(function(response){
                  
                 RenderListCart(response);
