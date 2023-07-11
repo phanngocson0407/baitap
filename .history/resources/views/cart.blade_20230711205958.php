@@ -78,7 +78,7 @@
                                 {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
                                 {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
                                 data="{{$item['productInfo']->id}}"
-                                value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
+                                value="{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                                 >
                                 
                                 <i  class="">Cập nhật</i>

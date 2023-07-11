@@ -233,7 +233,7 @@
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$(this).attr('data'),
+                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_'+id.id_color_size).val(),
             }).done(function(response){
                  
                 RenderListCart(response);

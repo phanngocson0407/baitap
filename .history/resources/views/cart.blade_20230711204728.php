@@ -53,14 +53,14 @@
                                 <div class="input-group quantityy mx-auto" style="width: 100px;">
                                     <div class="input-group quantityy mr-3" style="width: 130px;">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-primary btn-minus" onclick="decreaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
+                                            <button class="btn btn-primary btn-minus" onclick="decreaseQuantity({{$item['productInfo']->id_size.$item['productInfo']->id_color}})">
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
+                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
                                         value="{{$item['quanty']}}">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
+                                            <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id_size.$item['productInfo']->id_color}})">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -233,7 +233,7 @@
                 data:{
                     id_color_size:$(this).val()
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$(this).attr('data'),
+                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$('#quantityInput_'+$(this).attr('data')).val(),
             }).done(function(response){
                  
                 RenderListCart(response);

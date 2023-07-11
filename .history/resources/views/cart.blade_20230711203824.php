@@ -78,7 +78,7 @@
                                 {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
                                 {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
                                 data="{{$item['productInfo']->id}}"
-                                value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
+                                value="{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                                 >
                                 
                                 <i  class="">Cập nhật</i>
@@ -232,8 +232,9 @@
                 type: "GET",
                 data:{
                     id_color_size:$(this).val()
+                    console.log(id_color_size);
                 },
-                url: "/Save-List-Item-Cart/"+$(this).attr('data')+'/'+$(this).attr('data'),
+                url: "/Save-List-Item-Cart/" +$(this).attr('data') ,
             }).done(function(response){
                  
                 RenderListCart(response);

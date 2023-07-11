@@ -94,7 +94,7 @@ class CartController extends Controller
         $id_color_size=$request->id_color_size??"";
                $oldCart = Session('Cart')?Session('Cart'):null;
                     $newCart =  new Cart($oldCart);
-                    $newCart->UpdateItemCart($id.$id_color_size  ,$quanty.$id_color_size  );
+                    $newCart->UpdateItemCart($id.$id_color_size ,$id_color_size.$quanty);
 
                   
                     $request ->Session()->put('Cart',$newCart);
