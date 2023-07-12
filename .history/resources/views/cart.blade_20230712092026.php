@@ -237,11 +237,10 @@ function decreaseQuantity(itemId) {
                 
         //     });
         // });
-        
         $('#change-list-cart').on('click', '.btn_update_list', function() {
     var id_color_size = $(this).val();
-    // var quantityInput = $(this).closest('.quantityy').find('.quantityInput');
-    var quantity = $('.quantityInput').val();
+    var quantityInput = $(this).closest('.quantityy').find('.quantityInput');
+    var quantity = quantityInput.val();
 
     $.ajax({
         type: "GET",
@@ -257,6 +256,22 @@ function decreaseQuantity(itemId) {
         console.log(xhr.responseText);
     });
 });
+        // function SaveListItemCart(id){
+        //     // console.log(id);    
+        //      console.log($('#quantityInput_'+id).val());
+        //     $.ajax({
+        //         type: "GET",
+        //         data:{
+        //             id_color_size:$(this).val()
+        //         },
+        //         url: "/Save-List-Item-Cart/" +$(this).attr('data')+'/'+$('#quantityInput_'+id).val(),
+        //     }).done(function(response){
+                 
+        //         RenderListCart(response);
+        //         alertify.success('Cập nhật  giỏ hàng thành công');
+                
+        //     });
+        // }
         function RenderListCart(response){
             $('#list-cart').empty();
             $('#list-cart').html(response);

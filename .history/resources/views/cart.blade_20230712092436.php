@@ -240,8 +240,8 @@ function decreaseQuantity(itemId) {
         
         $('#change-list-cart').on('click', '.btn_update_list', function() {
     var id_color_size = $(this).val();
-    // var quantityInput = $(this).closest('.quantityy').find('.quantityInput');
-    var quantity = $('.quantityInput').val();
+    var quantityInput = $(this).closest('.quantityy').find('.quantityInput');
+    var quantity = quantityInput.val();
 
     $.ajax({
         type: "GET",
