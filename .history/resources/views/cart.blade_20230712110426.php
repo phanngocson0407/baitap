@@ -82,7 +82,7 @@
                   
                                      ></i></button></td>
                             <td class="align-middle"><button 
-                                data="{{$item['productInfo']->id}}"
+                                data="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                                 class="btn btn-sm btn-primary btn_update_list"
   
                                  

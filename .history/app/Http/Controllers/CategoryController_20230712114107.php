@@ -128,7 +128,7 @@ class CategoryController extends Controller
         // else echo "OKe";
         // return;
         // dd($n);
-        if ($n ==null)
+        if ($n !=null)
         {
             $Category = Category::find($id);
         
@@ -137,7 +137,7 @@ class CategoryController extends Controller
         }
         else 
         {
-            session()->flash('mess', 'Err!');
+            
         }
 
         return redirect('/admin/category/');

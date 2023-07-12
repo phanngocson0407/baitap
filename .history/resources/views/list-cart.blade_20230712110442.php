@@ -62,7 +62,7 @@ onclick="increaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInf
                     <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
                         {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
                         {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
-                        data="{{$item['productInfo']->id}}"
+                        data="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                         value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
                         >
                         

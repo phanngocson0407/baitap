@@ -128,19 +128,13 @@ class CategoryController extends Controller
         // else echo "OKe";
         // return;
         // dd($n);
-        if ($n ==null)
+        if ($n !=null)
         {
             $Category = Category::find($id);
         
             $Category->delete();
-            session()->flash('mess', 'Task was successful!');
+            
         }
-        else 
-        {
-            session()->flash('mess', 'Err!');
-        }
-
-        return redirect('/admin/category/');
        
     }
 }

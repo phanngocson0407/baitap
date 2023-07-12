@@ -53,19 +53,16 @@
                                 <div class="input-group quantityy mx-auto" style="width: 100px;">
                                     <div class="input-group quantityy mr-3" style="width: 130px;">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-primary btn-minus"
-                                            onclick="decreaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
+                                            <button class="btn btn-primary btn-minus" onclick="decreaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
                                         </div>
-                                        <input type="text" class="form-control bg-secondary text-center quantityInput"
-                                        id="quantityInput_{{$item['productInfo']->id_size}}_{{$item['productInfo']->id_color}}"
+                                        <input type="text" class="form-control bg-secondary text-center quantityInput" id="quantityInput_{{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}}" 
                                         value="{{$item['quanty']}}">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-primary btn-plus"
-    onclick="increaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
-    <i class="fa fa-plus"></i>
-</button>
+                                            <button class="btn btn-primary btn-plus" onclick="increaseQuantity({{$item['productInfo']->id.$item['productInfo']->id_size.$item['productInfo']->id_color}})">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -190,20 +187,18 @@
     <!-- Template Javascript -->
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
-function increaseQuantity(id_size, id_color) {
-    var quantityInput = $('#quantityInput_' + id_size + '_' + id_color);
-    var quantity = parseInt(quantityInput.val()) || 0;
-    quantity++;
-    quantityInput.val(quantity);
+ function increaseQuantity(itemId) {
+    var quantityInput = $('#quantityInput_' + itemId);
+    var currentQuantity = parseInt(quantityInput.val());
+    quantityInput.val(currentQuantity + 1);
+    console.log(quantityInput.val());
 }
 
-// Decrease quantity
-function decreaseQuantity(id_size, id_color) {
-    var quantityInput = $('#quantityInput_' + id_size + '_' + id_color);
-    var quantity = parseInt(quantityInput.val()) || 0;
-    if (quantity > 1) {
-        quantity--;
-        quantityInput.val(quantity);
+function decreaseQuantity(itemId) {
+    var quantityInput = $('#quantityInput_' + itemId);
+    var currentQuantity = parseInt(quantityInput.val());
+    if (currentQuantity > 1) {
+        quantityInput.val(currentQuantity - 1);
     }
 }
 
@@ -248,22 +243,19 @@ function decreaseQuantity(id_size, id_color) {
     var id_color_size = $(this).val();
     // var quantityInput = $(this).closest('.quantityy').find('.quantityInput');
     var quantity = $('.quantityInput').val();
-            // console.log(quantity);
-            // console.log($(this).attr('data'));
-            
 
     $.ajax({
         type: "GET",
         data: {
             id_color_size: id_color_size
         },
-        url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + quantity,
+        url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + quantity\,
     }).done(function(response) {
         RenderListCart(response);
         alertify.success('Cập nhật giỏ hàng thành công');
     }).fail(function(xhr, status, error) {
         alertify.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
-        // console.log(xhr.responseText);
+        console.log(xhr.responseText);
     });
 });
         function RenderListCart(response){

@@ -7,7 +7,7 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <h1>{{session('mess')}} </h1>
+                    <h1>{{session}} </h1>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">

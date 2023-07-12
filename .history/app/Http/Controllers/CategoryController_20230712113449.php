@@ -123,24 +123,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $n =Product::where('idloaigiay','=', $id)->first();
-        // if ($n != null) echo "No";
-        // else echo "OKe";
-        // return;
-        // dd($n);
-        if ($n ==null)
-        {
-            $Category = Category::find($id);
+        $n =Product::where('idloaigiay','=', $id)->get();
+        if ($n) echo "No";
+        else echo "OKe";
+        return;
+        dd($n);
+        $Category = Category::find($id);
         
-            $Category->delete();
-            session()->flash('mess', 'Task was successful!');
-        }
-        else 
-        {
-            session()->flash('mess', 'Err!');
-        }
-
+        $Category->delete();
         return redirect('/admin/category/');
-       
     }
 }

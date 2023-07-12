@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ThuongHieu;
 use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Pagination\Paginator;
 
 use DB;
@@ -123,24 +122,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $n =Product::where('idloaigiay','=', $id)->first();
-        // if ($n != null) echo "No";
-        // else echo "OKe";
-        // return;
-        // dd($n);
-        if ($n ==null)
-        {
-            $Category = Category::find($id);
+        $Category = Category::find($id);
         
-            $Category->delete();
-            session()->flash('mess', 'Task was successful!');
-        }
-        else 
-        {
-            session()->flash('mess', 'Err!');
-        }
-
+        $Category->delete();
         return redirect('/admin/category/');
-       
     }
 }

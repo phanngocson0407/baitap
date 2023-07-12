@@ -104,10 +104,10 @@ class CartController extends Controller
     public function SaveListItemCart(Request $request, $id, $quanty)
 {
     $id_color_size = $request->id_color_size ?? '';
-  
+
     $oldCart = $request->session()->get('Cart');
     $newCart = new Cart($oldCart);
-    $newCart->updateItemCart($id.$id_color_size, $quanty);
+    $newCart->updateItemCart($id.$id_color_size, $quanty. $id_color_size);
 
     $request->session()->put('Cart', $newCart);
 

@@ -7,7 +7,7 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <h1>{{session('mess')}} </h1>
+
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -47,7 +47,6 @@
                                                 @endif
                                             </td>
                                             @if($v->role_module=="role_delete_category")
-
                                             <td>
                                                 
                                                 <form action="category/delete/{{$item->idloaigiay}}" method="post">
