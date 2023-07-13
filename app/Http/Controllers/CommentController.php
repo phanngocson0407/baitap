@@ -68,7 +68,11 @@ class CommentController extends Controller
      */
     public function show()
     {
-        $cm = Comment::all();
+        $cm = Comment::join('product','product.id','=','comment.product_id')
+        ->select(
+            'product.*',
+            'comment.*'
+        )->get();
         return view('admin.comment.index',['cm'=>$cm]);
     }
 
@@ -113,8 +117,9 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::find($id);
-        $comment->delete();
+            $comment = Comment::find($id);
+            $comment->delete();
+            session()->flash('mess', 'Xóa Thành công!');
         return redirect('/admin/comment/');
     }
 }

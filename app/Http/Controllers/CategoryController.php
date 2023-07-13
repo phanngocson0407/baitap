@@ -95,7 +95,12 @@ class CategoryController extends Controller
     {
         
         $ThuongHieu= ThuongHieu::all();
-        $Category=Category::find($id);
+        $Category=Category::where('idloaigiay',$id)->join('thuonghieu', 'thuonghieu.idthuonghieu', '=', 'category_product.id_thuonghieu')
+        ->select(
+            'thuonghieu.*', 
+            'category_product.*'
+        )
+        ->first();
         return view('admin.category.edit',['data'=>$Category],compact('ThuongHieu'));
     }
 
@@ -124,10 +129,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $n =Product::where('idloaigiay','=', $id)->first();
-        // if ($n != null) echo "No";
-        // else echo "OKe";
-        // return;
-        // dd($n);
         if ($n ==null)
         {
             $Category = Category::find($id);
@@ -137,9 +138,8 @@ class CategoryController extends Controller
         }
         else 
         {
-            session()->flash('mess', 'Không thể xóa!');
+            session()->flash('mess', 'Không thể xóa( còn sản phẩm chứa loại này)! ');
         }
-
         return redirect('/admin/category/');
        
     }

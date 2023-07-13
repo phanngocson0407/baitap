@@ -7,7 +7,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Blogu</strong>
+                                <strong class="card-title">Đánh giá</strong><br>
+                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
                             <div class="card-body">
                                 <table class="table table-striped table-bordered"> 
@@ -15,6 +16,8 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>Duyệt đánh giá</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Hình ảnh</th>
                                             <th>Đánh giá</th>
                                             <th>Tên người đánh giá</th>
                                             <th>Ngày</th>                                       
@@ -37,6 +40,9 @@
                                         
                                         @endif
                                        </td>
+                                       <td>{{$item->name_product}}</td>
+                                       <td><img style="max-width: 90px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"
+                                        alt=""></td>
                                         <td>{{$item->comment}}</td>
                                         <td>{{$item->comment_name}}</td>
                                         <td>{{$item->comment_date}}</td>

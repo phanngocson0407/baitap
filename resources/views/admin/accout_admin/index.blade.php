@@ -8,6 +8,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Bảng Accout Admin</strong>
+                                <br>
+                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
                            
                             <div class="card-body">

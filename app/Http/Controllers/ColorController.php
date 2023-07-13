@@ -95,6 +95,7 @@ class ColorController extends Controller
     {
         $Color = Color::find($id);
         $Color->delete();
+        session()->flash('mess', 'Xóa Thành công!');
         return redirect('/admin/color/');
     }
 }

@@ -7,12 +7,14 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <h1>{{session('mess')}} </h1>
+                    <h1></h1>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Thương Hiệu</strong>
+                                <strong class="card-title">Bảng Thương Hiệu</strong><br>
+                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
+                           
                             <div class="card-body">
                                 @foreach ($role as $k=>$v)
                                 @if($v->role_module=="role_create_category")

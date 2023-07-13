@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\RoleAdmin;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -116,8 +117,18 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = Role::find($id);
-        $role->delete();
+        
+        $n =RoleAdmin::where('id_role','=', $id)->first();
+        if ($n ==null)
+        {
+            $role = Role::find($id);
+             $role->delete();
+            session()->flash('mess', 'Xóa Thành công!');
+        }
+        else 
+        {
+            session()->flash('mess', 'Không thể xóa! ');
+        }
         return Redirect('/admin/role/');
     }
 }

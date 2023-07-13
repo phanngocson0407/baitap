@@ -7,7 +7,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Thương Hiệu</strong>
+                                <strong class="card-title">Bảng Thương Hiệu</strong><br>
+                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
                             <div class="card-body">
                                 <a href="{{URL::to('/admin/thuonghieu/create') }}">
@@ -33,7 +34,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="product/delete/{{$item->idthuonghieu}}" method="post">
+                                                <form action="thuonghieu/delete/{{$item->idthuonghieu}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>

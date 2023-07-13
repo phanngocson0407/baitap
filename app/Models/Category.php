@@ -10,6 +10,6 @@ class Category extends Model
     use HasFactory;
     protected $table = 'category_product';
     protected $primaryKey = "idloaigiay";
-    protected $fillable = ['id_thuonghieu,name_category'];
+    protected $fillable = ['id_thuonghieu, name_category, idloaigiay'];
     public $timestamps = false;
 }

@@ -66,7 +66,13 @@ class SizeController extends Controller
     {
         
         $Product= Product::all();
-        $Size=Size::find($id);
+        $Size=Size::where('id_size',$id)->join('product', 'product.id', '=', 'size.id_product')
+        ->select(
+            'product.*', 
+            'size.*',
+        )
+        ->first();
+       
         return view('admin.size.edit',['data'=>$Size],compact('Product'));
     }
 
@@ -96,6 +102,7 @@ class SizeController extends Controller
     {
         $Size = Size::find($id);
         $Size->delete();
+        session()->flash('mess', 'Xóa Thành công!');
         return redirect('/admin/size/');
     }
 }

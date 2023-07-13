@@ -184,7 +184,15 @@ class ProductController extends Controller
     public function edit($id)
     {
         $Category= Category::all();
-        $product=Product::find($id);
+        //$product=Product::find($id);
+        $product = Product::where('id',$id)->join('category_product', 'product.idloaigiay', '=', 'category_product.idloaigiay')
+        ->select(
+            'product.*', 
+            'category_product.idloaigiay',
+            'category_product.name_category')
+       
+        ->first();
+
         return view('admin.product.edit',['data'=>$product],compact('Category'));
     }
 
@@ -221,8 +229,24 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $Product = Product::find($id);
-        $Product->delete();
+        $s =Size::where('id_product','=', $id)
+        ->first();
+        $c =Color::where('id_product','=', $id)
+        ->first();
+        $m =Comment::where('product_id','=', $id)
+        ->first();
+        $r =Rating::where('id_product','=', $id)
+        ->first();
+        if ( $s==null && $c==null && $m==null && $r ==null)
+        {
+            $Product = Product::find($id);
+            $Product->delete();
+            session()->flash('mess', 'Xóa Thành công!');
+        }
+        else 
+        {
+            session()->flash('mess', 'Không thể xóa( vì sản phẩm này còn rất nhiều thuộc tính khác )! ');
+        }
         return redirect('/admin/product/');
     }
 

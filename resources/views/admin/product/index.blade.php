@@ -11,7 +11,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng SẢN PHẨM</strong>
+                                <strong class="card-title">Bảng SẢN PHẨM</strong><br>
+                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
                             <div class="col-lg-6 col-6 text-left">
                                 <form action="/admin/product/" method="get">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\RoleAdmin;
 use Illuminate\Http\Request;
 use DB;
 use Session;
@@ -129,8 +130,17 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $admin = Admin::find($id);
-        $admin->delete();
+         $n =RoleAdmin::where('id_admin','=', $id)->first();
+        if ($n ==null)
+        {
+            $admin = Admin::find($id);
+            $admin->delete();
+            session()->flash('mess', 'Xóa Thành công!');
+        }
+        else 
+        {
+            session()->flash('mess', 'Không thể xóa( vì tài khoản này đang quản lý quyền)! ');
+        }
         return Redirect('/admin/accout/');
     }
 }
