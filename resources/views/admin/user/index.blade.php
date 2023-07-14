@@ -35,12 +35,13 @@
                                             <th>Dịa chỉ</th>
                                             <th>Tài khoản</th>
                                             <th>Mật khẩu</th>
-                                            <th>Đăng nhập trên</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $n=0 ?>
                                         @foreach($user as $item)
+                                        <tr>
                                         <?php $n++ ?>
                                         <td>{{$n}}</td>
                                         <td>{{$item->fullname}}</td>
@@ -49,14 +50,14 @@
                                         <td>{{$item->address}}</td>
                                         <td>{{$item->username}}</td>
                                         <td>{{$item->password}}</td>   
-                                        <td>{{$item->provider}}</td>
+                                     
                                             <td>
                                                 <a href="khachhang/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
                                             </td>
-                                            
+                                        </tr>
                                     </tbody>
                                     @endforeach
                                 </table>

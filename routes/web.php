@@ -207,10 +207,7 @@ route::prefix('admin')->group( function()
         Route::delete('/delete/{id}',[CommentController::class,'destroy']);
     });
 
-    route::prefix('blog')->group( function(){
-        route::get('/', function(){  return view('admin.blog.index');});
-       
-    });
+  
 
     Route::get('/trangchu',[AdminController::class,'index']);
 

@@ -14,7 +14,10 @@
                     <label for="name">Tên Loại Sản Phẩm:</label>
 
                     <input required="true" name="name_category" type="text" class="form-control" id="title" name="title"
-                        value=" ">
+                        value=" " class="@error('name_category') form-control is-invalid @enderror">
+                        @error('name_category') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                 </div>
                 <div class="form-group">
                     <label for="name">Thương Hiệu:</label>

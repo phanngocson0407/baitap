@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="name">Loại:</label>
                     <select name="idloaigiay" id="" class="form-control">
-                        <option value=" ">Chọn loại</option>
+                      
                         @foreach ( $Category as $v)
                         <option value="{{ $v->idloaigiay }}" <?php if($v->idloaigiay==$data->idloaigiay) echo "selected" ?>>{{ $v->name_category }}</option>
                         @endforeach
@@ -41,10 +41,8 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Hình ảnh:</label>
-
-                    <input class="form-control file" type="file" name="image" data-max-file-count=""
-                        multiple="multiple" value="">
-                        <img style="max-width: 150px; height 200px;" src="{{ URL::to('/frontend/img/'.$data->image)}}" alt="">
+                    <input class="form-control file" type="file" name="image" data-max-file-count="" multiple="multiple">
+                    <img style="max-width: 150px; height 200px;" src="{{ URL::to('/frontend/img/'.$data->image)}}" alt="">
                         
                 </div>
                 <button type="submit" class="btn btn-success">Sửa</button>

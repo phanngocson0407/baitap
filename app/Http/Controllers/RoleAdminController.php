@@ -63,8 +63,9 @@ class RoleAdminController extends Controller
         ->join("role",'role.id','=','role_admin.id_role')
         ->select(
             'role_admin.*',
-            'admin.*',
-            'role.*'
+            'admin.username',
+            'role.role_module',
+            'role.name_role',
         )
         ->where('username','like',$kw)->paginate(9);
         $role_admin->appends(['kw'=>$r->kw]);
@@ -78,9 +79,22 @@ class RoleAdminController extends Controller
      * @param  \App\Models\RoleAdmin  $roleAdmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(RoleAdmin $roleAdmin)
+    public function edit($id)
     {
-        //
+        $Admin= Admin::all();
+        $Role= Role::all();
+        // $role_admin=RoleAdmin::find($id);
+        $role_admin = RoleAdmin::where('role_admin.id',$id)
+        ->join('admin', 'role_admin.id_admin', '=', 'admin.id')
+        ->join('role', 'role_admin.id_role', '=', 'role.id')
+        ->select(
+            'admin.username', 
+            'role_admin.*',
+            'role.role_module',
+            'role.name_role'
+        )
+        ->first();
+        return view('admin.role_admin.edit',['data'=>$role_admin,'Admin'=>$Admin,'Role'=>$Role]);
     }
 
     /**
@@ -90,9 +104,14 @@ class RoleAdminController extends Controller
      * @param  \App\Models\RoleAdmin  $roleAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoleAdmin $roleAdmin)
+    public function update(Request $request, $id)
     {
-        //
+        $data_role =array();
+        
+        $data_role['id_admin']=$request->id_admin;
+        $data_role['id_role']=$request->id_role;
+        DB::table('role_admin')->where('id',$request->id)->update($data_role);
+        return Redirect('/admin/role_admin/');
     }
 
     /**
@@ -101,8 +120,11 @@ class RoleAdminController extends Controller
      * @param  \App\Models\RoleAdmin  $roleAdmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RoleAdmin $roleAdmin)
+    public function destroy($id)
     {
-        //
+        $role_admin = RoleAdmin::find($id);
+        $role_admin->delete();
+        session()->flash('mess', 'Xóa Thành công!');
+        return redirect('/admin/role_admin/');
     }
 }

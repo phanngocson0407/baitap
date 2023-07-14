@@ -102,6 +102,7 @@ class UserController extends Controller
         $v = $request->validate([
             'email'=>'required|unique:user',
             'username'=>'required|unique:user',
+            'phone'=>'numeric|digits:10',
           
         ],
         [
@@ -110,6 +111,8 @@ class UserController extends Controller
            
             'username.required'=>'Điền tài khoản',
             'username.unique'=>'Tài khoản này có rồi',
+            'phone.numeric'=>'Vui lòng nhập số điện thoại hợp lệ.',
+            'phone.digits'=>'Số điện thoại phải gồm 10 chữ số.',
         ]
     );
         $data1 =array();

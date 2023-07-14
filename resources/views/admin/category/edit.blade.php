@@ -21,7 +21,6 @@
                 <div class="form-group">
                     <label for="name">Thương hiệu:</label>
                     <select name="id_thuonghieu" id="" class="form-control">
-                        <option value=" ">Chọn thương hiệu</option>
                         @foreach ( $ThuongHieu as $v)
                         <option value="{{ $v->idthuonghieu }}" <?php if($v->idthuonghieu==$data->id_thuonghieu) echo "selected" ?>>{{ $v->tenthuonghieu }}</option>
                         @endforeach

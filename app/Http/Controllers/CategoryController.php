@@ -57,6 +57,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $v = $request->validate([
+            'name_category'=>'required|unique:category_product',
+            
+        ],
+        [
+            'name_category.required'=>'Không được bỏ trống',
+            'name_category.unique'=>'Trùng loại rồi!!',
+        ]
+    );
         $data1 =array();
         $data1['idloaigiay']=$request->idloaigiay ; 
         $data1['name_category']=$request->name_category;
@@ -93,7 +102,6 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        
         $ThuongHieu= ThuongHieu::all();
         $Category=Category::where('idloaigiay',$id)->join('thuonghieu', 'thuonghieu.idthuonghieu', '=', 'category_product.id_thuonghieu')
         ->select(

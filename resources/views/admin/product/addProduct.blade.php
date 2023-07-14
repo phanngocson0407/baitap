@@ -12,40 +12,47 @@
                     <label for="name">Tên Sản Phẩm:</label>
 
                     <input required="true" name="name_product" type="text" class="form-control" id="title" name="title"
-                        value=" ">
+                        value=" " class="@error('name_product') form-control is-invalid @enderror">
+                        @error('name_product') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                 </div>
                 <div class="form-group">
                     <label for="name">Loại:</label>
                     <select name="idloaigiay" id="" class="form-control">
-
-
                         <option value=" ">Chọn thể loại</option>
                         @foreach ( $Category as $data)
-                        <option value="{{ $data->idloaigiay }}">{{ $data->name_category }}</option>
+                        <option value="{{ $data->idloaigiay }}" >{{ $data->name_category }}</option>
                         @endforeach
-                        
-                      
-
                     </select>
                 </div>
                 <div class=" form-group">
                     <label for="name">Giá:</label>
 
                     <input required="true" name="price" type="text" class="form-control" id="title" name="title"
-                        value=" ">
+                        value=" " class="@error('price') form-control is-invalid @enderror">
+                        @error('price') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                 </div>
                 <div class="form-group">
                     <label for="name">Mô tả:</label>
 
                     <input required="true" name="description" type="text" class="form-control" id="title" name="title"
-                        value=" ">
+                        value=" " class="@error('description') form-control is-invalid @enderror">
+                        @error('description') 
+                        <div class="" style="color:red">{{$message}} </div>
+                         @enderror
                 </div>
                 <div class="form-group">
                     <label for="name">Hình ảnh:</label>
 
                     <input class="form-control file" type="file" name="image" data-max-file-count=""
-                        multiple="multiple">
+                        multiple="multiple"  class="@error('image') form-control is-invalid @enderror">
                 </div>
+                @error('image') 
+                <div class="" style="color:red">{{$message}} </div>
+                 @enderror
                 <button class="btn btn-success">Lưu</button>
             </form>
         </div>

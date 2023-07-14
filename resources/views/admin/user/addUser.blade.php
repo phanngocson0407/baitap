@@ -12,7 +12,7 @@
                     <label for="name">Tên khách hàng:</label>
 
                     <input required="true" name="fullname" type="text" class="form-control" id="title" name="title"
-                    class="@error('fullname') form-control is-invalid @enderror"   >
+                    class="@error('fullname') form-control is-invalid @enderror">
                 </div>
                 @error('fullname') 
                 <div class="" style="color:red">{{$message}} </div>

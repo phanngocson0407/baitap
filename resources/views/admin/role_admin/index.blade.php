@@ -8,6 +8,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Bảng Role</strong>
+                                <br>
+                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
                             <div class="col-lg-6 col-6 text-left">
                                 <form action="/admin/role_admin/" method="get">
@@ -35,21 +37,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       <?php $n=0 ?>
                                        @foreach ($role_admin as $item)
                                        <tr>
-                                            <td>{{$item->id}}</td>
+                                        <?php $n++ ?>
+                                            <td>{{$n}}</td>
                                             <td>{{$item->username}}</td>
                                             <td>{{$item->name_role}}</td>
                                             <td>{{$item->role_module}}</td>
                                             <td>
-                                                <a href="role/edit/{{$item->id}}">
+                                                <a href="role_admin/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="role/delete/{{$item->id}}" method="post">
+                                                <form action="role_admin/delete/{{$item->id}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>

@@ -73,12 +73,17 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $v = $request->validate([
+            
+            'phone'=>'numeric|digits:10',
             'username'=>'required|unique:user',
+            
         ],
         [
-         
+            
             'username.required'=>'Điền tài khoản',
             'username.unique'=>'Tài khoản này có rồi',
+            'phone.numeric'=>'Vui lòng nhập số điện thoại hợp lệ.',
+            'phone.digits'=>'Số điện thoại phải gồm 10 chữ số.',
         ]
     );
         $data1 =array();

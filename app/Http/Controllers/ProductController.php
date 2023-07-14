@@ -135,6 +135,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $v = $request->validate([
+            'name_product'=>'required',
+            'price'=>'numeric',
+            'idloaigiay'=>'required',
+            'image'=>'required',
+            'description'=>'min:100|required',
+        ],
+        [
+            'price.numeric'=>'Điền đúng giá',
+            'idloaigiay.required'=>'Phải chọn loại giày ',
+            'name_product.required'=>'Không được bỏ trống',
+            'image.required'=>'Không bỏ trống hình ảnh',
+            'description.min'=>'Mô tả phải trên 100 ký tự',
+            'description.required'=>'Không được bỏ trống',
+        ]
+    );
         if($request ->has('image')){
             $file =$request->image;
             $file_name=$file->getClientOriginalName();
@@ -149,7 +165,7 @@ class ProductController extends Controller
         $data1['idloaigiay']=$request->	idloaigiay;    
         $data1['image']= $file_name;      
         DB::table('product')->insert($data1);
-  
+        session()->flash('messthem','Thêm sản phẩm thành công');
         return redirect('/admin/product/');
     }
 
@@ -190,7 +206,6 @@ class ProductController extends Controller
             'product.*', 
             'category_product.idloaigiay',
             'category_product.name_category')
-       
         ->first();
 
         return view('admin.product.edit',['data'=>$product],compact('Category'));
@@ -217,6 +232,7 @@ class ProductController extends Controller
         $dataProduct['description']=$request->description;
         $dataProduct['image']=$file_name;
         DB::table('product')->where('id',$request->id)->update($dataProduct);
+        session()->flash('messsua','Sửa sản phẩm thành công');
         return Redirect('/admin/product/');
       
     }
