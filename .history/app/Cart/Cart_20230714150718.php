@@ -40,7 +40,7 @@
         unset($this->products[$id]);
     }
     public function UpdateItemCart($id,$quanty){
-        
+    value($id,$quanty);
         $this->totalQuanty -= $this->products[$id]['quanty'];
         $this->totalPrice -= $this->products[$id]['price'];
         $this->products[$id]['quanty'] = $quanty;

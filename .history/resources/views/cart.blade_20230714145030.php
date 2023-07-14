@@ -236,12 +236,7 @@
             var quantity = $(this).val();
             quantities.push(quantity);
         });
-        console.log(quantities);
-
-        // console.log(quantity);
-        // console.log($(this).attr('data'));
-
-
+        console.log(quantities[0]);
         $.ajax({
             type: "GET",
             data: {

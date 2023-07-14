@@ -53,11 +53,11 @@
             <div>
                 <form action="/" method="get" style="width: 500px;">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm sản phẩm"
-                            value="<?php echo isset($_GET['kw']) ? $_GET['kw'] : ''; ?>">
-                        <input type="text" class="form-control" name="price" placeholder="Tìm kiếm theo giá"
-                            value="<?php echo isset($_GET['price']) ? $_GET['price'] : ''; ?>">
-            
+                        <input type="text" class="form-control" value="{{ old('data') }}" name="kw"
+                            placeholder="Tìm kiếm sản phẩm">
+                        <input type="text" class="form-control" value="{{ old('price') }}" name="price"
+                            placeholder="Tìm kiếm theo giá">
+
                         <div class="input-group-append">
                             <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
                         </div>
@@ -91,7 +91,7 @@
         @endforeach
 
     </div>
-    {{$data->links()}}
+    {{$data->links()}};
 
 
 </div>

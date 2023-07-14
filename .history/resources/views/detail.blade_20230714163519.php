@@ -173,14 +173,8 @@ h1 {
                 
             </div> --}}
             <a   onclick="AddCart({{ $detail['id'] }})"  href="javascript:" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm Vào Giỏ Hàng</a>
-            <?php
-            $data1=Session::get('data1');
-            ?>
-            @if( $data1 == null)
-                 <a   href="{{URL::to('/login') }}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
-            @else
-            <a   onclick="MuaNgay({{ $detail['id'] }})" href="{{URL('/checkout')}}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
-            @endif
+            <a   onclick="AddCart({{ $detail['id'] }})" href="javascript:"  class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</a>
+
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                     <div class="d-inline-flex">
@@ -340,33 +334,7 @@ h1 {
             alertify.error('Vui lòng chọn màu và size');
         }
         }
-        function MuaNgay(id){
-            // console.log(id);
-            let id_color=$("input[name=color]:checked");
-            let id_size=$("input[name=size]:checked");
-            if (id_color.length > 0 && id_size.length > 0) {
-            $.ajax({
-                type: "GET",
-                data:{
-                    id_color:id_color.val(),
-                    id_size:id_size.val()
-                },
-                url:"/Add-Cart/"+id,
-            }).done(function(response){
-     
-                    RenderCart(response);   
- 
-               
-                             
-            });
-        } else if(id_color.length == 0  && id_size.length > 0 ) {
-            alertify.error('Vui lòng chọn màu');
-        }else if(id_color.length >  0  && id_size.length ==0 ) {
-            alertify.error('Vui lòng chọn size');
-        }else{
-            alertify.error('Vui lòng chọn màu và size');
-        }
-        }
+  
         $('#change-item-cart').on('click', '.btn-xoa-cart', function(){
             //console.log($(this).data('id'));
             $.ajax({
