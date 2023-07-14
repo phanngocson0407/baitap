@@ -179,7 +179,7 @@ h1 {
             @if( $data1 == null)
                  <a   href="{{URL::to('/login') }}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
             @else
-            <a   onclick="MuaNgay({{ $detail['id'] }})" href="{{URL('/checkout')}}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
+            <a   onclick="AddCart({{ $detail['id'] }})" href="{{URL('/checkout')}}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
             @endif
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

@@ -236,18 +236,14 @@
             var quantity = $(this).val();
             quantities.push(quantity);
         });
-        console.log(quantities);
-
-        // console.log(quantity);
-        // console.log($(this).attr('data'));
-
-
+        console.log(quantities[0]);
         $.ajax({
             type: "GET",
             data: {
                 id_color_size: id_color_size
             },
-            url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + quantities[1],
+            url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + quantities[0],
+        
         }).done(function (response) {
             RenderListCart(response);
             alertify.success('Cập nhật giỏ hàng thành công');
@@ -255,6 +251,7 @@
             alertify.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
             // console.log(xhr.responseText);
         });
+        console.log(quantities[0]);
     });
     function RenderListCart(response) {
         $('#list-cart').empty();
