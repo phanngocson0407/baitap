@@ -39,7 +39,7 @@
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span
 
                             class="text-primary font-weight-bold border px-3 mr-1">GIÀY</span>  NEW</h1>
-
+=======
                  
                 </a>
             </div>
@@ -237,7 +237,9 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{{URL('/cart')}}" class="dropdown-item">Giỏ Hàng</a>
-                        
+                                    <?php
+                                    $data1=Session::get('data1');
+                                    ?>
                                     <!-- Checkout Start -->
                                     @if( $data1 == null)
                                     <a href="{{URL::to('/login')}}" class="dropdown-item">Thanh Toán</a>

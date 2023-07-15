@@ -4,6 +4,7 @@
 <!-- Featured Start -->
  
  
+>>>>>>> phu
 <div class="container-fluid pt-5">
    
     <div class="row px-xl-5 pb-3">
@@ -94,12 +95,14 @@
         @endforeach
 
     </div>
- 
+<<<<<<< HEAD
+     
     <div class="d-flex justify-content-cente"></div>
+=======
  
         {{$data->links()}}
  
- 
+>>>>>>> phu
 
 
 </div>

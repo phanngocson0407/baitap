@@ -237,7 +237,9 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{{URL('/cart')}}" class="dropdown-item">Giỏ Hàng</a>
-                        
+                                    <?php
+                                    $data1=Session::get('data1');
+                                    ?>
                                     <!-- Checkout Start -->
                                     @if( $data1 == null)
                                     <a href="{{URL::to('/login')}}" class="dropdown-item">Thanh Toán</a>

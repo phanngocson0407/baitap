@@ -94,12 +94,13 @@
         @endforeach
 
     </div>
- 
+<<<<<<< HEAD
+     
     <div class="d-flex justify-content-cente"></div>
- 
+=======  
         {{$data->links()}}
  
- 
+>>>>>>> phu
 
 
 </div>
