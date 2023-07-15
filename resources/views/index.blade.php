@@ -2,7 +2,11 @@
 @section('user')
 
 <!-- Featured Start -->
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> phu
 <div class="container-fluid pt-5">
    
     <div class="row px-xl-5 pb-3">
@@ -59,7 +63,7 @@
                             value="<?php echo isset($_GET['kw']) ? $_GET['kw'] : ''; ?>">
                         <input type="text" class="form-control" name="price" placeholder="Tìm kiếm theo giá"
                             value="<?php echo isset($_GET['price']) ? $_GET['price'] : ''; ?>">
-            
+
                         <div class="input-group-append">
                             <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
                         </div>
@@ -93,8 +97,14 @@
         @endforeach
 
     </div>
+<<<<<<< HEAD
      
     <div class="d-flex justify-content-cente"></div>
+=======
+ 
+        {{$data->links()}}
+ 
+>>>>>>> phu
 
 
 </div>

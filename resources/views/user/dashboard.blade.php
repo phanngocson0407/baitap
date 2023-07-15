@@ -31,17 +31,21 @@
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-     
-            
+
+
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="{{URL('/')}}" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span
+<<<<<<< HEAD
                             class="text-primary font-weight-bold border px-3 mr-1">GIÀY</span>  NEW</h1>
+=======
+                            class="text-primary font-weight-bold border px-3 mr-1">GIÀY</span> NEW</h1>
+>>>>>>> phu
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-              
+
             </div>
             <div class="aa col-lg-3 col-6 text-right">
                 <ul>
@@ -50,7 +54,7 @@
                             <i class="fas fa-heart text-primary"></i>
                             <span class="badge">0</span>
                         </p>
-                
+
                         <ul>
                         </ul>
                     </li>
@@ -67,95 +71,109 @@
                             <li>
                                 <div class="cart-hover">
                                     <div id="change-item-cart"
-                                        style="margin-left: -200px; background-color: aliceblue;  ">
+                                        style="margin-left: -220px; background-color: aliceblue;padding: 10px; border-radius: 10px;  ">
 
                                         @if(Session::has('Cart') != null)
-
                                         <div class="select-items" style="margin-left: 20px;  ">
                                             <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th>Ảnh</th>
-                                                        <th>Tên</th>
-                                                        <th>Giá </th>
-                                                        <th>Size</th>
-                                                        <th>Màu</th>
-                                                        <th>Nút</th>
-                                                       
-                                                    </tr>
-                                                </thead>
+
                                                 <tbody>
                                                     @foreach(Session::get('Cart')->products as $item)
-                                                    <tr>
-                                                        
-                                                        <td class="si-pic"><img style="height: 50px;"
+                                                    <tr class="">
+                                                        <td>
+                                                            <img style="height: 70px;margin-right: 20px"
                                                                 src="/frontend/img/{{$item['productInfo']->image}}"
-                                                                alt="" /></td>
-                                                        <td class="si-text">
-                                                            <div class="product-selected">
-                                                                <p>{{$item['productInfo']->name_product}} </p>
-                                                            </div>
+                                                                alt="" />
                                                         </td>
-                                                        <td class="si-text">
-                                                            <div class="product-selected">
-                                                                <p>{{$item['productInfo']->price}} x {{$item['quanty']}}
-                                                                </p>
+                                                        <td class="">
 
-                                                            </div>
+                                                            <h6 style="font-weight: 900;white-space: nowrap; ">
+                                                                {{$item['productInfo']->name_product}} </h6>
+
+
+
+
+                                                            <h6 style="font-size: 13px">Kích cỡ:
+                                                                {{$item['productInfo']->number_size}} </h6>
+                                                            <h6 style="font-size: 13px">Màu:
+                                                                {{$item['productInfo']->name_color}} </h6>
+                                                            <h6 style="font-size: 13px">
+                                                                Số lượng: {{$item['quanty']}}
+                                                            </h6>
+                                                            <h6 style="color:#D19C97;font-weight:700  ">
+                                                                {{(number_format($item['productInfo']->price))}}₫</h6>
                                                         </td>
-                                                        <td class="si-text">
-                                                            <div class="product-selected">
-                                                                
-                                                                <p  >{{$item['productInfo']->number_size}}  </p>
-                                                             
-                                                            </div>
-                                                        </td>
-                                                        <td class="si-text">
-                                                            <div class="product-selected">
-                                                                <p>{{$item['productInfo']->name_color}}  </p>
-                                                                 
-                                                            </div>
-                                                        </td>
-                                                        <td class="si-text delete">
-                                                            
-                                                            <button class="btn-xoa-cart" data="{{$item['productInfo']->id}}" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">Xoa</button>
+
+
+                                                        <td class=" delete ">
+
+                                                            <button class="btn-xoa-cart btn btn-sm text-dark p-0 "
+                                                                data="{{$item['productInfo']->id}}"
+                                                                value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
+                                                                <i style="padding: 20px"
+                                                                    class="fa fa-times"></i></button>
                                                         </td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
+
                                         </div>
-                                        <?php
-                                        // dd(Session('Cart'))
-                                        ?>
-                                        <div class="select-total">
-                                            <span>total:</span>
-                                            <h5>{{(number_format(Session::get('Cart')->totalPrice))}}VNĐ</h5>
+
+                                        <div class="select-total text-right" style="padding: 20px 10px; ">
+                                            <span style="font-size: 20px;font-weight: 700">Tổng:</span>
+                                            <span
+                                                style="color:#D19C97;font-weight:700;font-size: 20px">{{(number_format(Session::get('Cart')->totalPrice))}}₫</span>
                                         </div>
-                                        <div class="select-button">
-                                            <a  href="{{url('/List-Cart')}}" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Xem giỏ hàng</a>
-                <a href="" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua
-                    Ngay</a>
+                                        <div class="d-flex justify-content-center py-2">
+                                            <a href="{{url('/List-Cart')}}">
+                                                <button class="btn btn-primary px-2 rounded mx-2">
+                                                    Xem Giỏ Hàng
+                                                </button>
+                                            </a>
+                                            
+                                            <?php
+                                            $data1 = Session::get('data1');
+                                            ?>
+                                            @if ($data1 == null)
+                                                <a href="{{URL::to('/login')}}">
+                                                    <button class="btn btn-primary px-2 rounded mx-2">
+                                                        Thanh Toán
+                                                    </button>
+                                                </a>
+                                            @else
+                                                <a href="{{URL('/checkout')}}">
+                                                    <button class="btn btn-primary px-2 rounded mx-2">
+                                                        Thanh Toán
+                                                    </button>
+                                                </a>
+                                            @endif
                                         </div>
                                         
-                                    </div>                           
+                                        
+                                        
+
+                                    </div>
                                     @else
-                                    <p>khong có sản phẩm nào trong giỏ hàng </p>
-                                 
+                                    <p style="padding: 10px; border-radius: 10px;font-weight: 700" class="text-center">Không có sản phẩm nào trong giỏ hàng</p>
+
+
                                     @endif
 
-                                     
+
                                 </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            </li>
-            </ul>
-            </li>
-            </ul>
+
+
         </div>
     </div>
     </div>
     <!-- Topbar End -->
-  
+
 
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
@@ -232,7 +250,7 @@
                                 </div>
                             </div> --}}
                             <a href="{{URL('/contact')}}" class="nav-item nav-link">Liên Hệ</a>
-                           
+
                             <?php
                             $data1=Session::get('data1');
                             ?>
@@ -263,13 +281,13 @@
                         <div class="carousel-item active" style="height: 410px;">
                             <img class="img-fluid" src="{{url('frontend')}}/img/bitis.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            
+
                             </div>
                         </div>
                         <div class="carousel-item" style="height: 410px;">
                             <img class="img-fluid" src="{{url('frontend')}}/img/bitis1.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                               
+
                             </div>
                         </div>
                     </div>
@@ -293,47 +311,55 @@
 
     <!-- Footer Start -->
 
-<div class="container-fluid bg-secondary text-dark custom-footer">
-    <div class="row px-xl-5 pt-5">
-        <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-            <a href="" class="text-decoration-none">
-                <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
-            </a>
-            <p>Cửa hàng SHOP GIÀY NEW uy tín hàng đầu. Chất lượng sản phẩm, giá thành phải chăng được nhiều người tin dùng và ủng hộ.</p>
-            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>180 Cao Lỗ, P4, Q8, TPHCM</p>
-            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>shopgiay5797@gmail.com</p>
-            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0334653923</p>
-        </div>
-        <div class="col-lg-8 col-md-12">
-            <div class="row">
-                <div class="col-md-4 mb-5">
-                    <h5 class="font-weight-bold text-dark mb-4">
-                        Đường Dẫn Nhanh</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-dark mb-2" href="{{URL('/')}}"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
-                    
-                        <a class="text-dark mb-2" href="{{URL('/contact')}}"><i class="fa fa-angle-right mr-2"></i>Liên Hệ</a>
-                        <a class="text-dark mb-2" href="{{URL('/cart')}}"><i class="fa fa-angle-right mr-2"></i>Giỏ hàng</a>
-                        <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}"><i class="fa fa-angle-right mr-2"></i>Lịch sử đơn hàng</a>
-                        <?php
+    <div class="container-fluid bg-secondary text-dark custom-footer">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="" class="text-decoration-none">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
+                </a>
+                <p>Cửa hàng SHOP GIÀY NEW uy tín hàng đầu. Chất lượng sản phẩm, giá thành phải chăng được nhiều người
+                    tin dùng và ủng hộ.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>180 Cao Lỗ, P4, Q8, TPHCM</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>shopgiay5797@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0334653923</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">
+                            Đường Dẫn Nhanh</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="{{URL('/')}}"><i class="fa fa-angle-right mr-2"></i>Trang
+                                chủ</a>
+
+                            <a class="text-dark mb-2" href="{{URL('/contact')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Liên Hệ</a>
+                            <a class="text-dark mb-2" href="{{URL('/cart')}}"><i class="fa fa-angle-right mr-2"></i>Giỏ
+                                hàng</a>
+                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Lịch sử đơn hàng</a>
+                            <?php
                         $data1=Session::get('data1');
                         ?>
-                        <!-- Checkout Start -->
-                        @if( $data1 == null)
-                        <a class="text-dark" href="{{URL::to('/login')}}"><i class="fa fa-angle-right mr-2"></i>Thanh toán</a>
-                        @else
-                        <a class="text-dark" href="{{URL('/checkout')}}"><i class="fa fa-angle-right mr-2"></i>Thanh toán</a>
-                        @endif
-                      
+                            <!-- Checkout Start -->
+                            @if( $data1 == null)
+                            <a class="text-dark" href="{{URL::to('/login')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Thanh toán</a>
+                            @else
+                            <a class="text-dark" href="{{URL('/checkout')}}"><i class="fa fa-angle-right mr-2"></i>Thanh
+                                toán</a>
+                            @endif
+
+                        </div>
                     </div>
+
                 </div>
-               
             </div>
         </div>
+
     </div>
-    
-</div>
-<!-- Footer End -->
+    <!-- Footer End -->
 
 
 
