@@ -89,7 +89,34 @@
             </div>
 
 
-          
+           
+            <a   onclick="AddCart({{ $detail['id'] }})"  href="javascript:" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm Vào Giỏ Hàng</a>
+            <?php
+            $data1=Session::get('data1');
+            ?>
+            @if( $data1 == null)
+                 <a   href="{{URL::to('/login') }}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
+            @else
+            <a   onclick="MuaNgay({{ $detail['id'] }})"  href="{{URL('/checkout')}}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
+            @endif
+                <div class="d-flex pt-2">
+                    <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
+                    <div class="d-inline-flex">
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
             
 
         </div>

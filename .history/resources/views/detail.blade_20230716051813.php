@@ -89,7 +89,115 @@
             </div>
 
 
-          
+            <div class="col-lg-7 pb-5">
+                <h3 class="font-weight-semi-bold">{{ $detail['name_product'] }}</h3>
+                <div class="d-flex mb-3">
+                    <div class="text-primary mr-2" style="with:20%;position:relative">
+                        <span class="fa fa-star" style="font-size: 50px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
+                     
+                        
+                    </div>
+                    <small class="pt-1" style="font-size: 30px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
+                </div>
+                <h3 class="font-weight-semi-bold mb-4">{{number_format($detail->price).' '.'VNĐ' }}</h3>
+                <p class="mb-4">{{ $detail['description'] }} </p>
+                <div class="d-flex mb-3">
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+                    
+             
+                        
+                    @foreach($size->sortBy('number_size') as $key => $item)
+                    <div class="custom-control custom-radio custom-control-inline">
+                        @if($key === 0)
+                            <input   type="radio" class="custom-control-input" id="size-{{$item->id_size}}" value="{{$item->id_size}}" name="size">
+                        @else
+                            <input type="radio" class="custom-control-input" id="size-{{$item->id_size}}" value="{{$item->id_size}}" name="size">
+                        @endif
+                        <label class="custom-control-label" for="size-{{$item->id_size}}">{{$item->number_size}}</label>
+                        
+                    </div>
+                @endforeach
+               
+                
+                
+                </div>
+                <div class="d-flex mb-4">
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
+                    <form>
+                        @foreach($color as $data)
+                        <div class="custom-control custom-radio custom-control-inline">
+                        <input  type="radio" class="custom-control-input" id="color-{{$data->id_color}}" value="{{$data->id_color}}" name="color">
+                                
+                                <label class="custom-control-label" for="color-{{$data->id_color}}">{{$data->name_color}}</label>
+                        </div>
+                        @endforeach
+                    </form>
+                </div>
+                {{-- <div class="d-flex align-items-center mb-4 pt-2">
+                    <div class="input-group quantity mr-3" style="width: 130px;">
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-minus" >
+                            <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-plus">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <script>
+                        // Lấy tham chiếu đến phần tử input và các nút
+                        var inputElement = document.querySelector('.quantity input');
+                        var plusButton = document.querySelector('.quantity .btn-plus');
+                        var minusButton = document.querySelector('.quantity .btn-minus');
+                    
+                        // Thêm sự kiện click cho nút tăng số lượng
+                        plusButton.addEventListener('click', function() {
+                            var currentValue = parseInt(inputElement.value);
+                            inputElement.value = currentValue + 1;
+                        });
+                    
+                        // Thêm sự kiện click cho nút giảm số lượng
+                        minusButton.addEventListener('click', function() {
+                            var currentValue = parseInt(inputElement.value);
+                            if (currentValue > 1) {
+                                inputElement.value = currentValue - 1;
+                            }
+                        });
+                    </script>
+
+         
+                
+            </div> --}}
+            <a   onclick="AddCart({{ $detail['id'] }})"  href="javascript:" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm Vào Giỏ Hàng</a>
+            <?php
+            $data1=Session::get('data1');
+            ?>
+            @if( $data1 == null)
+                 <a   href="{{URL::to('/login') }}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
+            @else
+            <a   onclick="MuaNgay({{ $detail['id'] }})"  href="{{URL('/checkout')}}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua Ngay</button></a>
+            @endif
+                <div class="d-flex pt-2">
+                    <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
+                    <div class="d-inline-flex">
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
             
 
         </div>
