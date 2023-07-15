@@ -412,8 +412,36 @@
             alertify.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
             // console.log(xhr.responseText);
         });
-    }
-    }
+        } else if(id_color.length == 0  && id_size.length > 0 ) {
+            alertify.error('Vui lòng chọn màu');
+        }else if(id_color.length >  0  && id_size.length ==0 ) {
+            alertify.error('Vui lòng chọn size');
+        }else{
+            alertify.error('Vui lòng chọn màu và size');
+
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        id_color: id_color.val(),
+                        id_size: id_size.val()
+                    },
+                    url: "/Add-Cart/" + id,
+                }).done(function (response) {
+
+                    RenderCart(response);
+
+
+
+                });
+            } else if (id_color.length == 0 && id_size.length > 0) {
+                alertify.error('Vui lòng chọn màu');
+            } else if (id_color.length > 0 && id_size.length == 0) {
+                alertify.error('Vui lòng chọn size');
+            } else {
+                alertify.error('Vui lòng chọn màu và size');
+            }
+ 
+        }
         $('#change-item-cart').on('click', '.btn-xoa-cart', function () {
             //console.log($(this).data('id'));
             $.ajax({

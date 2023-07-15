@@ -412,7 +412,7 @@
             alertify.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
             // console.log(xhr.responseText);
         });
-    }
+       
     }
         $('#change-item-cart').on('click', '.btn-xoa-cart', function () {
             //console.log($(this).data('id'));
