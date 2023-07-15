@@ -94,7 +94,7 @@
 
     </div>
      
-    <div class="d-flex justify-content-cente"></div>
+    <div class="d-flex justify-content-cente">{{$data->links()}}</div>
 
 
 </div>

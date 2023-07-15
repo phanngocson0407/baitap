@@ -93,7 +93,7 @@
         @endforeach
 
     </div>
-     
+    {{$data->links()}}
     <div class="d-flex justify-content-cente"></div>
 
 
