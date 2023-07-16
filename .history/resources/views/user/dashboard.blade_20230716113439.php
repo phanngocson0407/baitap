@@ -345,7 +345,7 @@
                         <h5 class="font-weight-bold text-dark mb-4">
                             BẠN NÊN XEM</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="  text-dark mb-2" href="{{URL('/')}}">Trang
+                            <a class="nav-item nav-link text-dark mb-2" href="{{URL('/')}}">Trang
                                 chủ</a>
 
                             <a class="text-dark mb-2" href="{{URL('/contact')}}">Liên Hệ</a>

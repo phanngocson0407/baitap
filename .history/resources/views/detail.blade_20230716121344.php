@@ -55,7 +55,7 @@
 <!-- Page Header Start -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 180px">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
         <div class="d-inline-flex">
             <p class="m-0"><a style="text-decoration: none" href="{{url('/')}}">Home</a></p>
@@ -96,7 +96,15 @@
 
         <div class="col-lg-7 pb-5">
             <h2 class="font-weight-semi-bold">{{ $detail['name_product'] }}</h2>
-            
+            <div class="d-flex mb-3">
+                <div class="text-primary mr-2" style="with:20%;position:relative">
+                    <span class="fa fa-star"
+                        style="font-size: 30px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
+
+
+                </div>
+                <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
+            </div>
             <div class="d-flex ">
                 <p style="font-size:
                     23px;
@@ -285,44 +293,27 @@
   }
     </style>
     <div class="container">
-        <h2 style="padding: 20px 0;"><b>Đánh giá & nhận xét về sản phẩm {{ $detail['name_product'] }} </b></h2>
+        <h23 style="color: "><b>Đánh giá & Nhận xét về  sản phẩm {{ $detail['name_product'] }} </b></h23>
         <div class="row">
             <div class="col-md-6">
                 <div>
-                   
-                    <p><b>CÁC BÌNH LUẬN CỦA KHÁCH HÀNG</b> </p>
-                    
-                    <div class="style_comment" id="scrollableDiv" style="max-height: 550px; overflow: auto; background-color: white; padding: 20px">
-                        @php $count = 0 @endphp
-                        @foreach($comment as $item)
-                          @if($item->status==1)
-                            @php $count++ @endphp
-                            <div>
-                              <p style="font-size: 23px; font-weight: 700; line-height: 22.4px;color: #c5837c" class="font-weight-medium mb-0 mr-3">
-                                <span class="text-dark" style="font-size: 15px">Khách Hàng:</span> {{$item->comment_name}}
-                              </p>
-                              <p class="font-weight-medium mb-0 mr-3">
-                                <span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Ngày:</span>
-                                <?php echo date('d/m/Y', strtotime($item->comment_date)); ?>
-                              </p>
-                              <p>
-                                <span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Bình luận:</span>
-                                {{$item->comment}}
-                              </p>
-                            </div>
-                          @endif
-                        @endforeach
-                        @if ($count === 0)
-                          <p>Chưa có bình luận nào về sản phẩm này  </p>
-                        @endif
-                      </div>
-                       
-                      
-                      
-                      
-                      
-                      
-                      
+                  <h4 style="color: "><>Các bình luận của khách hàng </></h4>
+              
+                  <div class="style_comment" id="scrollableDiv" style="max-height: 500px; overflow: auto; background-color: white; padding: 20px">
+                    <?php $n=0 ?>
+                    @foreach($comment as $item)
+                      @if($item->status==1)
+                        <?php $n++ ?>
+                        <div>
+                          <p style="font-size: 23px; font-weight: 700; line-height: 22.4px;color: #c5837c" class="  font-weight-medium mb-0 mr-3"> <span class="text-dark" style="font-size: 15px">Khách Hàng:</span> {{$item->comment_name}}</p>
+                          <p class="  font-weight-medium mb-0 mr-3"><span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Ngày:</span> <?php echo date('d/m/Y', strtotime($item->comment_date)); ?></p>
+                          <p ><span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Bình luận:</span> {{$item->comment}}</p>
+
+                        </div>
+                     
+                      @endif
+                    @endforeach
+                  </div>
               
                 </div>
               </div>
@@ -330,15 +321,6 @@
               
           <div class="col-md-6">
             <div>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2" style="with:20%;position:relative">
-                        <span class="fa fa-star"
-                            style="font-size: 30px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
-    
-    
-                    </div>
-                    <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
-                </div>
                 <div>
                     <p><b>Đánh giá sao</b></p>
                     <ul class="list-inline" title="Averge Rating">

@@ -312,7 +312,7 @@
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <a href="" class="text-decoration-none">
                     <h1 class="mb-4 display-5 font-weight-semi-bold"><span
-                            class="text-primary font-weight-bold border border-white px-3 mr-1">GIÀY </span>NEW</h1>
+                            class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
                 </a>
                 <p>Cửa hàng SHOP GIÀY NEW uy tín hàng đầu. Chất lượng sản phẩm, giá thành phải chăng được nhiều người
                     tin dùng và ủng hộ.</p>
@@ -320,53 +320,40 @@
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>shopgiay5797@gmail.com</p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0334653923</p>
             </div>
-            <div class="col-lg-4 col-md-12 mb-5 text-center">
-                <h5 class="font-weight-bold text-dark mb-4">SHARE ON</h5>
-                <div class="d-inline-flex justify-content-center">
-                    <a class="text-primary px-3 py-2" href="">
-                        <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                    </a>
-                    <a class="text-danger px-3 py-2" href="">
-                        <i class="fab fa-instagram fa-lg"></i>
-                    </a>
-                    <a class="text-info px-3 py-2" href="">
-                        <i class="fab fa-twitter fa-lg"></i>
-                    </a>
-                    <a class="text-danger px-3 py-2" href="">
-                        <i class="fab fa-pinterest fa-lg"></i>
-                    </a>
-                </div>
+            <div class="col-lg-4 col-md-12 mb-5">
+                <!-- Second section content -->
             </div>
-            
-            
             <div class="col-lg-4 col-md-12">
-                
-                  
+                <div class="row">
+                    <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">
-                            BẠN NÊN XEM</h5>
+                            Đường Dẫn Nhanh</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="  text-dark mb-2" href="{{URL('/')}}">Trang
+                            <a class="text-dark mb-2" href="{{URL('/')}}"><i class="fa fa-angle-right mr-2"></i>Trang
                                 chủ</a>
 
-                            <a class="text-dark mb-2" href="{{URL('/contact')}}">Liên Hệ</a>
-                            <a class="text-dark mb-2" href="{{URL('/cart')}}">Giỏ
+                            <a class="text-dark mb-2" href="{{URL('/contact')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Liên Hệ</a>
+                            <a class="text-dark mb-2" href="{{URL('/cart')}}"><i class="fa fa-angle-right mr-2"></i>Giỏ
                                 hàng</a>
-                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}">Lịch sử đơn hàng</a>
+                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Lịch sử đơn hàng</a>
                             <?php
                         $data1=Session::get('data1');
                         ?>
                             <!-- Checkout Start -->
                             @if( $data1 == null)
-                            <a class="text-dark" href="{{URL::to('/login')}}"> Thanh toán</a>
+                            <a class="text-dark" href="{{URL::to('/login')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Thanh toán</a>
                             @else
-                            <a class="text-dark" href="{{URL('/checkout')}}">Thanh
+                            <a class="text-dark" href="{{URL('/checkout')}}"><i class="fa fa-angle-right mr-2"></i>Thanh
                                 toán</a>
                             @endif
 
                         </div>
-                 
+                    </div>
 
-           
+                </div>
             </div>
         </div>
         

@@ -321,23 +321,23 @@
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0334653923</p>
             </div>
             <div class="col-lg-4 col-md-12 mb-5 text-center">
-                <h5 class="font-weight-bold text-dark mb-4">SHARE ON</h5>
+                <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
+            
                 <div class="d-inline-flex justify-content-center">
-                    <a class="text-primary px-3 py-2" href="">
-                        <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                    <a class="text-primary px-2" href="">
+                        <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
                     </a>
-                    <a class="text-danger px-3 py-2" href="">
-                        <i class="fab fa-instagram fa-lg"></i>
+                    <a class="text-danger px-2" href="">
+                        <i class="fab fa-instagram"></i>
                     </a>
-                    <a class="text-info px-3 py-2" href="">
-                        <i class="fab fa-twitter fa-lg"></i>
+                    <a class="text-info px-2" href="">
+                        <i class="fab fa-twitter"></i>
                     </a>
-                    <a class="text-danger px-3 py-2" href="">
-                        <i class="fab fa-pinterest fa-lg"></i>
+                    <a class="text-danger px-2" href="">
+                        <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
             </div>
-            
             
             <div class="col-lg-4 col-md-12">
                 
@@ -345,21 +345,24 @@
                         <h5 class="font-weight-bold text-dark mb-4">
                             BẠN NÊN XEM</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="  text-dark mb-2" href="{{URL('/')}}">Trang
+                            <a class="text-dark mb-2" href="{{URL('/')}}"><i class="fa fa-angle-right mr-2"></i>Trang
                                 chủ</a>
 
-                            <a class="text-dark mb-2" href="{{URL('/contact')}}">Liên Hệ</a>
-                            <a class="text-dark mb-2" href="{{URL('/cart')}}">Giỏ
+                            <a class="text-dark mb-2" href="{{URL('/contact')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Liên Hệ</a>
+                            <a class="text-dark mb-2" href="{{URL('/cart')}}"><i class="fa fa-angle-right mr-2"></i>Giỏ
                                 hàng</a>
-                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}">Lịch sử đơn hàng</a>
+                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Lịch sử đơn hàng</a>
                             <?php
                         $data1=Session::get('data1');
                         ?>
                             <!-- Checkout Start -->
                             @if( $data1 == null)
-                            <a class="text-dark" href="{{URL::to('/login')}}"> Thanh toán</a>
+                            <a class="text-dark" href="{{URL::to('/login')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Thanh toán</a>
                             @else
-                            <a class="text-dark" href="{{URL('/checkout')}}">Thanh
+                            <a class="text-dark" href="{{URL('/checkout')}}"><i class="fa fa-angle-right mr-2"></i>Thanh
                                 toán</a>
                             @endif
 

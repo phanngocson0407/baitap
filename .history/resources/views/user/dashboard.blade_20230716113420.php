@@ -345,19 +345,22 @@
                         <h5 class="font-weight-bold text-dark mb-4">
                             BẠN NÊN XEM</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="  text-dark mb-2" href="{{URL('/')}}">Trang
+                            <a class="nav-item nav-link text-dark mb-2" href="{{URL('/')}}">Trang
                                 chủ</a>
 
-                            <a class="text-dark mb-2" href="{{URL('/contact')}}">Liên Hệ</a>
+                            <a class="text-dark mb-2" href="{{URL('/contact')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Liên Hệ</a>
                             <a class="text-dark mb-2" href="{{URL('/cart')}}">Giỏ
                                 hàng</a>
-                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}">Lịch sử đơn hàng</a>
+                            <a class="text-dark mb-2" href="/donhang/{{$data1->id??""}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Lịch sử đơn hàng</a>
                             <?php
                         $data1=Session::get('data1');
                         ?>
                             <!-- Checkout Start -->
                             @if( $data1 == null)
-                            <a class="text-dark" href="{{URL::to('/login')}}"> Thanh toán</a>
+                            <a class="text-dark" href="{{URL::to('/login')}}"><i
+                                    class="fa fa-angle-right mr-2"></i>Thanh toán</a>
                             @else
                             <a class="text-dark" href="{{URL('/checkout')}}">Thanh
                                 toán</a>

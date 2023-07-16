@@ -330,15 +330,6 @@
               
           <div class="col-md-6">
             <div>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2" style="with:20%;position:relative">
-                        <span class="fa fa-star"
-                            style="font-size: 30px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
-    
-    
-                    </div>
-                    <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
-                </div>
                 <div>
                     <p><b>Đánh giá sao</b></p>
                     <ul class="list-inline" title="Averge Rating">
