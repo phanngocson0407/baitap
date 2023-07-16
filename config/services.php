@@ -42,9 +42,21 @@ return [
     'redirect' => 'http://giaynew.demo.com/login/google/callback'
     ],
 
-    'google1' => [
-        'client_id' => '8970498824-2gop0n44ajc7adr6q98q4ji873qmvhro.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://giaynew.demo.com/login/google/callback'
+    'google3' => [
+        'client_id' => '381378445544-e5shaj4vefq5sj909r02tm80f27b5gok.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://lav2.cf/login/google/callback'
+        ],
+//onl
+    // 'google1' => [
+    //     'client_id' => '8970498824-bcnssfe2pc3h5s0f0eqvcfireltgusda.apps.googleusercontent.com',
+    //     'client_secret' => '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',
+    //     'redirect' => 'https://lav2.cf/login/google/callback'
+    // ],
+
+    'google2' => [
+        'client_id' => '752445044184-e1ka2fmi40ggaf46gqeql0v97i14otrc.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://lav2.cf/login/google/callback'
         ],
 ];
