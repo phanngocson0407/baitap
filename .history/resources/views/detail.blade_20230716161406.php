@@ -339,9 +339,6 @@
                     </div>
                     <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
                 </div>
-                <?php
-                $data1=Session::get('data1');
-                ?>
                 <div>
                     <p><b>Đánh giá sao</b></p>
                     <ul class="list-inline" title="Averge Rating">
@@ -355,12 +352,12 @@
                     </ul>
                 </div>
                 <p><b>Viết đánh giá của bạn</b></p>
-                <form id="comment-form" method="post" action="{{URL::to('/detail/'.$detail['id'])}}" >
+                <form id="comment-form" method="post" action="{{URL::to('/detail/'.$detail['id'])}}">
                     @csrf
-                    <input style="border-radius: 10px;" type="hidden" name="product_id" value="{{ $detail['id'] }}">
-                    <input style="border-radius: 10px;" type="text" name="comment_name" id="username" placeholder="Tên người dùng" required>
-                    <textarea style="border-radius: 10px;" id="content" name="comment" placeholder="Nội dung bình luận" required></textarea>
-                    <button class="text-right" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
+                    <input type="hidden" name="product_id" value="{{ $detail['id'] }}">
+                    <input type="text" name="comment_name" id="username" placeholder="Tên người dùng" required>
+                    <textarea id="content" name="comment" placeholder="Nội dung bình luận" required></textarea>
+                    <button type="submit">Gửi bình luận</button>
                 </form>
             </div>
           </div>

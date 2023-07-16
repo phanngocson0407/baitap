@@ -339,9 +339,6 @@
                     </div>
                     <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
                 </div>
-                <?php
-                $data1=Session::get('data1');
-                ?>
                 <div>
                     <p><b>Đánh giá sao</b></p>
                     <ul class="list-inline" title="Averge Rating">

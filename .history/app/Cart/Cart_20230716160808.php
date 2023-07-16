@@ -13,7 +13,7 @@
         $this->totalQuanty= $cart->totalQuanty;
     }
    }
-    public function AddCart($product,$id ){
+    public function AddCart($product,$id){
         $newProduct = ['quanty' =>0,'price'=>$product->price,'productInfo'=>$product ];
         if($this ->products){
             if(array_key_exists($id, $this->products)){
@@ -23,11 +23,12 @@
             
         }
         $newProduct['quanty']++;
-        $newProduct['price'] =$newProduct['quanty']*$product->price ;
+        $newProduct['price'] =$newProduct['quanty']*$product->price +$ship;
         $this->products[$id] = $newProduct;
         $this->totalPrice += $product->price;
  
- 
+
+            $this->numberSize = $product->number_size;
    
 
         $this->totalQuanty++ ;

@@ -4,7 +4,7 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 180px">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Thanh toán</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="{{URL('/')}}">Trang chủ</a></p>
@@ -65,17 +65,14 @@
                         @if(Session::has('Cart') != null)
                         @foreach(Session::get('Cart')->products as $item)
                         
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between">
                             <p hidden name="id_product" >{{$item['productInfo']->id}}</p>
-                            <p name="name_product"><img style="height: 70px; "
-                                src="/frontend/img/{{$item['productInfo']->image}}"
-                                alt="" /></p>
                             <p name="name_product">{{$item['productInfo']->name_product}}</p>
                             <p name="quantity">{{$item['quanty']}}</p>
                             <p name="size">{{$item['productInfo']->number_size}}</p>
                             <p name="color">{{$item['productInfo']->name_color}}</p>
                            
-                            <p name="price">{{(number_format($item['productInfo']->price)) }}₫ </p>
+                            <p name="price">{{$item['productInfo']->price}}</p>
                         </div>
                          
                      
@@ -85,19 +82,19 @@
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-medium mb-3">Phí vận chuyển</h5>
-                            <p class="font-weight-bold">{{(number_format(30000)) }}₫</p>
+                            <p class="font-weight-bold">{{(number_format(30000)) }}VND</p>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-medium mb-3">Tạm tính</h5>
-                            <p class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice)) }}₫</p>
+                            <h5 class="font-weight-medium mb-3">Phí vận chuyển</h5>
+                            <p class="font-weight-bold">{{(number_format(30000)) }}VND</p>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Tổng giá</h5>
-                            <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice+ 30000)) }}₫</h5>
+                            <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice+ 30000)) }}VND</h5>
                         </div>
                     </div>
                 </div>

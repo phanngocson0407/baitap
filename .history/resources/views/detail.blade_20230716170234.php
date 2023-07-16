@@ -340,20 +340,28 @@
                     <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
                 </div>
                 <?php
-                $data1=Session::get('data1');
+                $data1 = Session::get('data1');
                 ?>
                 <div>
                     <p><b>Đánh giá sao</b></p>
                     <ul class="list-inline" title="Averge Rating">
-                        @for($count=1;$count<=5;$count++) @php if($count<=$rating){ $color='color:rgb(209,156,151)' ; } else{
-                            $color='color:#ccc' ; } @endphp <li title="star_rating" id="{{$detail['id']}}-{{$count}}"
-                            data-index="{{$count}}" data-id_product="{{$detail['id']}}" data-rating="{{$rating}}" class="rating"
-                            style="{{$color}}">
-                            &#9733;
-                        </li>
+                        @for($count=1; $count<=5; $count++)
+                            @php
+                            if($count <= $rating) {
+                                $color = 'color:rgb(209, 156, 151)';
+                            } else {
+                                $color = 'color:#ccc';
+                            }
+                            @endphp
+                            <li title="star_rating" id="{{$detail['id']}}-{{$count}}"
+                                data-index="{{$count}}" data-id_product="{{$detail['id']}}" data-rating="{{$rating}}" class="rating"
+                                style="{{$color}}">
+                                &#9733;
+                            </li>
                         @endfor
                     </ul>
                 </div>
+                
                 <p><b>Viết đánh giá của bạn</b></p>
                 <form id="comment-form" method="post" action="{{URL::to('/detail/'.$detail['id'])}}" >
                     @csrf

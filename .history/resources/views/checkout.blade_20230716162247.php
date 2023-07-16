@@ -65,9 +65,9 @@
                         @if(Session::has('Cart') != null)
                         @foreach(Session::get('Cart')->products as $item)
                         
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between">
                             <p hidden name="id_product" >{{$item['productInfo']->id}}</p>
-                            <p name="name_product"><img style="height: 70px; "
+                            <p name="name_product"><img style="height: 70px;margin-right: 20px"
                                 src="/frontend/img/{{$item['productInfo']->image}}"
                                 alt="" /></p>
                             <p name="name_product">{{$item['productInfo']->name_product}}</p>

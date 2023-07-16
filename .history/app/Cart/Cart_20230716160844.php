@@ -23,7 +23,7 @@
             
         }
         $newProduct['quanty']++;
-        $newProduct['price'] =$newProduct['quanty']*$product->price ;
+        $newProduct['price'] =$newProduct['quanty']*$product->price +$ship;
         $this->products[$id] = $newProduct;
         $this->totalPrice += $product->price;
  
