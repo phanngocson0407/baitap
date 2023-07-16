@@ -103,15 +103,15 @@ class CartController extends Controller
     //                 return view('list-cart' );
     // }
     public function SaveListItemCart(Request $request, $id, $quanty)
-{
-    $id_color_size = $request->id_color_size ?? '';
-  
-    $oldCart = $request->session()->get('Cart');
-    $newCart = new Cart($oldCart);
-    $newCart->updateItemCart($id.$id_color_size, $quanty);
+    {
+        $id_color_size = $request->id_color_size ?? '';
+    
+        $oldCart = $request->session()->get('Cart');
+        $newCart = new Cart($oldCart);
+        $newCart->updateItemCart($id.$id_color_size, $quanty);
 
-    $request->session()->put('Cart', $newCart);
+        $request->session()->put('Cart', $newCart);
 
-    return view('list-cart');
-}
+        return view('list-cart');
+    }
 }
