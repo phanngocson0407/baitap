@@ -2,7 +2,6 @@
 @section('user')
 
 <!-- Featured Start -->
- <h1>asdsadasda</h1>
  
 <div class="container-fluid pt-5">
    
