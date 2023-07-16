@@ -47,4 +47,9 @@ return [
         'client_secret' => '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',
         'redirect' => 'http://giaynew.demo.com/login/google/callback'
         ],
+        'google2' => [
+            'client_id' => '752445044184-e1ka2fmi40ggaf46gqeql0v97i14otrc.apps.googleusercontent.com',
+            'client_secret' => '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',
+            'redirect' => 'http://lav2.cf/login/google/callback'
+            ],
 ];
