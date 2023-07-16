@@ -45,8 +45,8 @@
             </div>
             <div class="col-lg-6 col-6 text-left">
 
-            </div>  
-            <div class="aa col-lg-3 col-6 text-right">
+            </div>
+            {{-- <div class="aa col-lg-3 col-6 text-right">
                 <ul>
                     <li style=" margin-left: 100px">
                         <p class="btn border">
@@ -164,7 +164,89 @@
                         </ul>
                     </li>
                 </ul>
+            </div> --}}
+            <div class="aa col-lg-3 col-6 text-right">
+                <ul>
+                    <li style=" margin-left: 100px">
+                        <p class="btn border">
+                            <i class="fas fa-heart text-primary"></i>
+                            <span class="badge">0</span>
+                        </p>
+                        <!-- menu con sổ xuống cấp 1 -->
+                        <ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="btn border" data-toggle="dropdown">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            @if(Session::has('Cart') != null)
+                            <span class="badge" id="total-quanty-show">{{Session::get('Cart')->totalQuanty}}</span>
+                            @else
+                            <span class="badge" id="total-quanty-show">0</span>
+                            @endif
+                        </p>
+                        <ul>
+                            <li>
+                                <div class="cart-hover">
+                                    <div id="change-item-cart"
+                                        style="margin-left: -200px; background-color: aliceblue;  ">
+
+                                        @if(Session::has('Cart') != null)
+
+                                        <div class="select-items" style="margin-left: 20px;  ">
+                                            <table>
+                                                <tbody>
+                                                    @foreach(Session::get('Cart')->products as $item)
+                                                    <tr>
+                                                        <td class="si-pic"><img style="height: 50px;"
+                                                                src="/frontend/img/{{$item['productInfo']->image}}"
+                                                                alt="" /></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>{{$item['productInfo']->name_product}} </p>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>{{$item['productInfo']->price}} x {{$item['quanty']}}
+                                                                </p>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-text delete">
+                                                            <p class="xoa" data-id="{{$item['productInfo']->id}}">xoa
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="select-total">
+                                            <span>total:</span>
+                                            <h5>{{(number_format(Session::get('Cart')->totalPrice))}}VNĐ</h5>
+                                        </div>
+                                        <div class="select-button">
+                                            <a  href="{{url('/List-Cart')}}" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Xem giỏ hàng</a>
+                <a href="" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Mua
+                    Ngay</a>
+                                        </div>
+                                        
+                                    </div>                           
+                                    @else
+                                    <p>khong có sản phẩm nào trong giỏ hàng </p>
+                                 
+                                    @endif
+
+                                     
+                                </div>
             </div>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
 
 
         </div>

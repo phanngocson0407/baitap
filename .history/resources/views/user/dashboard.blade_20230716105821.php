@@ -45,7 +45,7 @@
             </div>
             <div class="col-lg-6 col-6 text-left">
 
-            </div>  
+            </div>
             <div class="aa col-lg-3 col-6 text-right">
                 <ul>
                     <li style=" margin-left: 100px">
@@ -54,10 +54,11 @@
                             <span class="badge">0</span>
                         </p>
 
-                        
+                        <ul>
+                        </ul>
                     </li>
-                    <li id=" ">
-                        <p class="btn border" data-toggle="dropdown" >
+                    <li>
+                        <p class="btn border" data-toggle="dropdown" id="">
                             <i class="fas fa-shopping-cart text-primary"></i>
                             @if(Session::has('Cart') != null)
                             <span class="badge" id="total-quanty-show">{{Session::get('Cart')->totalQuanty}}</span>

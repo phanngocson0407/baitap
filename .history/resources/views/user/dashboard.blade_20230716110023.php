@@ -45,7 +45,7 @@
             </div>
             <div class="col-lg-6 col-6 text-left">
 
-            </div>  
+            </div>
             <div class="aa col-lg-3 col-6 text-right">
                 <ul>
                     <li style=" margin-left: 100px">
@@ -56,7 +56,7 @@
 
                         
                     </li>
-                    <li id=" ">
+                    <li id="total-quanty-cart">
                         <p class="btn border" data-toggle="dropdown" >
                             <i class="fas fa-shopping-cart text-primary"></i>
                             @if(Session::has('Cart') != null)

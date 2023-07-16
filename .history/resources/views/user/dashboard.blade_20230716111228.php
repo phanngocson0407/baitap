@@ -45,8 +45,8 @@
             </div>
             <div class="col-lg-6 col-6 text-left">
 
-            </div>  
-            <div class="aa col-lg-3 col-6 text-right">
+            </div>
+            {{-- <div class="aa col-lg-3 col-6 text-right">
                 <ul>
                     <li style=" margin-left: 100px">
                         <p class="btn border">
@@ -164,7 +164,7 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
 
 
         </div>
