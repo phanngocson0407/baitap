@@ -90,12 +90,7 @@ Route::post('/detail/{id}', [CommentController::class, 'store'] );
 Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
 //cong thanh toan
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
-Route::get('/thanhtoanvnpay', function(){
-    return view('thanhtoanvnpay');
-});
-Route::get('/xacnhanvnpay', function(){
-    return view('xacnhanvnpay');
-});
+
 
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );

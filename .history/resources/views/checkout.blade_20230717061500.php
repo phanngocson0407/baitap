@@ -112,13 +112,12 @@
         
         </div>
         </form>
-        <form action="{{url('/vnpayment')}}" method="post">
-            @csrf
-            <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
-            <button  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
-        </form>
-      
-      
+        <a onclick="AddCart({{ $detail['id'] }})" href="javascript:">
+            <button class="btn btn-primary px-2 rounded mx-2">
+                Thêm Vào Giỏ Hàng
+            </button>
+        </a>
+        <a  > thanh toan vnpay</a>
     </div>
     @else
     <div class="container-fluid py-5 d-flex justify-content-center">

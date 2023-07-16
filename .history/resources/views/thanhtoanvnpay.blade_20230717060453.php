@@ -21,7 +21,7 @@
     <!-- Checkout Start -->
     @if(Session::has('Cart') != null)
     <div class="container-fluid pt-5">
-        <form action="/List-Cart" method="post">
+        <form action="{{url('/vnpayment')}}" method="POST">
             @csrf
         <div class="row px-xl-5">
             <div class="col-lg-8">
@@ -103,8 +103,8 @@
                 </div>
                 
                     <div class="card-footer border-secondary bg-transparent" style="display:flex;">
-                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Thanh Toán bằng tiền mặt"> 
-                    
+                        <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
+                        <button  type="submit" name="redirect" type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>                    
                     </div>
                      
                 </div>
@@ -112,13 +112,7 @@
         
         </div>
         </form>
-        <form action="{{url('/vnpayment')}}" method="post">
-            @csrf
-            <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
-            <button  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
-        </form>
-      
-      
+   
     </div>
     @else
     <div class="container-fluid py-5 d-flex justify-content-center">

@@ -93,8 +93,8 @@ Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
 Route::get('/thanhtoanvnpay', function(){
     return view('thanhtoanvnpay');
 });
-Route::get('/xacnhanvnpay', function(){
-    return view('xacnhanvnpay');
+Route::get('/thanhtoanvnpay', function(){
+    return view('thanhtoanvnpay');
 });
 
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );

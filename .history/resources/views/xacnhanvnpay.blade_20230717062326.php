@@ -33,19 +33,19 @@
                         <input type="text" name="id_user" value="{{$data1->id}}" hidden>
                         <div class="col-md-6 form-group">
                             <label>Họ tên</label>
-                            <input class="form-control" name="consingnee_name" type="text"  value="{{$data1->fullname}}">
+                            <input class="form-control" name="consingnee_name" type="text"  value="{{$data1->fullname}}" readonly>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Email</label>
-                            <input class="form-control" name="consingnee_email" type="text"  value="{{$data1->email}}">
+                            <input class="form-control" name="consingnee_email" type="text"  value="{{$data1->email}}" readonly>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Phone</label>
-                            <input class="form-control" name="consingnee_phone" type="number"  value="{{$data1->phone}}">
+                            <input class="form-control" name="consingnee_phone" type="number"  value="{{$data1->phone}}" readonly>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" name="consingnee_address" type="text"  value="{{$data1->address}}">
+                            <input class="form-control" name="consingnee_address" type="text"  value="{{$data1->address}}" readonly>
                         </div>
                         
                         
@@ -103,7 +103,7 @@
                 </div>
                 
                     <div class="card-footer border-secondary bg-transparent" style="display:flex;">
-                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Thanh Toán bằng tiền mặt"> 
+                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Xác nhận thanh toán thành công"> 
                     
                     </div>
                      
@@ -112,12 +112,7 @@
         
         </div>
         </form>
-        <form action="{{url('/vnpayment')}}" method="post">
-            @csrf
-            <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
-            <button  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
-        </form>
-      
+    
       
     </div>
     @else

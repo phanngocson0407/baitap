@@ -91,10 +91,7 @@ Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
 //cong thanh toan
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
 Route::get('/thanhtoanvnpay', function(){
-    return view('thanhtoanvnpay');
-});
-Route::get('/xacnhanvnpay', function(){
-    return view('xacnhanvnpay');
+    return view('thank');
 });
 
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );

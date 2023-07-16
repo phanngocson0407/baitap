@@ -113,7 +113,7 @@
         </div>
         </form>
         <form action="{{url('/vnpayment')}}" method="post">
-            @csrf
+            @cf
             <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
             <button  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
         </form>
