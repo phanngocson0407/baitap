@@ -61,7 +61,7 @@
                                     </div>
                                     <input type="text" class="form-control bg-secondary text-center quantityInput"
                                         id="quantityInput_{{$item['productInfo']->id_size}}_{{$item['productInfo']->id_color}}"
-                                        value="{{$item['quanty']}}">
+                                        value="{{$item['quanty']}}" name="quantity_cart">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary btn-plus"
                                             onclick="increaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
@@ -228,26 +228,17 @@
 
     $('#change-list-cart').on('click', '.btn_update_list', function () {
         var id_color_size = $(this).val();
-        
-        // var quantityInput = $(this).closest('.quantityy').find('.quantityInput');
-        // var quantity = $('.quantityInput').val();
-        var quantities = [];
-        $('.quantityInput').each(function() {
-            var quantity = $(this).val();
-            quantities.push(quantity);
-        });
-        console.log(quantities);
+        // tim den thang cha chua nguyen cai cart do, tuc la t tr
+        let parent=$(this).closest('tr');
 
-        // console.log(quantity);
-        // console.log($(this).attr('data'));
-
-
+        // trong t cha tr, tim den t input co name = cai j do tui m dat
+        let input_quantity=parent.find('input[name=quantity_cart]');
         $.ajax({
             type: "GET",
             data: {
                 id_color_size: id_color_size
             },
-            url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + quantities[1],
+            url: "/Save-List-Item-Cart/" + $(this).attr('data') + '/' + input_quantity.val(),
         }).done(function (response) {
             RenderListCart(response);
             alertify.success('Cập nhật giỏ hàng thành công');
