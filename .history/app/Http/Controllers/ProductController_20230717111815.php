@@ -72,44 +72,49 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $r)
+    public function index(Request $request)
     {
-        //dd($r->all());
-        $sort = $r->sort;
-        $kw = $r->kw?$r->kw:'';
-        $kw="%".$kw."%";
-        $price =is_numeric($r->price)?$r->price:-1;
-        $price2 =is_numeric($r->price2)?$r->price2:-1;
-        if ($price<0) $price=0;
-        if ($price2<0) $price2=99999999;
-        $product=Product::select("*")->where('name_product', 'like', "%$kw%")
-        ->where('price', ">=", $price)
-        ->where('price', "<=", $price2);
+        $kw = $request->input('kw') ?: '';
+        $kw = "%".$kw."%";
         
-        if ($sort=='kytu_az')
-        $product
-        ->orderBy('name_product','ASC');
+        $price = is_numeric($request->input('price')) ? $request->input('price') : -1;
         
-        if ($sort=='kytu_za')
-        $product->orderBy('name_product','DESC');
-        
-        if ($sort=='tang_dan')
-        $product->orderBy('price','ASC');
-       
-        if ($sort=='giam_dan')
-        $product->orderBy('price','DESC');
-        
-      
-    //    $product->get();
-      
-        
-        $data=$product->paginate(8);
-        
-        $data->appends(['kw'=>$r->kw , 'price' => $r ->price, 'price2' =>$r->price2, 'sort'=>$r->sort]);
-        session()->flash('kw',$r->kw);  
-        session()->flash('price',$r->price);
-        return view('/index',['data'=>$data ,'sort' => $sort]);
+        $product = Product::select("*");
+    
+        if ($price > 0) {
+            $product->where([
+                ['name_product', 'like', $kw],
+                ['price', '>=', $price],
+                ['price', '<=', $price + 100000]
+            ]);
+        } else {
+            $product->where('name_product', 'like', $kw);
+        }
+    
+        if ($request->has('sort_by')) {
+            $sort_by = $request->input('sort_by');
+            if ($sort_by == 'giam_dan') {
+                $product->orderBy('price', 'DESC');
+            } elseif ($sort_by == 'tang_dan') {
+                $product->orderBy('price', 'ASC');
+            } elseif ($sort_by == 'kytu_za') {
+                $product->orderBy('name_product', 'DESC');
+            } elseif ($sort_by == 'kytu_az') {
+                $product->orderBy('name_product', 'ASC');
+            }
+        } else {
+            $product->orderBy('id', 'DESC');
+        }
+    
+        $data = $product->paginate(8);
+        $data->appends(['kw' => $kw, 'price' => $price]);
+    
+        session()->flash('kw', $kw);
+        session()->flash('price', $price);
+    
+        return view('index', ['data' => $data]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

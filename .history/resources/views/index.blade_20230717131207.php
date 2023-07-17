@@ -50,10 +50,10 @@
                 <form action="/" method="get" style="width: 500px;">
                     <select class="form-control select-filter" name="sort" id="sort" style="width: 170px;">
                         <option value="none">---Lọc theo---</option>
-                        <option value="kytu_az" {{ $sort == 'kytu_az' ? 'selected' : '' }}>Từ A-Z</option>
-                        <option value="kytu_za" {{ $sort == 'kytu_za' ? 'selected' : '' }}>Từ Z-A</option>
-                        <option value="tang_dan" {{ $sort == 'tang_dan' ? 'selected' : '' }}>Giá tăng dần</option>
-                        <option value="giam_dan" {{ $sort == 'giam_dan' ? 'selected' : '' }}>Giá giảm dần</option>
+                        <option value="kytu_az">Từ A-Z</option>
+                        <option value="kytu_za">Từ Z-A</option>
+                        <option value="tang_dan">Giá tăng dần</option>
+                        <option value="giam_dan">Giá giảm dần</option>
                     </select>
                     <div class="input-group">
                         <input type="text" class="form-control" name="kw" placeholder="Ten sản phẩm"
@@ -182,13 +182,13 @@
     //     sessionStorage.setItem("selectedSort", selectedValue);
     // });
 
-    // Khôi phục giá trị đã chọn khi tải lại trang
-    // $(document).ready(function () {
-    //     var selectedSort = sessionStorage.getItem("selectedSort");
-    //     if (selectedSort) {
-    //         $("#sort").val(selectedSort);
-    //     }
-    // });
+    Khôi phục giá trị đã chọn khi tải lại trang
+    $(document).ready(function () {
+        var selectedSort = sessionStorage.getItem("selectedSort");
+        if (selectedSort) {
+            $("#sort").val(selectedSort);
+        }
+    });
 </script>
 <script>
     // Lấy giá trị của input khi trang được tải

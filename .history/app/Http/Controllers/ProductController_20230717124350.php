@@ -73,43 +73,54 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $r)
-    {
-        //dd($r->all());
-        $sort = $r->sort;
-        $kw = $r->kw?$r->kw:'';
-        $kw="%".$kw."%";
-        $price =is_numeric($r->price)?$r->price:-1;
-        $price2 =is_numeric($r->price2)?$r->price2:-1;
-        if ($price<0) $price=0;
-        if ($price2<0) $price2=99999999;
-        $product=Product::select("*")->where('name_product', 'like', "%$kw%")
+{
+    // Accessing request parameters
+    $sort = $r->sort;  // Sort parameter
+    $kw = $r->kw ? $r->kw : '';  // Search keyword parameter
+    $kw = "%".$kw."%";  // Formatting search keyword
+    $price = is_numeric($r->price) ? $r->price : -1;  // Minimum price parameter
+    $price2 = is_numeric($r->price2) ? $r->price2 : -1;  // Maximum price parameter
+    
+    // Handling invalid price parameters
+    if ($price < 0) {
+        $price = 0;
+    }
+    if ($price2 < 0) {
+        $price2 = 99999999;
+    }
+    
+    // Querying products based on search criteria
+    $product = Product::select("*")
+        ->where('name_product', 'like', "%$kw%")
         ->where('price', ">=", $price)
         ->where('price', "<=", $price2);
-        
-        if ($sort=='kytu_az')
-        $product
-        ->orderBy('name_product','ASC');
-        
-        if ($sort=='kytu_za')
-        $product->orderBy('name_product','DESC');
-        
-        if ($sort=='tang_dan')
-        $product->orderBy('price','ASC');
-       
-        if ($sort=='giam_dan')
-        $product->orderBy('price','DESC');
-        
-      
-    //    $product->get();
-      
-        
-        $data=$product->paginate(8);
-        
-        $data->appends(['kw'=>$r->kw , 'price' => $r ->price, 'price2' =>$r->price2, 'sort'=>$r->sort]);
-        session()->flash('kw',$r->kw);  
-        session()->flash('price',$r->price);
-        return view('/index',['data'=>$data ,'sort' => $sort]);
+    
+    // Sorting products based on the provided sort parameter
+    if ($sort == 'kytu_az') {
+        $product->orderBy('name_product', 'ASC');
     }
+    if ($sort == 'kytu_za') {
+        $product->orderBy('name_product', 'DESC');
+    }
+    if ($sort == 'tang_dan') {
+        $product->orderBy('price', 'ASC');
+    }
+    if ($sort == 'giam_dan') {
+        $product->orderBy('price', 'DESC');
+    }
+    
+    // Paginating the products and appending query parameters to pagination links
+    $data = $product->paginate(8);
+    $data->appends(['param']);  // Assuming 'param' is a placeholder for additional query parameters
+    
+    // Flashing search criteria for use in the view
+    session()->flash('kw', $r->kw);
+    session()->flash('price', $r->price);
+    
+    // Returning the view with the paginated products
+    return view('/index', ['data' => $data]);
+}
+
 
     /**
      * Show the form for creating a new resource.

@@ -74,41 +74,66 @@ class ProductController extends Controller
      */
     public function index(Request $r)
     {
-        //dd($r->all());
-        $sort = $r->sort;
         $kw = $r->kw?$r->kw:'';
         $kw="%".$kw."%";
         $price =is_numeric($r->price)?$r->price:-1;
         $price2 =is_numeric($r->price2)?$r->price2:-1;
         if ($price<0) $price=0;
         if ($price2<0) $price2=99999999;
-        $product=Product::select("*")->where('name_product', 'like', "%$kw%")
-        ->where('price', ">=", $price)
-        ->where('price', "<=", $price2);
+        $product=Product::select("*")-;
         
-        if ($sort=='kytu_az')
-        $product
-        ->orderBy('name_product','ASC');
-        
-        if ($sort=='kytu_za')
-        $product->orderBy('name_product','DESC');
-        
-        if ($sort=='tang_dan')
-        $product->orderBy('price','ASC');
+        if($price>0)
+        {
+            $product->where([ 
+                ['name_product','like',$kw], ['price','>=',$r->price],['price', '<=', $r->price + 100000] 
+            ]);
+            if(isset($_GET['sort_by'])){
+            
+                $sort_by =$_GET['sort_by'];
+                if($sort_by=='giam_dan'){
+                    $product->orderBy('price','DESC');//->paginate(8)->appends(request()->query());
+                } elseif($sort_by=='tang_dan'){
+                    $product->orderBy('price','ASC');//->paginate(8)->appends(request()->query());
+                }   
+                elseif($sort_by=='kytu_za'){
+                    $product->orderBy('name_product','DESC');//->paginate(8)->appends(request()->query());
+                }  
+                elseif($sort_by=='kytu_az'){
+                    $product->orderBy('name_product','ASC');//->paginate(8)->appends(request()->query());
+                }  
+            }else{
+                $product->orderBy('id','DESC');//->paginate(8);
+            }
+        }
+        else{
+            $product->where('name_product','like',"$kw");
+            $param =['kw'=>$r->kw,'price'=>$price];
+           if(isset($_GET['sort_by'])){
+            
+            $sort_by =$_GET['sort_by'];
+            if($sort_by=='giam_dan'){
+                $product->orderBy('price','DESC');//->paginate(8)->appends(request()->query());
+            } elseif($sort_by=='tang_dan'){
+                $product->orderBy('price','ASC');//->paginate(8)->appends(request()->query());
+            }   
+            elseif($sort_by=='kytu_za'){
+                $product->orderBy('name_product','DESC');//->paginate(8)->appends(request()->query());
+            }  
+            elseif($sort_by=='kytu_az'){
+                $product->orderBy('name_product','ASC');//->paginate(8)->appends(request()->query());
+            }  
+        }else{
+            $product->orderBy('id','DESC');//->paginate(8);
+        }
+        }
        
-        if ($sort=='giam_dan')
-        $product->orderBy('price','DESC');
-        
-      
-    //    $product->get();
-      
+       //filter
         
         $data=$product->paginate(8);
-        
-        $data->appends(['kw'=>$r->kw , 'price' => $r ->price, 'price2' =>$r->price2, 'sort'=>$r->sort]);
+        $data->appends(['param']);
         session()->flash('kw',$r->kw);  
         session()->flash('price',$r->price);
-        return view('/index',['data'=>$data ,'sort' => $sort]);
+        return view('/index',['data'=>$data]);
     }
 
     /**

@@ -108,7 +108,7 @@ class ProductController extends Controller
         $data->appends(['kw'=>$r->kw , 'price' => $r ->price, 'price2' =>$r->price2, 'sort'=>$r->sort]);
         session()->flash('kw',$r->kw);  
         session()->flash('price',$r->price);
-        return view('/index',['data'=>$data ,'sort' => $sort]);
+        return view('/index',['data'=>$data'sort' => $sort]);
     }
 
     /**

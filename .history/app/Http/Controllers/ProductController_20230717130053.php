@@ -88,11 +88,11 @@ class ProductController extends Controller
         
         if ($sort=='kytu_az')
         $product
-        ->orderBy('name_product','ASC');
-        
+        ->orderBy('name_product','ASC')
+        ;
         if ($sort=='kytu_za')
-        $product->orderBy('name_product','DESC');
-        
+        $product->orderBy('name_product','DESC')
+        ;
         if ($sort=='tang_dan')
         $product->orderBy('price','ASC');
        
@@ -105,10 +105,10 @@ class ProductController extends Controller
         
         $data=$product->paginate(8);
         
-        $data->appends(['kw'=>$r->kw , 'price' => $r ->price, 'price2' =>$r->price2, 'sort'=>$r->sort]);
+        $data->appends(['kw' => $kw, 'price' => $price]);
         session()->flash('kw',$r->kw);  
         session()->flash('price',$r->price);
-        return view('/index',['data'=>$data ,'sort' => $sort]);
+        return view('/index',['data'=>$data]);
     }
 
     /**
