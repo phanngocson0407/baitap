@@ -51,24 +51,18 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-                    <div style="color:red">
-                    <?php
-                    $message = Session::get('message');
-                    if($message){
-                        echo $message;
-                        Session::put('message',null);
-                    }
-                    ?>
-                    </div>
+					
+					<div class="text-right p-t-8 p-b-31" style="color:red; text-align: center;">
+						@if(session('message'))
+							{{ session('message') }}
+						@endif
+					</div>
 					
 					<div class="container-login100-form-btn">
 						<button type="submit" class="login100-form-btn">
-							Login
+							Đăng nhập
 						</button>
 					</div>
-
-					
-
 				</form>
 			</div>
 		</div>

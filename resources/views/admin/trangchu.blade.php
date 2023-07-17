@@ -35,8 +35,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
-                                            <div class="stat-heading">Người mua</div>
+                                            <div class="stat-text"><span class="count">{{$OrderCount}}</span></div>
+                                            <div class="stat-heading">Số Lượng Đơn hàng</div>
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text"><span class="count">349</span></div>
-                                            <div class="stat-heading">Templates</div>
+                                            <div class="stat-heading">Kho sản phẩm</div>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count">{{$userCount}}</span></div>
                                             <div class="stat-heading">Tài khoản </div>
                                         </div>
                                     </div>
@@ -82,48 +82,61 @@
                 </div>
                 <!-- /Widgets -->
                 <!--  Traffic  -->
-               
-                
+                <style>
+                    .form-group {
+                        display: inline-block;
+                        margin-right: 10px;
+                    }
+                </style>
+                <div class="container">
+                    <h2 class="form-heading"><b>Thống kê doanh thu</b></h2>
+                    <form action="/admin/trangchu" method="get">
+                        
+                        <div class="form-group">
+                            <label for="from_date">Từ ngày:</label>
+                            <input type="date" id="from_date" name="ngay1" >
+                        </div>
+                        <div class="form-group">
+                            <label for="to_date">Đến ngày:</label>
+                            <input type="date" id="to_date" name="ngay2" >
+                        </div>
+                        <div class="form-group">
+                            <select name="" id="">
+                                <option value="">Theo Quý</option>
+                                <option value="">Theo Năm</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn-submit">Thống kê</button>
+                        </div>
+                        <div class="">
+                            <table class="table table-striped table-bordered"> 
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Doanh thu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $n=0 ?>
+                                   
+                                    <?php $n++ ?>
+                                    <td>{{$n}}</td>
+                                    <td></td>
+                                </tbody>
+                               
+                            </table>
+
+                        </div>
+                       
+                    </form>
+                </div>
                 
 
                   
               
                
-                <div class="modal fade none-border" id="add-category">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><strong>Add a category </strong></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="control-label">Category Name</label>
-                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name"/>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="control-label">Choose Category Color</label>
-                                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-                                                <option value="success">Success</option>
-                                                <option value="danger">Danger</option>
-                                                <option value="info">Info</option>
-                                                <option value="pink">Pink</option>
-                                                <option value="primary">Primary</option>
-                                                <option value="warning">Warning</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             <!-- /#add-category -->
             </div>
             <!-- .animated -->
