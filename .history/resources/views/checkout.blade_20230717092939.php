@@ -121,8 +121,8 @@
       
     </div>
     @else
-    <div class="  d-flex justify-content-center  "  >
-        <p >bạn chưa có sản phẩm nào trong trong hàng <a href="{{"/"}}">Quay lại trang Mua hàng</a></p>
+    <div class="  py-5 d-flex justify-content-center"  >
+        <p style="max-width: ">bạn chưa có sản phẩm nào trong trong hàng <a href="{{"/"}}">Quay lại trang Mua hàng</a></p>
     </div>
     @endif
     <!-- Checkout End -->

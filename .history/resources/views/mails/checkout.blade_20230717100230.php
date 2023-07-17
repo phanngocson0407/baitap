@@ -28,11 +28,7 @@ Thông tin đơn hàng của quý khách
    
 </tr>
 <tr>
-    <td>Phí ship</td>
-    <td>{{(number_format(30000)) }}₫</td>
-</tr>
-<tr>
-
+    
     <td>Tổng tiền</td>
     <td>
     {{(Session::get('Cart')->totalPrice+ 30000) }}</td></tr>

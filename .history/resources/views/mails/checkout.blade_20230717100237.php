@@ -27,10 +27,7 @@ Thông tin đơn hàng của quý khách
     <td>{{ number_format( $item['productInfo']->price * $item['quanty'] ) }}</td>
    
 </tr>
-<tr>
-    <td>Phí ship</td>
-    <td>{{(number_format(30000)) }}₫</td>
-</tr>
+td>
 <tr>
 
     <td>Tổng tiền</td>

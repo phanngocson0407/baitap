@@ -121,7 +121,7 @@
       
     </div>
     @else
-    <div class="  d-flex justify-content-center  "  >
+    <div class="  py-5 d-flex justify-content-center my-3"  >
         <p >bạn chưa có sản phẩm nào trong trong hàng <a href="{{"/"}}">Quay lại trang Mua hàng</a></p>
     </div>
     @endif

@@ -27,15 +27,6 @@ Thông tin đơn hàng của quý khách
     <td>{{ number_format( $item['productInfo']->price * $item['quanty'] ) }}</td>
    
 </tr>
-<tr>
-    <td>Phí ship</td>
-    <td>{{(number_format(30000)) }}₫</td>
-</tr>
-<tr>
-
-    <td>Tổng tiền</td>
-    <td>
-    {{(Session::get('Cart')->totalPrice+ 30000) }}</td></tr>
 @endforeach
 </table>
 <div>Liên hệ phone 033 4653 923 Bộ phận chăm sóc khách hàng {{url('/')}}</div>

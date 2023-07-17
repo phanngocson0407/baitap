@@ -29,7 +29,7 @@ Thông tin đơn hàng của quý khách
 </tr>
 <tr>
     <td>Phí ship</td>
-    <td>{{(number_format(30000)) }}₫</td>
+    <td></td>
 </tr>
 <tr>
 
