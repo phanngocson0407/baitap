@@ -3,71 +3,71 @@
         <table class="table table-bordered text-center mb-0"  >
             <thead class="bg-secondary text-dark">
                 <tr>
-                    <th>Sản phẩm</th>
-                    <th>Giá</th>
+                    <th>Products</th>
+                    <th>Price</th>
                     <th>Size</th>
-                    <th>Màu</th>
-                    <th>Số Lượng</th>
-                    <th>Tổng giá</th>
-                    <th>Xóa</th>
-                    <th>Cập nhật </th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody class="align-middle"  >
                 @if(Session::has('Cart') != null)
                 @foreach(Session::get('Cart')->products as $item)
                 <tr>
-                    <td class="align-middle"><img src="/frontend/img/{{$item['productInfo']->image}}" alt=""
-                            style="width: 50px;">{{$item['productInfo']->name_product}}</td>
+                    <td class="align-middle"><img src="/frontend/img/{{$item['productInfo']->image}}" alt="" style="width: 50px;">{{$item['productInfo']->name_product}}</td>
                     <td class="align-middle">{{(number_format($item['productInfo']->price))}} VNĐ</td>
-
+                
                     <td class="align-middle" value="{{$item['productInfo']->id_size}}">
-
-                        {{$item['productInfo']->number_size}}
-
-
+                      
+                            {{$item['productInfo']->number_size}}  
+                             
+                      
                     </td>
-                    <td class="align-middle" value="{{$item['productInfo']->id_color}}">
-
-                        {{$item['productInfo']->name_color}}
-
-
+                    <td class="align-middle"value="{{$item['productInfo']->id_color}}" >
+                    
+                            {{$item['productInfo']->name_color}}  
+                             
+                        
                     </td>
                     <td class="align-middle">
-                        <div class="input-group quantityy mx-auto" style="width: 200px;">
-                            <div class="input-group quantityy mr-3" style="width: 200px;">
+                        <div class="input-group quantityy mx-auto" style="width: 100px;">
+                            <div class="input-group quantityy mr-3" style="width: 130px;">
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary btn-minus"
-                                        onclick="decreaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
+                                    onclick="decreaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
+                                    <i class="fa fa-minus"></i>
+                                </button>
                                 </div>
                                 <input type="text" class="form-control bg-secondary text-center quantityInput"
-                                    id="quantityInput_{{$item['productInfo']->id_size}}_{{$item['productInfo']->id_color}}"
-                                    value="{{$item['quanty']}}" name="quantity_cart">
+                                id="quantityInput_{{$item['productInfo']->id_size}}_{{$item['productInfo']->id_color}}"
+                                value="{{$item['quanty']}}" name="quantity_cart">
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary btn-plus"
-                                        onclick="increaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
+onclick="increaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
+<i class="fa fa-plus"></i>
+</button>
                                 </div>
                             </div>
                         </div>
                     </td>
                     <td class="align-middle">{{(number_format($item['price']))}} VNĐ</td>
-                    <td class="align-middle">
-                        <button data="{{$item['productInfo']->id}}" class="btn btn-sm btn-primary btn_delete_list"
-                            value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
-                            <i class="fa fa-times"></i></button>
-                    </td>
-                    <td class="align-middle">
-                        <button data="{{$item['productInfo']->id}}"
-                            class="btn btn-sm btn-primary btn_update_list"
-                            value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
-
-                            <i class="">Cập nhật</i>
-                        </button>
-                    </td>
+                    <td class="align-middle"><button data="{{$item['productInfo']->id}}"  class="btn btn-sm btn-primary btn_delete_list" value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}">
+                        <i  
+             
+                             class="fa fa-times"
+          
+                             ></i></button></td>
+                    <td class="align-middle"><button class="btn btn-sm btn-primary btn_update_list"
+                        {{-- onclick="SaveListItemCart({{$item['productInfo']->id}});"   --}}
+                        {{-- id="save-cart-item-{{$item['productInfo']->id}}"  --}}
+                        data="{{$item['productInfo']->id}}"
+                        value="{{$item['productInfo']->id_size.$item['productInfo']->id_color}}"
+                        >
+                        
+                        <i  class="">Cập nhật</i>
+                    </button></td>
                 </tr>
             @endforeach
             @else
@@ -81,13 +81,13 @@
             <div class="input-group">
                 <input type="text" class="form-control p-4" placeholder="Coupon Code">
                 <div class="input-group-append">
-                    <button class="btn btn-primary">Mã giảm giá</button>
+                    <button class="btn btn-primary">Apply Coupon</button>
                 </div>
             </div>
         </form>
         <div class="card border-secondary mb-5">
             <div class="card-header bg-secondary border-0">
-                <h4 class="font-weight-semi-bold m-0">Giỏ Hàng</h4>
+                <h4 class="font-weight-semi-bold m-0">Thông tin đơn hàng</h4>
             </div>
             @if(Session::has('Cart') != null)
             <div class="card-body">

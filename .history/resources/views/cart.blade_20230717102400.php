@@ -28,7 +28,7 @@
                         <th>Số Lượng</th>
                         <th>Tổng giá</th>
                         <th>Xóa</th>
-                        <th>Cập nhật </th>
+                        <th>Cập nhật</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">

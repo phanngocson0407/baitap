@@ -3,14 +3,13 @@
         <table class="table table-bordered text-center mb-0"  >
             <thead class="bg-secondary text-dark">
                 <tr>
-                    <th>Sản phẩm</th>
-                    <th>Giá</th>
+                    <th>Products</th>
+                    <th>Price</th>
                     <th>Size</th>
-                    <th>Màu</th>
-                    <th>Số Lượng</th>
-                    <th>Tổng giá</th>
-                    <th>Xóa</th>
-                    <th>Cập nhật </th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody class="align-middle"  >
@@ -34,8 +33,8 @@
 
                     </td>
                     <td class="align-middle">
-                        <div class="input-group quantityy mx-auto" style="width: 200px;">
-                            <div class="input-group quantityy mr-3" style="width: 200px;">
+                        <div class="input-group quantityy mx-auto" style="width: 100px;">
+                            <div class="input-group quantityy mr-3" style="width: 130px;">
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary btn-minus"
                                         onclick="decreaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">

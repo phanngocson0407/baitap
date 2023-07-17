@@ -28,7 +28,6 @@
                         <th>Số Lượng</th>
                         <th>Tổng giá</th>
                         <th>Xóa</th>
-                        <th>Cập nhật </th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -52,8 +51,8 @@
 
                         </td>
                         <td class="align-middle">
-                            <div class=" input-group quantityy mx-auto" style="width: 200px;">
-                                <div class=" input-group quantityy  " style="width: 200px;">
+                            <div class="input-group quantityy mx-auto" style="width: 100px;">
+                                <div class="input-group quantityy mr-3" style="width: 130px;">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary btn-minus"
                                             onclick="decreaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
@@ -103,26 +102,26 @@
             </form>
             <div class="card border-secondary mb-5">
                 <div class="card-header bg-secondary border-0">
-                    <h4 class="font-weight-semi-bold m-0"> Giỏ hàng</h4>
+                    <h4 class="font-weight-semi-bold m-0"> giỏ hàng</h4>
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-3 pt-1">
-                        <h6 class="font-weight-medium">Số lượng sản phẩm</h6>
+                        <h6 class="font-weight-medium">Tổng sản phẩm</h6>
                         <h6 class="font-weight-medium">{{Session::get('Cart')->totalQuanty}} Sản phẩm</h6>
                     </div>
                     <div class="d-flex justify-content-between mb-3 pt-1">
-                        <h6 class="font-weight-medium">Tạm Tính</h6>
+                        <h6 class="font-weight-medium">Giá</h6>
                         <h6 class="font-weight-medium">{{(number_format(Session::get('Cart')->totalPrice))}}VNĐ</h6>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-medium">Phí Giao Hàng</h6>
-                        <h6 class="font-weight-medium">{{(number_format(30000)) }}₫ </h6>
+                        <h6 class="font-weight-medium">Giao hàng</h6>
+                        <h6 class="font-weight-medium"> </h6>
                     </div>
                 </div>
                 <div class="card-footer border-secondary bg-transparent">
                     <div class="d-flex justify-content-between mt-2">
-                        <h5 class="font-weight-bold">Tổng giá</h5>
-                    <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice+30000))}} VNĐ</h5>
+                        <h5 class="font-weight-bold">Tổng giá sản phẩm</h5>
+                        <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice))}} VNĐ</h5>
                     </div>
                     <?php
                         $data1=Session::get('data1');

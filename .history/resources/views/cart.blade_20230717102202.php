@@ -28,7 +28,6 @@
                         <th>Số Lượng</th>
                         <th>Tổng giá</th>
                         <th>Xóa</th>
-                        <th>Cập nhật </th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -52,15 +51,15 @@
 
                         </td>
                         <td class="align-middle">
-                            <div class=" input-group quantityy mx-auto" style="width: 200px;">
-                                <div class=" input-group quantityy  " style="width: 200px;">
+                            <div class=" input-group quantityy mx-auto" style="width: 100px;">
+                                <div class=" input-group quantityy  " style="width: 130px;">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary btn-minus"
                                             onclick="decreaseQuantity({{$item['productInfo']->id_size}}, {{$item['productInfo']->id_color}})">
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control bg-secondary text-center quantityInput"
+                                    <input type="text" class="  bg-secondary text-center quantityInput"
                                         id="quantityInput_{{$item['productInfo']->id_size}}_{{$item['productInfo']->id_color}}"
                                         value="{{$item['quanty']}}" name="quantity_cart">
                                     <div class="input-group-btn">
