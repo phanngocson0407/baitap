@@ -12,7 +12,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Blogu</strong>
+                                <strong class="card-title">Bảng Đơn hàng</strong>
                             </div>
                             <div class="card-body" id="change-list-status">
                                 <table class="table table-striped table-bordered"> 
@@ -70,7 +70,7 @@
                                         </td>
                                         <td>
                                             <input type="hidden" value="{{$item->id}}" name="id_order">
-                                            <select name="" id="status" class="update_status">
+                                            <select name="status" id="status" class="update_status">
                                                 <option value="">---Chọn trạng thái---</option>
                                                 <option value="0">Đặt hàng(chờ duyệt)</option>
                                                 <option value="1">Duyệt đơn hàng</option>

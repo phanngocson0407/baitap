@@ -39,7 +39,7 @@
                                        <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"></td>
                                        <td>{{$item->name_product}}</td>
                                         <td>{{$item->quantity}}</td>
-                                        <td>{{number_format($item->price)}} VNĐ</td>
+                                        <td>{{number_format($item->price,0,'.','.')}} VNĐ</td>
                                         <td>{{$item->color}}</td>
                                         <td>{{$item->size}}</td>
                                     </tbody>
@@ -48,7 +48,7 @@
                                 </table>
                                <div>
                                
-                                  <td>Tổng giá: {{number_format($total)}} VNĐ</td>  
+                                  <td>Tổng giá: {{number_format($total,0,'.','.')}} VNĐ</td>  
                                   
                                 </div>
                                 <div>

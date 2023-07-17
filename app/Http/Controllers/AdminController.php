@@ -7,23 +7,36 @@ use App\Models\RoleAdmin;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Pagination\Paginator;
 class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $status = 3;
         $count = DB::table('order')
         ->join('order_detail','order.id','=','order_detail.id_order')
         ->where('order.status', $status)
-        ->select(
-            'order_detail.price',
-            'order.*'
-        )->sum('price');
-        return view('admin/trangchu',['count'=>$count, 'status' => $status]);
+        ->selectRaw('SUM(order_detail.price * order_detail.quantity) as total')
+        ->value('total');
+        
+        if ($request->has('ngay1') && $request->has('ngay2')) {
+            $ngay1 = $request->input('ngay1') . ' 00:00:00';
+            $ngay2 = $request->input('ngay2') . ' 23:59:59';
+            // $count->whereBetween('order.date_payment', [$ngay1, $ngay2]);
+        }
+      
+        $userCount = User::count();
+        $OrderCount = Order::count();
+        return view('admin/trangchu',[
+            'count'=>$count,
+            'status' => $status,
+            'userCount'=>$userCount,
+            'OrderCount'=>$OrderCount]);
     }
 
     /**
@@ -40,26 +53,28 @@ class AdminController extends Controller
     }
 
     public function kiemtraDN(Request $request)
-    {
-        $username = $request->username;
-        $password = md5($request->password);
-        $result= DB::table('admin')->where('username',$username)->where('password',$password)->get();
-        $data_admin=$result[0];
+{
+    $username = $request->username;
+    $password = md5($request->password);
+    $result = DB::table('admin')->where('username', $username)->where('password', $password)->get();
 
-        $role=
-        DB::table('role_admin')
-        ->join('role','role.id','=','role_admin.id_role')
-        ->where('role_admin.id_admin',$data_admin->id)->get();
-        if(count($result)>0){
-           Session::put('data',$data_admin);
-           Session::put('role',$role);
-            return redirect('admin/trangchu');
-        }else{
-           Session::put('message','Tài khoản hoặc mật khẩu sai');
-           return view('admin.login');
-        }
-        
+    if ($result->count() > 0) {
+        $data_admin = $result->first();
+
+        $role = DB::table('role_admin')
+            ->join('role', 'role.id', '=', 'role_admin.id_role')
+            ->where('role_admin.id_admin', $data_admin->id)
+            ->get();
+
+        Session::put('data', $data_admin);
+        Session::put('role', $role);
+
+        return redirect('admin/trangchu');
+    } else {
+        session()->flash('message', 'Tài khoản hoặc mật khẩu sai');
+        return view('admin.login');
     }
+}
 
     public function logout(){
         Session::put('data',"");
