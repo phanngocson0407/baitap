@@ -48,31 +48,31 @@
                                         <td>{{$item->consingnee_phone}}</td>
                                         <td>     <?php
                                             if($item->status_payment==0){
-                                                echo 'Thanh Toán Bằng Tiền Mặt';
+                                                echo '<b style="color:blue">Thanh Toán Bằng Tiền Mặt</b>';
                                             }elseif($item->status==1){
-                                                echo 'Thanh Toán Qua VNPAY';
+                                                echo '<b style="color:rgb(248, 12, 177)">Thanh Toán Qua VNPAY </b>';
                                    
                                             }
                                         ?></td>
                                         <td>
                                             <?php
                                                 if($item->status==0){
-                                                    echo 'Đang chờ duyệt';
+                                                    echo '<b style="color:rgb(216, 12, 238)">Đang chờ duyệt</b>';
                                                 }elseif($item->status==1){
-                                                    echo 'Duyệt đơn hàng';
+                                                    echo '<b style="color:rgb(12, 170, 238)">Duyệt đơn hàng</b>';
                                                 }elseif($item->status==2){
-                                                    echo 'Đang vận chuyển';
+                                                    echo '<b style="color:rgb(10, 236, 221)">Đang vận chuyển</b>';
                                                 }elseif($item->status==3){
-                                                    echo 'Giao Hàng';
+                                                    echo '<b style="color:rgb(236, 221, 10)">Giao Hàng</b>';
                                                 }
                                             ?>
                                         </td>
-                                        <td style="color: red">
+                                        <td>
                                             <?php
                                                 if($item->status_huy==0){
-                                                    echo 'Đơn hàng chưa được hủy';
+                                                    echo '<b style="color: green;"> Đơn hàng chưa được hủy </b>';
                                                 }elseif($item->status_huy==1){
-                                                    echo 'Khách hàng đã hủy';
+                                                    echo '<b style="color: red;"> Khách hàng đã hủy </b>';
                                                 }
                                             ?>
 
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-
+                    {{$order->links()}}
 
                 </div>
             </div><!-- .animated -->
