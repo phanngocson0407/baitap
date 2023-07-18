@@ -92,7 +92,8 @@
                     <div class="card-footer d-flex justify-content-center ">
                         <a href="/detail/{{$item->id}}" class="btn btn-sm text-dark p-0"><i
                                 class="fas fa-eye text-primary mr-1"></i>Mua Ngay</a>
- 
+    
+>>>>>>> phu
                     </div>
                 </div>
             </div>
