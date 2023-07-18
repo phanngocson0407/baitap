@@ -25,63 +25,40 @@
         <input hidden type="number" name="status" value="1" id="">
         <input hidden type="number" name="status_payment" value="1" id="">
         @csrf
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
+        <div class="row px-xl-4">
+            <div class="col-lg-7">
                 <div class="mb-4">
 
-                    <h4 class="font-weight-semi-bold mb-4">XÁC NHẬN ĐƠN HÀNG</h4>
-
+                    <h4 class="font-weight-semi-bold mb-4">Thông tin đơn hàng</h4>
+                   
                     <div class="row">
                         <input type="text" name="id_user" value="{{$data1->id}}" hidden>
                         <div class="col-md-6 form-group">
                             <label>Họ tên</label>
-                            <input class="form-control" name="consingnee_name" type="text" value="{{$data1->fullname}}"
-                                readonly>
+                            <input class="form-control" name="consingnee_name" type="text"  value="{{$data1->fullname}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Email</label>
-                            <input class="form-control" name="consingnee_email" type="text" value="{{$data1->email}}"
-                                readonly>
+                            <input class="form-control" name="consingnee_email" type="text"  value="{{$data1->email}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Phone</label>
-                            <input class="form-control" name="consingnee_phone" type="number" value="{{$data1->phone}}"
-                                readonly>
+                            <input class="form-control" name="consingnee_phone" type="number"  value="{{$data1->phone}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" name="consingnee_address" type="text"
-                                value="{{$data1->address}}" readonly>
+                            <input class="form-control" name="consingnee_address" type="text"  value="{{$data1->address}}">
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>Số hóa đơn</label>
-                            <input class="form-control" name="vnp_TxnRef" type="text"
-                                value="{{$_GET['vnp_TxnRef']}}" readonly>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Mã giao dịch</label>
-                            <input class="form-control" name="vnp_TransactionNo" type="text"
-                                value="{{$_GET['vnp_TransactionNo']}}" readonly>
-                        </div>
-                 
-                        <div class="col-md-6 form-group">
-                            <label>Ngân hàng</label>
-                            <input class="form-control" name="vnp_BankCode" type="text"
-                                value="{{$_GET['vnp_BankCode']}}" readonly>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Nội dung thanh toán</label>
-                            <input class="form-control" name="vnp_OrderInfo" type="text"
-                                value="{{$_GET['vnp_OrderInfo']}}" readonly>
-                        </div>
+                        <input hidden type="number" name="status_payment" value="0" id="">
 
-
+                        
+                      
                     </div>
-
+                
                 </div>
-
+               
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Tổng đơn hàng</h4>
@@ -90,51 +67,52 @@
                         <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
                         @if(Session::has('Cart') != null)
                         @foreach(Session::get('Cart')->products as $item)
-
+                        
                         <div class="d-flex justify-content-between align-items-center">
-                            <p hidden name="id_product">{{$item['productInfo']->id}}</p>
+                            <p hidden name="id_product" >{{$item['productInfo']->id}}</p>
                             <p name="name_product"><img style="height: 70px; "
-                                    src="/frontend/img/{{$item['productInfo']->image}}" alt="" /></p>
+                                src="/frontend/img/{{$item['productInfo']->image}}"
+                                alt="" /></p>
                             <p name="name_product">{{$item['productInfo']->name_product}}</p>
                             <p name="quantity">{{$item['quanty']}}</p>
                             <p name="size">{{$item['productInfo']->number_size}}</p>
                             <p name="color">{{$item['productInfo']->name_color}}</p>
-
-                            <p name="price">{{(number_format($item['productInfo']->price)) }}₫ </p>
+                           
+                            <p name="price">{{(number_format($item['productInfo']->price, 0, '.', '.') . ' VNĐ') }}</p>
                         </div>
-
-
+                         
+                     
                         @endforeach
-                        @endif
+                         @endif
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-medium mb-3">Phí vận chuyển</h5>
-                            <p class="font-weight-bold">{{(number_format(30000)) }}₫</p>
+                            <p class="font-weight-bold">{{(number_format(30000, 0, '.', '.') . ' VNĐ') }}</p>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-medium mb-3">Tạm tính</h5>
-                            <p class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice)) }}₫</p>
+                            <p class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice, 0, '.', '.') . ' VNĐ') }}</p>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Tổng giá</h5>
-                            <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice+ 30000)) }}₫
-                            </h5>
+                            <h5 class="font-weight-bold">{{(number_format(Session::get('Cart')->totalPrice+ 30000, 0, '.', '.') . ' VNĐ') }}</h5>
                         </div>
                     </div>
                 </div>
-
-                <div class="card-footer border-secondary bg-transparent" style="display:flex;">
-                    <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3"
-                        value="Xác nhận thanh toán">
-
+                
+                    <div class="card-footer border-secondary bg-transparent" style="display:flex;">
+                       <input type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" value="Thanh Toán bằng tiền mặt"> 
+                    
+                    </div>
+                     
                 </div>
-
             </div>
+        
         </div>
 
 </div>
