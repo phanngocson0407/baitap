@@ -73,7 +73,7 @@
                                 value="{{$_GET['vnp_OrderInfo']}}" readonly>
                         </div>
                         <input hidden type="number" name="status" value="1" id="">
-                        <input hidden type="number" name="status_payment" value="1" id="">
+                        <input hidden type="number" name="status" value="1" id="">
 
 
                     </div>
