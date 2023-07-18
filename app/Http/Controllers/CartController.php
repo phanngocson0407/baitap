@@ -49,6 +49,7 @@ class CartController extends Controller
     public function checkout(Request $r)
     {
         $data = $r->all();
+        dd( $data);
         // $data['order_id']= (String)Str::uuid();
         $order=Order::create($data);
         if ($order)

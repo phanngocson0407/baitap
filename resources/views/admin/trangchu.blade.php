@@ -94,16 +94,17 @@
                         
                         <div class="form-group">
                             <label for="from_date">Từ ngày:</label>
-                            <input type="date" id="from_date" name="ngay1" >
+                            <input type="date" id="from_date" name="ngay1" value="{{ old('ngay2', $request->input('ngay1')) }}">
                         </div>
                         <div class="form-group">
                             <label for="to_date">Đến ngày:</label>
-                            <input type="date" id="to_date" name="ngay2" >
+                            <input type="date" id="to_date" name="ngay2" value="{{ old('ngay2', $request->input('ngay2')) }}">
                         </div>
                         <div class="form-group">
-                            <select name="" id="">
-                                <option value="">Theo Quý</option>
-                                <option value="">Theo Năm</option>
+                            <select name="thongke_loai" id="thongke_loai">
+                                <option value="none">Lọc theo</option>
+                                <option value="quy">Theo Quý</option>
+                                <option value="nam">Theo Năm</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -113,17 +114,19 @@
                             <table class="table table-striped table-bordered"> 
                                 <thead>
                                     <tr>
-                                        <th>STT</th>
+                                        <th>Ngày</th>
                                         <th>Doanh thu</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $n=0 ?>
-                                   
-                                    <?php $n++ ?>
-                                    <td>{{$n}}</td>
-                                    <td></td>
+                                    @foreach($thongke as $item)
+                                    <tr>
+                                        <td>{{ $item->date_payment}}</td>
+                                        <td>{{number_format($item->total,0,'.','.') }} VNĐ</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
+                                
                                
                             </table>
 
