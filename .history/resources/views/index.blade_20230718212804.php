@@ -69,12 +69,10 @@
         </div>
     </div>
    
-    
+    <a  href="/detail/{{$item->id}}" >
         
         <div class="row px-xl-5 pb-3" >
-           
             @foreach ($data as $item)
-            <a  href="/detail/{{$item->id}}" style="text-decoration: none" >
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -94,10 +92,10 @@
                     </div>
                 </div>
             </div>
-        </a>
-        @endforeach
+            
         </div>
-   
+    </a>
+    @endforeach
  
         {{$data->links()}}
  
