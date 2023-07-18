@@ -92,7 +92,7 @@ Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
 Route::post('/momopayment', [CheckoutController::class, 'momopayment'] );
  
-Route::get('/xacnhanvnpay', function(){
+Route::post('/xacnhanvnpay', function(){
     return view('xacnhanvnpay');
 });
 Route::get('/xacnhanmomo', function(){

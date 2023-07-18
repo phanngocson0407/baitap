@@ -99,6 +99,8 @@ $returnData = array('code' => '00'
     public function momopayment(Request $request){
         
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+
+
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
@@ -127,8 +129,9 @@ $returnData = array('code' => '00'
                 'extraData' => $extraData,
                 'requestType' => $requestType,
                 'signature' => $signature);
-         $result =$this->execPostRequest($endpoint, json_encode($data));
-         $jsonResult = json_decode($result, true);  // decode json
+                // dd($data);
+        $result =$this-> execPostRequest($endpoint, json_encode($data));
+        $jsonResult = json_decode($result, true);  // decode json
         
             //Just a example, please check more in there
          return redirect()->to($jsonResult['payUrl']);

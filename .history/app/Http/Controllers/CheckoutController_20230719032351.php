@@ -127,8 +127,10 @@ $returnData = array('code' => '00'
                 'extraData' => $extraData,
                 'requestType' => $requestType,
                 'signature' => $signature);
-         $result =$this->execPostRequest($endpoint, json_encode($data));
-         $jsonResult = json_decode($result, true);  // decode json
+                // dd($data);
+        $result =$this-> execPostRequest($endpoint, json_encode($data));
+        dd($r)
+        $jsonResult = json_decode($result, true);  // decode json
         
             //Just a example, please check more in there
          return redirect()->to($jsonResult['payUrl']);

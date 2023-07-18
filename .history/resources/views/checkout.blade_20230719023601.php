@@ -123,10 +123,10 @@
                 <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
                 <button style="border-radius: 10px; max-width: 300px; "  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
             </form>
-            <form action="{{url('/momopayment')}}" method="post" style=" padding: 0px 19px;">
+            <form action="{{url('/vnpayment')}}" method="post" style=" padding: 0px 19px;">
                 @csrf
-                <input type="hidden" name="totalmomo"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
-                <button style="border-radius: 10px; max-width: 300px; "  type="submit" name="payUrl"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán MoMo </button>           
+                <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
+                <button style="border-radius: 10px; max-width: 300px; "  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
             </form>
         </div>
         </div>
