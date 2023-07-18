@@ -22,7 +22,11 @@ class CartController extends Controller
     public function checkout(Request $r)
     {
         $data = $r->all();
+<<<<<<< HEAD
         // dd($data);
+=======
+        dd( $data);
+>>>>>>> Son
         // $data['order_id']= (String)Str::uuid();
         
         $order=Order::create($data);

@@ -24,19 +24,28 @@ class AdminController extends Controller
         ->selectRaw('SUM(order_detail.price * order_detail.quantity) as total')
         ->value('total');
         
-        if ($request->has('ngay1') && $request->has('ngay2')) {
-            $ngay1 = $request->input('ngay1') . ' 00:00:00';
-            $ngay2 = $request->input('ngay2') . ' 23:59:59';
-            // $count->whereBetween('order.date_payment', [$ngay1, $ngay2]);
-        }
-      
+    //Lọc ngày
+        $ngay1 = $request->input('ngay1') . ' 00:00:00';
+        $ngay2 = $request->input('ngay2') . ' 23:59:59';
+        $thongke = Order::join('order_detail', 'order.id', '=', 'order_detail.id_order')
+            ->where('order.status', $status)
+            ->whereDate('order.date_payment', '>=', $ngay1)
+            ->whereDate('order.date_payment', '<=', $ngay2)
+            ->selectRaw('order.date_payment as date_payment, SUM(order_detail.price * order_detail.quantity) as total')
+            ->groupBy('date_payment')
+            ->get();
+        
+        
+
         $userCount = User::count();
         $OrderCount = Order::count();
         return view('admin/trangchu',[
             'count'=>$count,
             'status' => $status,
             'userCount'=>$userCount,
-            'OrderCount'=>$OrderCount]);
+            'OrderCount'=>$OrderCount,
+            'thongke'=>$thongke,
+            'request' => $request]);
     }
 
     /**
