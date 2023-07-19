@@ -43,10 +43,17 @@
                  value="{{$data->username}}"   >
              </div>
              <div class="form-group">
-                 <label for="name">Mật khẩu:</label>
+                <label>Mật khẩu Cũ:</label>
+                <input class="form-control" required   name="password_cu" type="text" value="">
+                @if(session('error'))
+                    <a style="color:red">{{ session('error') }}</a>
+            @endif
+            </div>
+             <div class="form-group">
+                 <label for="name">Mật khẩu Mới:</label>
 
                  <input required="true" name="password" type="password" class="form-control" id="title"
-                 value="{{$data->password}}"  >
+                 value=""  >
                     
              </div>
                 <button type="submit" class="btn btn-success">Sửa</button>

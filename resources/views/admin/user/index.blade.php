@@ -51,12 +51,12 @@
                                         <td>{{$item->username}}</td>
                                         <td>{{$item->password}}</td>   
                                      
-                                            <td>
+                                            {{-- <td>
                                                 <a href="khachhang/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     </tbody>
                                     @endforeach

@@ -173,25 +173,47 @@ class UserController extends Controller
     {
         $data_khachhang =array();
         $data_khachhang['fullname']=$request->fullname;
-      
-       
         $data_khachhang['email']=$request->email;
         $data_khachhang['phone']=$request->phone;
-        $data_khachhang['address']=$request->address;
-        $data_khachhang['username']=$request->username;
-        $data_khachhang['password']=md5($request->password);
-        DB::table('user')->where('id',$request->id)->update($data_khachhang);
-        return Redirect('/admin/khachhang/');
+        $data_khachhang['address']=$request->address;  
+        // Kiểm tra tính hợp lệ của mật khẩu cũ
+        $user = DB::table('user')->where('id', $request->id)->first();
+        if ($user && md5($request->password_cu) === $user->password) {
+            $data_khachhang['password'] = md5($request->password);
+            DB::table('user')->where('id', $request->id)->update($data_khachhang);
+            return redirect('/admin/khachhang/');
+        } else {
+            $request->session()->flash('error', 'Mật khẩu cũ không đúng.');
+            // Chuyển hướng trở lại trang trước đó
+            return back();
+        }
     }
     public function updateUser(Request $request,$id){
+        $v = $request->validate([
+            'password'=>'required|min:8|regex:/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', 
+        ],
+        [
+            'password.required'=>'Điền mật khẩu',
+            'password.min'=>'Mật khẩu ít nhất 8 chữ số',
+            'password.regex'=>'Bao gốm cả chữ và số',
+        ]
+    );
         $data_khachhang =array();
         $data_khachhang['fullname']=$request->fullname;
         $data_khachhang['email']=$request->email;
         $data_khachhang['phone']=$request->phone;
         $data_khachhang['address']=$request->address;  
-        $data_khachhang['password']=$request->password;
-        DB::table('user')->where('id',$request->id)->update($data_khachhang);
-        return Redirect('/');
+        // Kiểm tra tính hợp lệ của mật khẩu cũ
+        $user = DB::table('user')->where('id', $request->id)->first();
+        if ($user && md5($request->password_cu) === $user->password) {
+            $data_khachhang['password'] = md5($request->password);
+            DB::table('user')->where('id', $request->id)->update($data_khachhang);
+            return redirect('/');
+        } else {
+            $request->session()->flash('error', 'Mật khẩu cũ không đúng.');
+            // Chuyển hướng trở lại trang trước đó
+            return back();
+        }
     }
 
     /**
