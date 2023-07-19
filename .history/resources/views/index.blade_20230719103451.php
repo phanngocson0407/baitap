@@ -86,7 +86,7 @@
                         <h6 class="text-truncate mb-3">{{ $item->name_product }}</h6>
                         <div class="d-flex justify-content-center">
                             <h6>{{ number_format($item->price, 0, '.', '.') . ' VNĐ' }}</h6>
-                            {{-- <h6 class="text-muted ml-2"><del>{{number_format($item->price).' '.'VNĐ' }}</del></h6> --}}
+                  
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-center ">
