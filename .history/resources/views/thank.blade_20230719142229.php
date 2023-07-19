@@ -24,7 +24,7 @@
     @endif</span> </h4>
  
             
-            <h5 style="text-align: center; "><a style="text-decoration: none" href="{{url(" /")}}">Tiếp tục mua hàng</a></h5>
+            <h5 style="text-align: center; "><a href="{{url(" /")}}">Tiếp tục mua hàng</a></h5>
 
 
         </div>
