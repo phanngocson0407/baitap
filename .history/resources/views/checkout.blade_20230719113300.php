@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->address}}">
+                            <input class="form-control" name="" type="text"  value="{{$data1->address}}">
                         </div>
                         
                         

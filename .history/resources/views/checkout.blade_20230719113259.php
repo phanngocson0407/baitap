@@ -42,11 +42,11 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Phone</label>
-                            <input class="form-control" name="" type="number" readonly  value="{{$data1->phone}}">
+                            <input class="form-control" name="" type="number"  value="{{$data1->phone}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->address}}">
+                            <input class="form-control" name="" type="text"  value="{{$data1->address}}">
                         </div>
                         
                         

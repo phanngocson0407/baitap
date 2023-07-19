@@ -28,33 +28,8 @@
                 <div class="mb-4">
 
                     <h4 class="font-weight-semi-bold mb-4">Thông tin đơn hàng</h4>
-                    <h5>Thông tin khách  đặt hàng:</h5>
+                    
                     <div class="row">
-                         
-                        <input type="text" name="id_user" value="{{$data1->id}}" hidden>
-                        <div class="col-md-6 form-group">
-                            <label>Họ tên</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->fullname}}">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Email</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->email}}">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Phone</label>
-                            <input class="form-control" name="" type="number" readonly  value="{{$data1->phone}}">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->address}}">
-                        </div>
-                        
-                        
-                      
-                    </div>
-                    <h5>Thông tin khách nhận hàng:</h5>
-                    <div class="row">
-                         
                         <input type="text" name="id_user" value="{{$data1->id}}" hidden>
                         <div class="col-md-6 form-group">
                             <label>Họ tên</label>

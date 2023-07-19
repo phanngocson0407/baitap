@@ -34,19 +34,19 @@
                         <input type="text" name="id_user" value="{{$data1->id}}" hidden>
                         <div class="col-md-6 form-group">
                             <label>Họ tên</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->fullname}}">
+                            <input class="form-control" name="" type="text"  value="{{$data1->fullname}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Email</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->email}}">
+                            <input class="form-control" name="" type="text"  value="{{$data1->email}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Phone</label>
-                            <input class="form-control" name="" type="number" readonly  value="{{$data1->phone}}">
+                            <input class="form-control" name="" type="number"  value="{{$data1->phone}}">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" name="" type="text" readonly  value="{{$data1->address}}">
+                            <input class="form-control" name="consingnee_address" type="text"  value="{{$data1->address}}">
                         </div>
                         
                         
