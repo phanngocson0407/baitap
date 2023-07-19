@@ -27,6 +27,23 @@ class AdminController extends Controller
     //Lọc ngày
         $ngay1 = $request->input('ngay1') . ' 00:00:00';
         $ngay2 = $request->input('ngay2') . ' 23:59:59';
+    //Lọc theo Quý
+    $thongke_loai = $request->input('thongke_loai');
+    if ($thongke_loai !== 'none') {
+        if ($thongke_loai === 'quy1') {
+            $ngay1 = date('Y') . '-01-01 00:00:00';
+            $ngay2 = date('Y') . '-03-31 23:59:59';
+        } elseif ($thongke_loai === 'quy2') {
+            $ngay1 = date('Y') . '-04-01 00:00:00';
+            $ngay2 = date('Y') . '-06-30 23:59:59';
+        } elseif ($thongke_loai === 'quy3') {
+            $ngay1 = date('Y') . '-07-01 00:00:00';
+            $ngay2 = date('Y') . '-09-30 23:59:59';
+        } elseif ($thongke_loai === 'quy4') {
+            $ngay1 = date('Y') . '-10-01 00:00:00';
+            $ngay2 = date('Y') . '-12-31 23:59:59';
+        }
+    }
         $thongke = Order::join('order_detail', 'order.id', '=', 'order_detail.id_order')
             ->where('order.status', $status)
             ->whereDate('order.date_payment', '>=', $ngay1)

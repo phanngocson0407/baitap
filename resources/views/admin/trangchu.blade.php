@@ -100,15 +100,35 @@
                             <label for="to_date">Đến ngày:</label>
                             <input type="date" id="to_date" name="ngay2" value="{{ old('ngay2', $request->input('ngay2')) }}">
                         </div>
+                        
                         <div class="form-group">
                             <select name="thongke_loai" id="thongke_loai">
                                 <option value="none">Lọc theo</option>
-                                <option value="quy">Theo Quý</option>
-                                <option value="nam">Theo Năm</option>
+                                <option value="quy1">Quý 1</option>
+                                <option value="quy2">Quý 2</option>
+                                <option value="quy3">Quý 3</option>
+                                <option value="quy4">Quý 4</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn-submit">Thống kê</button>
+                        </div>
+                        <div class="form-group" ></div>
+                        <div class="form-group" ></div>
+                        <div class="form-group" ></div>
+                        <div class="form-group" ></div>
+                        <div class="form-group" ></div>
+                        <?php
+                                    $tongDoanhThu = 0; // Biến để tích lũy tổng doanh thu
+
+                                    foreach($thongke as $item) {
+                                        $tongDoanhThu += $item->total; // Cộng tổng vào biến $tongDoanhThu
+                                    ?>
+                         <?php
+                        }
+                        ?>
+                        <div class="form-group" >
+                            <h4><b>Tổng doanh thu: {{ number_format($tongDoanhThu, 0, '.', '.') }} VNĐ</b></h4>
                         </div>
                         <div class="">
                             <table class="table table-striped table-bordered"> 
@@ -119,19 +139,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($thongke as $item)
+                                    <?php
+                                    $tongDoanhThu = 0; // Biến để tích lũy tổng doanh thu
+
+                                    foreach($thongke as $item) {
+                                        $tongDoanhThu += $item->total; // Cộng tổng vào biến $tongDoanhThu
+                                    ?>
                                     <tr>
                                         <td>{{ $item->date_payment}}</td>
                                         <td>{{number_format($item->total,0,'.','.') }} VNĐ</td>
                                     </tr>
-                                @endforeach
+                                    <?php
+                                        }
+                                    ?>
                                 </tbody>
                                 
-                               
                             </table>
-
+                           
                         </div>
-                       
+                        
                     </form>
                 </div>
                 
