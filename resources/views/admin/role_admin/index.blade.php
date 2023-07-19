@@ -7,7 +7,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Role</strong>
+                                <strong class="card-title">Bảng Quyền Admin</strong>
                                 <br>
                                 <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>

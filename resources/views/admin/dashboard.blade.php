@@ -70,14 +70,27 @@
                                 @if($v->role_module=="role_color")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/color')}}">Quản lí Màu</a></li>
                                 @endif
+                                @if($v->role_module=="role_user")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
+                                @endif
+                            @endforeach
+                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/comment')}}">Quản lí Đánh giá</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="menu-icon fa fa-users"></i>Quyền</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            @foreach ($role as $k=>$v)
+                               
+                               
 
                                 @if($v->role_module=="role_accout")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/accout')}}">Quản lí Tài khoản Admin</a></li>
                                 @endif
 
-                                @if($v->role_module=="role_user")
-                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
-                                @endif
+                                
 
                                 @if($v->role_module=="role_role")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role')}}">Quản lí Quyền</a></li>
@@ -87,15 +100,8 @@
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role_admin')}}">Quản lí Quyền Admin</a></li>
                                 @endif
                             @endforeach
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/comment')}}">Quản lí Đánh giá</a></li>
-                            
-                            
-                            
                         </ul>
                     </li>
-                   
-
-                   
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

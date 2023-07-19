@@ -3,7 +3,7 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="text-center">Thêm Sản Phẩm</h2>
+            <h2 class="text-center">Thêm Quyền Admin</h2>
         </div>
         <div class="panel-body">
             <form method="post" action="{{URL::to('/admin/role_admin/create')}}" enctype="multipart/form-data">
