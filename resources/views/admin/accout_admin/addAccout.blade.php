@@ -3,7 +3,7 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="text-center">Thêm Accout Admin</h2>
+            <h2 class="text-center">Thêm Tài khoản Admin</h2>
         </div>
         <div class="panel-body">
             <form method="post" action="{{URL::to('/admin/accout/create')}}" enctype="multipart/form-data">

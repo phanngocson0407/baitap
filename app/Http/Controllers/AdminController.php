@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Order;
 use Illuminate\Pagination\Paginator;
 class AdminController extends Controller
@@ -72,6 +73,42 @@ class AdminController extends Controller
     {
         return view('admin.accout_admin.addAccout');
     }
+    public function create_role($id)
+    {
+        $role_all=Role::all();
+        $role_admin = Admin::join("role_admin", 'admin.id', '=', 'role_admin.id_admin')
+        ->join("role", 'role.id', '=', 'role_admin.id_role')
+        ->select(
+            'admin.*',
+            'role.*',
+            'role_admin.*',
+        )
+        ->where('role_admin.id_admin', $id)
+        ->get();
+       
+        return view('admin.accout_admin.create_role',
+        [
+            'role_admin'=>$role_admin,
+            'role_all'=>$role_all,
+            'id_admin_duocchon'=>$id
+        ]
+        );
+    }
+    public function store_role(Request $request)
+    {
+        
+        $id_admin=$request->id_admin;
+        RoleAdmin::where('id_admin',$id_admin)->delete();
+        foreach($request->array_role_dachon as $k=>$v)
+        {
+          $role_admin=new RoleAdmin;
+          $role_admin->id_admin=$id_admin;
+          $role_admin->id_role=$v;
+          $role_admin->save();
+        }
+        return redirect('admin/accout/show-role/'.$id_admin);
+    }
+
     public function dangnhap()
     {
 
@@ -142,10 +179,27 @@ class AdminController extends Controller
      */
     public function show(Request $r)
     {
-       
         $Admin = Admin::all();
-     
         return view ('admin.accout_admin.index',['Admin'=>$Admin]);
+    }
+   
+    public function show_role(Request $r, $id)
+    {
+        $show_role = Admin::join("role_admin", 'admin.id', '=', 'role_admin.id_admin')
+        ->join("role", 'role.id', '=', 'role_admin.id_role')
+        ->select(
+            'admin.*',
+            'role.*',
+            'role_admin.*',
+        )
+        ->where('role_admin.id_admin', $id)
+        ->get();
+        return view('admin.accout_admin.show_role',
+        [
+            'show_role'=>$show_role,
+            'id_admin_duocchon'=>$id
+        ]
+        );
     }
 
     /**
@@ -189,4 +243,29 @@ class AdminController extends Controller
         }
         return Redirect('/admin/accout/');
     }
+
+    public function page_acc_admin($id)
+    {
+        return view('admin.edit_accout_admin');
+    }
+
+    public function edit_acc_admin(Request $request, $id)
+{
+    $data_admin = array();
+    $data_admin['fullname'] = $request->fullname;
+    $data_admin['phone'] = $request->phone;
+    $request->validate([
+        'password_cu' => 'required',
+    ]);
+    $admin = DB::table('admin')->where('id', $request->id)->first();
+    if ($admin && md5($request->password_cu) === $admin->password) {
+        $data_admin['password'] = md5($request->password);
+        DB::table('admin')->where('id', $request->id)->update($data_admin);
+        return redirect('/admin/trangchu');
+    } else {
+        $request->session()->flash('error', 'Mật khẩu cũ không đúng.');
+        return back();
+    }
+}
+
 }

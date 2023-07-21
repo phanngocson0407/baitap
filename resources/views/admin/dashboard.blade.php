@@ -96,9 +96,9 @@
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role')}}">Quản lí Quyền</a></li>
                                 @endif
 
-                                @if($v->role_module=="role_role-admin")
+                                {{-- @if($v->role_module=="role_role-admin")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/role_admin')}}">Quản lí Quyền Admin</a></li>
-                                @endif
+                                @endif --}}
                             @endforeach
                         </ul>
                     </li>
@@ -147,7 +147,8 @@
                         <div class="user-menu dropdown-menu">
                            
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>{{$data->fullname??""}}</a>
-                            <a class="nav-link" href="{{URL::to('/admin/logout') }}"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="/admin/edit-acc-admin/{{$data->id}}"><i class="fa fa- user"></i>Cài đặt</a>
+                            <a class="nav-link" href="{{URL::to('/admin/logout') }}"><i class="fa fa-power -off"></i>Đăng xuất</a>
                         </div>
                     </div>
 
