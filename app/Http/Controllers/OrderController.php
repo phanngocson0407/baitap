@@ -86,7 +86,7 @@ class OrderController extends Controller
     {
         $order = Order::all();
         
-        return view('admin.order.index',['order'=>Order::paginate(2)]);
+        return view('admin.order.index',['order'=>Order::paginate(4)]);
     }
     public function show_detail($id)
     {

@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 @section('admin')
+<?php
+    $data=Session::get('data');
+    $role=Session::get('role');
+?>
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -7,52 +11,44 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Tài khoản Admin</strong>
+                                <strong class="card-title">Bảng Quyền Admin</strong>
                                 <br>
                                 <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
-                           
+                            <div class="col-lg-6 col-6 text-left">
+                                <form action="/admin/role_admin/" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm tên tài khoản">
+                                        <div class="input-group-append">
+                                            <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-body">
-                                <a href="{{URL::to('/admin/accout/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Accout</button>
+                                <a href="{{URL::to('/admin/accout/create-role/'.$id_admin_duocchon)}}">
+                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Quyền</button>
                                 </a>
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password </th>
-                                            <th>Xem Quyền </th>
-                                            <th>Tên đầy đủ </th>
-                                            <th>Số điện thoại </th>
-                                           
+                                            <th>Tên tài khoản admin</th>
+                                            <th>Tên Quyền</th>
+                                          
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
-                                       @foreach ($Admin as $item)
+                                       <?php $n=0 ?>
+                                       @foreach ($show_role as $item)
                                        <tr>
-                                            
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->username}}</td>
-                                            <td>{{$item->password}}</td>
-                                            <td><a href="{{URL::to('/admin/accout/show-role/'.$item->id)}}">Xem chi tiết</a></td>
-                                            <td>{{$item->fullname}}</td>
-                                            <td>{{$item->phone}}</td>
-                                           
-                                            <td>
-                                                <a href="accout/edit/{{$item->id}}">
-                                                <button  class="btn btn-outline-secondary">
-                                                <i class="fa fa-edit"></i>Sửa</button>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <form action="accout/delete/{{$item->id}}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="delete">
-                                                    <button onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
-                                                </form>
-                                            </td>
+                                        <?php $n++ ?>
+                                            <td>{{$n}}</td>
+                                            <td>{{$item->name_role}}</td>
+                                            <td>{{$item->role_module}}</td>
+                                          
                                         </tr>
                                            
                                        @endforeach
@@ -60,7 +56,7 @@
                                     </tbody>
                                 
                                 </table>
-                               
+                              
                             </div>
                         </div>
                     </div>
