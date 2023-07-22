@@ -90,22 +90,20 @@ Route::post('/detail/{id}', [CommentController::class, 'store'] );
 Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
 //cong thanh toan
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
-Route::post('/momopayment', [CheckoutController::class, 'momo_payment'] );
- 
+Route::post('/momopayment', [CheckoutController::class, 'momopayment'] );
  
 Route::get('/xacnhanvnpay', function(){
     return view('xacnhanvnpay');
 });
 Route::get('/xacnhanmomo', function(){
     return view('xacnhanmomo');
+    
 });
-//user
-
 Route::get('/info_user/{id}', function(){
     return view('info_user');
 });
 Route::put('/info_user/{id}', [UserController::class, 'updateUser'] );
-//cart
+
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::post('/checkoutVnpay', [CartController::class, 'checkoutVnpay'] );
@@ -178,9 +176,6 @@ route::prefix('admin')->group( function()
         Route::get('/edit/{id}',[AdminController::class,'edit']);
         Route::put('/edit/{id}',[AdminController::class,'update']);
         Route::delete('/delete/{id}',[AdminController::class,'destroy']);
-        Route::get('/show-role/{id}',[AdminController::class,'show_role']);
-        route::get('/create-role/{id}',  [AdminController::class,'create_role']);
-        route::post('/create-role',  [AdminController::class,'store_role']);
     });
     route::prefix('khachhang')->group( function(){
         route::get('/', [UserController::class, 'show']);
@@ -236,8 +231,7 @@ route::prefix('admin')->group( function()
     Route::post('/push-login',[AdminController::class,'kiemtraDN']);
     
 
-    Route::get('/edit-acc-admin/{id}', [AdminController::class, 'page_acc_admin']);
-    Route::put('/edit-acc-admin/{id}', [AdminController::class, 'edit_acc_admin']);
+
     Route::get('/logout', [AdminController::class, 'logout']);
 
 });

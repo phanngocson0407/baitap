@@ -97,7 +97,7 @@ class CheckoutController extends Controller
     return $result;
 }
   
-    public function momo_payment(Request $request){
+    public function momopayment(Request $request){
         $data= $request->all();
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';

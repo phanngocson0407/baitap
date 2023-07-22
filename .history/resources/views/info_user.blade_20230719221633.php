@@ -2,7 +2,7 @@
 @extends('user.dashboard')
 @section('user')
 
-    <!-- Page Header Start -->
+    <!-- Page Header Start -->git 
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 180px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông Tin Khách Hàng</h1>
@@ -37,28 +37,13 @@
                     <input class="form-control" required readonly name="username" type="text" value="{{$data1->username}}">
                 </div>
                 <div class="col-md-6 form-group">
-                    <label>Mật khẩu Cũ:</label>
-                    <input class="form-control" required   name="password_cu" type="password" value="">
-                    @if(session('error'))
-                        <a style="color:red">{{ session('error') }}</a>
-                     @endif
+                    <label>Mật khẩu</label>
+                    <input class="form-control" required   name="password" type="text" value=" {{$data1->password}}">
                 </div>
-
                 <div class="col-md-6 form-group">
                     <label>Email</label>
                     <input class="form-control" required name="email" type="email" value="{{$data1->email}}">
                 </div>
-                <div class="col-md-6 form-group">
-                    <label>Mật khẩu Mới:</label>
-                    <input class="form-control" required   name="password" type="password" value=""
-                    class="@error('password') form-control is-invalid @enderror">
-                    <span class="focus-input100" data-symbol="&#xf190;"></span>
-                    @error('password') 
-                    <a style="color:red">{{$message}} </a>
-                @enderror
-                </div>
-                
-                
                 <div class="col-md-6 form-group">
                     <label>Phone</label>
                     <input class="form-control" required name="phone" type="number" value="{{$data1->phone}}">

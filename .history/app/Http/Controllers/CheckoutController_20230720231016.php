@@ -97,7 +97,7 @@ class CheckoutController extends Controller
     return $result;
 }
   
-    public function momo_payment(Request $request){
+    public function momopayment(Request $request){
         $data= $request->all();
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
@@ -112,15 +112,15 @@ class CheckoutController extends Controller
         $extraData = "";
 
 
-        // $partnerCode = $partnerCode;
-        // $accessKey =  $accessKey;
-        // $secretKey = $secretKey;
-        // $orderId = $orderId; // Mã đơn hàng
-        // $orderInfo = $orderInfo;
-        // $amount = $amount;
-        // $ipnUrl = $ipnUrl;
-        // $redirectUrl = $redirectUrl;
-        // $extraData = $extraData;
+        $partnerCode = $partnerCode;
+        $accessKey =  $accessKey;
+        $secretKey = $secretKey;
+        $orderId = $orderId; // Mã đơn hàng
+        $orderInfo = $orderInfo;
+        $amount = $amount;
+        $ipnUrl = $ipnUrl;
+        $redirectUrl = $redirectUrl;
+        $extraData = $extraData;
 
         $requestId = time() . "";
         $requestType = "payWithATM";
@@ -128,7 +128,6 @@ class CheckoutController extends Controller
         //before sign HMAC SHA256 signature
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
-        // dd($signature);
         $data = array('partnerCode' => $partnerCode,
             'partnerName' => "Test",
             "storeId" => "MomoTestStore",
@@ -139,12 +138,12 @@ class CheckoutController extends Controller
             'redirectUrl' => $redirectUrl,
             'ipnUrl' => $ipnUrl,
             'lang' => 'vi',
-            // 'extraData' => $extraData,
+            'extraData' => $extraData,
             'requestType' => $requestType,
             'signature' => $signature);
             // dd($data);
-        $result = $this-> execPostRequest($endpoint, json_encode($data));
-        
+        $result = $this->execPostRequest($endpoint, json_encode($data));
+        dd($result);
         $jsonResult = json_decode($result, true);  // decode json
         dd($jsonResult);
         //Just a example, please check more in there
