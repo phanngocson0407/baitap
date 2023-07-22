@@ -142,7 +142,7 @@ class CheckoutController extends Controller
             // 'extraData' => $extraData,
             'requestType' => $requestType,
             'signature' => $signature);
-            dd($data);
+            // dd($data);
         $result = $this-> execPostRequest($endpoint, json_encode($data));
         
         $jsonResult = json_decode($result, true);  // decode json
