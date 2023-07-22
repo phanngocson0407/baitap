@@ -97,7 +97,7 @@ class CheckoutController extends Controller
     return $result;
 }
   
-    public function momo_payment(Request $request){
+    public function momopayment(Request $request){
         $data= $request->all();
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
@@ -112,14 +112,14 @@ class CheckoutController extends Controller
         $extraData = "";
 
 
-        // $partnerCode = $partnerCode;
-        // $accessKey =  $accessKey;
-        // $secretKey = $secretKey;
-        // $orderId = $orderId; // Mã đơn hàng
-        // $orderInfo = $orderInfo;
-        // $amount = $amount;
-        // $ipnUrl = $ipnUrl;
-        // $redirectUrl = $redirectUrl;
+        $partnerCode = $partnerCode;
+        $accessKey =  $accessKey;
+        $secretKey = $secretKey;
+        $orderId = $orderId; // Mã đơn hàng
+        $orderInfo = $orderInfo;
+        $amount = $amount;
+        $ipnUrl = $ipnUrl;
+        $redirectUrl = $redirectUrl;
         // $extraData = $extraData;
 
         $requestId = time() . "";

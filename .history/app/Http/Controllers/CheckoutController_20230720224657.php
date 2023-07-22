@@ -79,25 +79,25 @@ class CheckoutController extends Controller
         }
     }
     public function execPostRequest($url, $data)
-{
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($data))
-    );
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    //execute post
-    $result = curl_exec($ch);
-    //close connection
-    curl_close($ch);
-    return $result;
-}
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //execute post
+        $result = curl_exec($ch);
+        //close connection
+        curl_close($ch);
+        return $result;
+    }
   
-    public function momo_payment(Request $request){
+    public function momopayment(Request $request){
         $data= $request->all();
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
@@ -105,22 +105,22 @@ class CheckoutController extends Controller
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         
         $orderInfo = "Thanh toán qua MoMo";
-        $amount = $data['totalmomo'] * 100;
+        $amount = "10000";
         $orderId = rand(00000,99999);
         $redirectUrl = "http://127.0.0.1:8000/xacnhanmomo";
         $ipnUrl = "http://127.0.0.1:8000/xacnhanmomo";
         $extraData = "";
 
 
-        // $partnerCode = $partnerCode;
-        // $accessKey =  $accessKey;
-        // $secretKey = $secretKey;
-        // $orderId = $orderId; // Mã đơn hàng
-        // $orderInfo = $orderInfo;
-        // $amount = $amount;
-        // $ipnUrl = $ipnUrl;
-        // $redirectUrl = $redirectUrl;
-        // $extraData = $extraData;
+        $partnerCode = $partnerCode;
+        $accessKey =  $accessKey;
+        $secretKey = $secretKey;
+        $orderId = $orderId; // Mã đơn hàng
+        $orderInfo = $orderInfo;
+        $amount = $amount;
+        $ipnUrl = $ipnUrl;
+        $redirectUrl = $redirectUrl;
+        $extraData = $extraData;
 
         $requestId = time() . "";
         $requestType = "payWithATM";
@@ -128,7 +128,6 @@ class CheckoutController extends Controller
         //before sign HMAC SHA256 signature
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
-        // dd($signature);
         $data = array('partnerCode' => $partnerCode,
             'partnerName' => "Test",
             "storeId" => "MomoTestStore",
@@ -139,21 +138,14 @@ class CheckoutController extends Controller
             'redirectUrl' => $redirectUrl,
             'ipnUrl' => $ipnUrl,
             'lang' => 'vi',
-            // 'extraData' => $extraData,
+            'extraData' => $extraData,
             'requestType' => $requestType,
             'signature' => $signature);
-            // dd($data);
-        $result = $this-> execPostRequest($endpoint, json_encode($data));
-        
+        $result = $this->execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);  // decode json
-        dd($jsonResult);
+
         //Just a example, please check more in there
 
-        // if (isset($jsonResult['payUrl'])) {
-            return redirect()->to($jsonResult['payUrl']);
-        // } else {
-        //     return redirect('/');
-        // }
-               
+        header('Location: ' . $jsonResult['payUrl']);             
     }
 }

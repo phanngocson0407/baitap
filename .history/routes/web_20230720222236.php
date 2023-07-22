@@ -90,22 +90,20 @@ Route::post('/detail/{id}', [CommentController::class, 'store'] );
 Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
 //cong thanh toan
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
-Route::post('/momopayment', [CheckoutController::class, 'momo_payment'] );
- 
+Route::post('/momopayment', [CheckoutController::class, 'momopayment'] );
  
 Route::get('/xacnhanvnpay', function(){
     return view('xacnhanvnpay');
 });
 Route::get('/xacnhanmomo', function(){
     return view('xacnhanmomo');
-});
-//user
+});//
 
 Route::get('/info_user/{id}', function(){
     return view('info_user');
 });
 Route::put('/info_user/{id}', [UserController::class, 'updateUser'] );
-//cart
+
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::post('/checkoutVnpay', [CartController::class, 'checkoutVnpay'] );

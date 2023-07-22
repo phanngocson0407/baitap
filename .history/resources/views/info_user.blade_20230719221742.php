@@ -34,11 +34,11 @@
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Tên tài khoản</label>
-                    <input class="form-control" required readonly name="username" type="text" value="{{$data1->username}}">
+                    <input class="form-control" required readonly name="username" type="password" value="{{$data1->username}}">
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Mật khẩu Cũ:</label>
-                    <input class="form-control" required   name="password_cu" type="password" value="">
+                    <input class="form-control" required   name="password_cu" type="text" value="">
                     @if(session('error'))
                         <a style="color:red">{{ session('error') }}</a>
                      @endif
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Mật khẩu Mới:</label>
-                    <input class="form-control" required   name="password" type="password" value=""
+                    <input class="form-control" required   name="password" type="text" value=""
                     class="@error('password') form-control is-invalid @enderror">
                     <span class="focus-input100" data-symbol="&#xf190;"></span>
                     @error('password') 
