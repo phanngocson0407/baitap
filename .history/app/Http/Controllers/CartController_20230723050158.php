@@ -45,7 +45,8 @@ class CartController extends Controller
                 $data['color']=$item['productInfo']->name_color;
                 $data['price']= $item['productInfo']->price;
                 Order_Detail::create($data);
-                Session::forget('coupon');        
+                Session::forget('coupon');
+                
         }
          
         Mail::to($data['consingnee_email'])->send(new CheckoutMail(['nguoigui'=>'Shop giay new'] ));
