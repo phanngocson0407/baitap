@@ -12,8 +12,8 @@ class CheckoutController extends Controller
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 
 // $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
-// $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
-$vnp_Returnurl = "http://127.0.0.1:8000/xacnhanvnpay";
+$vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
+//$vnp_Returnurl = "http://127.0.0.1:8000/xacnhanvnpay";
 $vnp_TmnCode = "BR8YFTUY";//Mã website tại VNPAY 
 $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
 
@@ -80,7 +80,7 @@ $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
             echo json_encode($returnData);
         }
     }
-    public function execPostRequest($url, $data)
+     function execPostRequest($url, $data)
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -104,7 +104,7 @@ $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-        $orderInfo = "Thanh toann qua MoMo";
+        $orderInfo = "Thanh to&#1043;&#1038;n qua MoMo";
         $amount = $data['totalmomo']*100;
         $orderId = time() . "";
         $redirectUrl = "http://127.0.0.1:8000/xacnhanmomo";
