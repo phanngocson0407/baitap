@@ -10,19 +10,13 @@ class CheckoutController extends Controller
         $data= $request->all();
         $code_Cart = rand(00000,99999);
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-<<<<<<< HEAD
-        // $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
-        // $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
-        $vnp_Returnurl = "http://127.0.0.1:8000/xacnhanvnpay";
-        $vnp_TmnCode = "BR8YFTUY";//Mã website tại VNPAY 
-        $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
-=======
+
 // $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
 $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
 //$vnp_Returnurl = "http://127.0.0.1:8000/xacnhanvnpay";
 $vnp_TmnCode = "BR8YFTUY";//Mã website tại VNPAY 
 $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
->>>>>>> Son
+
 
         $vnp_TxnRef = $code_Cart; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Test thanh toan';
@@ -113,10 +107,14 @@ $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         
         $orderInfo = "Thanh toán qua MoMo";
-        $amount = $data['totalmomo'] * 100;
-        $orderId = rand(00000,99999);
-        $redirectUrl = "http://127.0.0.1:8000/xacnhanmomo";
-        $ipnUrl = "http://127.0.0.1:8000/xacnhanmomo";
+
+        $amount = "10000";
+        $orderId = time() . "";
+        // $redirectUrl = "http://127.0.0.1:8000/xacnhanmomo";
+        // $ipnUrl = "http://127.0.0.1:8000/xacnhanmomo";
+        $redirectUrl = "http://giaynew.demo.com/xacnhanmomo";
+        $ipnUrl = "http://giaynew.demo.com/xacnhanmomo";
+
         $extraData = "";
 
 
