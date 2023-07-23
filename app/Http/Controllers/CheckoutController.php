@@ -105,8 +105,10 @@ $returnData = array('code' => '00'
         $orderInfo = "Thanh toán qua MoMo";
         $amount = "10000";
         $orderId = time() . "";
-        $redirectUrl = "http://127.0.0.1:8000/xacnhanmomo";
-        $ipnUrl = "http://127.0.0.1:8000/xacnhanmomo";
+        // $redirectUrl = "http://127.0.0.1:8000/xacnhanmomo";
+        // $ipnUrl = "http://127.0.0.1:8000/xacnhanmomo";
+        $redirectUrl = "http://giaynew.demo.com/xacnhanmomo";
+        $ipnUrl = "http://giaynew.demo.com/xacnhanmomo";
         $extraData = "";
         $requestId = time() . "";
         $requestType = "payWithATM";
