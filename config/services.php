@@ -42,17 +42,13 @@ return [
     'redirect' => 'http://giaynew.demo.com/login/google/callback'
     ],
 
+    // 'google' => [
+    //     'client_id' => '381378445544-e5shaj4vefq5sj909r02tm80f27b5gok.apps.googleusercontent.com',
+    //     'client_secret' => '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',
+    //     'redirect' => 'http://127.0.0.1:8000/login/google/callback'
+    //     ],
 
-    'google1' => [
-        'client_id' => '8970498824-2gop0n44ajc7adr6q98q4ji873qmvhro.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://giaynew.demo.com/login/google/callback'
-        ],
-        'google2' => [
-            'client_id' => '752445044184-e1ka2fmi40ggaf46gqeql0v97i14otrc.apps.googleusercontent.com',
-            'client_secret' => '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',
-            'redirect' => 'http://lav2.cf/login/google/callback'
-            ],
+
 
 
 //GG onl
