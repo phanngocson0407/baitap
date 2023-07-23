@@ -360,7 +360,8 @@
                     <input style="border-radius: 10px;" type="hidden" name="product_id" value="{{ $detail['id'] }}">
                     <input style="border-radius: 10px;" type="text" name="comment_name" id="username" placeholder="Tên người dùng" required>
                     <textarea style="border-radius: 10px;" id="content" name="comment" placeholder="Nội dung bình luận" required></textarea>
-                    <button class="text-right" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
+                    <button class="text-right" id="submit-button" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
+                    <span id="error-message" style="color: red; display: none;">Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.</span>
                 </form>
             </div>
           </div>
@@ -552,5 +553,26 @@
                 }
             })
         });
+    </script>
+    <script>
+        // Lưu trữ thời gian cuối cùng mà người dùng đã gửi bình luận
+        var lastCommentTime = 0;
+    
+        // Bắt sự kiện submit form
+        document.getElementById("comment-form").onsubmit = function() {
+            // Lấy thời gian hiện tại
+            var currentTime = Math.floor(Date.now() / 1000);
+            // Kiểm tra xem người dùng có thể gửi bình luận tiếp hay không
+            if ((currentTime - lastCommentTime) < 60) {
+                document.getElementById("error-message").style.display = "block";
+                return false; // Ngăn form gửi đi nếu không đủ thời gian
+            }
+    
+            // Nếu người dùng có thể gửi bình luận, cập nhật thời gian gửi mới nhất
+            lastCommentTime = currentTime;
+    
+            // Cho phép gửi form đi
+            return true;
+        };
     </script>
     @endsection
