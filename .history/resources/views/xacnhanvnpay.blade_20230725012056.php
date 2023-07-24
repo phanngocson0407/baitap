@@ -162,9 +162,8 @@
 
 
                                 @else
-                                 
+                                <input hidden type="text"   name="coupon_used" value="2" id="">
                                 {{$cou['coupon_code']}}
-                                <input hidden  type="text"   name="coupon_code" value="{{$cou['coupon_code']}}" id="">
 
                                 @endif
 
