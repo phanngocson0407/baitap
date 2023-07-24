@@ -211,7 +211,10 @@
             </div>
             <form action="{{url('/vnpayment')}}" method="post" style=" padding: 0px 19px;">
                 @csrf
+                @if(Session::get('coupon'))
+                @foreach(Session::get('coupon') as $key =>$cou)
                 <input type="hidden" name="totalvnpay"  value="{{(Session::get('Cart')->totalPrice+ 30000) }}">
+                
                 <button style="border-radius: 10px; max-width: 300px; "  type="submit" name="redirect"  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" >Thanh Toán VNPAY </button>           
               
             </form>
@@ -255,7 +258,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
+
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
