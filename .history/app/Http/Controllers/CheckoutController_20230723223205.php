@@ -26,7 +26,7 @@ $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
         $vnp_BankCode =  'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
                 
-                $inputData = array( 
+                $inputData = array(
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
             "vnp_Amount" => $vnp_Amount,
@@ -98,7 +98,7 @@ $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
         curl_close($ch);
         return $result;
     }
-    public function momopayment(Request $request){
+    public function  p(Request $request){
         $data= $request->all();
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
