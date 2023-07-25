@@ -49,7 +49,7 @@
                                         <td>     <?php
                                             if($item->status_payment==0){
                                                 echo '<b style="color:blue">Thanh Toán Bằng Tiền Mặt</b>';
-                                            }elseif($item->status==1){
+                                            }elseif($item->status_payment==1){
                                                 echo '<b style="color:rgb(248, 12, 177)">Thanh Toán Qua VNPAY </b>';
                                    
                                             }
