@@ -10,17 +10,9 @@
 
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Bảng Size</strong>
-                            </div>
+                           
                             <div class="card-body">
-                                @foreach ($role as $k=>$v)
-                                @if($v->role_module=="role_create_size")
-                                <a href="{{URL::to('/admin/size/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm size</button>
-                                </a>
-                                @endif
-                                @endforeach
+                          
                                 
                                
                                 <table class="table table-striped table-bordered"> 

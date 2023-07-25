@@ -13,7 +13,8 @@
                             <div class="card-header">
                                 <strong class="card-title">Bảng Quyền Admin</strong>
                                 <br>
-                                <strong style="color: red" class="card-title">{{session('mess')}}</strong>
+                                <strong style="color: red" class="card-title">{{session('messthem')}}</strong>
+                                
                             </div>
                             <div class="col-lg-6 col-6 text-left">
                                 <form action="/admin/role_admin/" method="get">
