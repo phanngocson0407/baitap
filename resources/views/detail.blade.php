@@ -300,8 +300,6 @@
                             <div>
                               <p style="font-size: 23px; font-weight: 700; line-height: 22.4px;color: #c5837c" class="font-weight-medium mb-0 mr-3">
                                 <span class="text-dark" style="font-size: 15px">Khách Hàng:</span> {{$item->comment_name}}
-                              </p>
-                              <p class="font-weight-medium mb-0 mr-3">
                                 <span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Ngày:</span>
                                 <?php echo date('d/m/Y', strtotime($item->comment_date)); ?>
                               </p>
@@ -315,19 +313,9 @@
                         @if ($count === 0)
                           <p>Chưa có bình luận nào về sản phẩm này  </p>
                         @endif
-                      </div>
-                       
-                      
-                      
-                      
-                      
-                      
-                      
-              
+                    </div>
                 </div>
               </div>
-              
-              
           <div class="col-md-6">
             <div>
                 <div class="d-flex mb-3">

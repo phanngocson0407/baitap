@@ -46,12 +46,18 @@
                                         <td>{{$item->comment}}</td>
                                         <td>{{$item->comment_name}}</td>
                                         <td>{{$item->comment_date}}</td>
+
                                             <td>
                                                 <form action="comment/delete/{{$item->id}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-outline-danger" style="margin-bottom: 15px;"><i class="ti-trash"></i> Xóa</button>
                                                 </form>
+                                            </td>
+                                            <td>
+                                                <a href="comment/reply-comment/{{$item->id}}">
+                                                    <button class="btn btn-outline-success btn-block" style="margin-bottom: 15px;"><i class="fa fa-magic"></i>Trả lời bình luận</button>
+                                                </a>
                                             </td>
                                     </tbody>
                                 @endforeach

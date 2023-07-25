@@ -50,9 +50,17 @@ class ProductController extends Controller
         ->get();
         $comment = Comment::join('product','product.id','=','comment.product_id')
         ->select('comment.*',
-        'product.id')
+        'product.id',)
         ->where('comment.product_id',$id)
         ->get();
+
+        // $reply_comment = Comment::join('product','product.id','=','comment.product_id')
+        // ->join('reply_comment','reply_comment.id_comment','=','comment.id')
+        // ->select('comment.*',
+        // 'product.id',
+        // 'reply_comment.*')
+        // ->where('comment.product_id',$id)
+        // ->get();
 
         $rating = Rating::join('product','product.id','=','rating.id_product')
         ->select('rating.*',
@@ -63,6 +71,7 @@ class ProductController extends Controller
         $count = DB::table('rating')->where('rating.id_product',$id)->count();
    
         $detail = Product::find($id);
+        
         
         return view('detail', ['detail' => $detail ,'size' => $size ,'color' => $color ,'product'=>$product,'comment' =>$comment, 'rating'=>$rating,'count'=>$count]);
     }
