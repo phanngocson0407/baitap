@@ -101,10 +101,11 @@ class AdminController extends Controller
         RoleAdmin::where('id_admin',$id_admin)->delete();
         foreach($request->array_role_dachon as $k=>$v)
         {
-          $role_admin=new RoleAdmin;
-          $role_admin->id_admin=$id_admin;
-          $role_admin->id_role=$v;
-          $role_admin->save();
+                $role_admin=new RoleAdmin;
+                $role_admin->id_admin=$id_admin;
+                $role_admin->id_role=$v;
+                $role_admin->save();
+                session()->flash('messthem','Thêm quyền thành công vào admin');
         }
         return redirect('admin/accout/show-role/'.$id_admin);
     }

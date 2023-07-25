@@ -10,22 +10,13 @@
 
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Bảng Color</strong>
-                            </div>
+                          
                             <div class="card-body">
-                                @foreach ($role as $k=>$v)
-                                @if($v->role_module=="role_create_color")
-                                <a href="{{URL::to('/admin/color/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Color</button>
-                                </a>
-                                @endif
-                                @endforeach
+                              
                                 <table class="table table-striped table-bordered"> 
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                          
                                             <th>Tên Màu</th>
                                         </tr>
                                     </thead>

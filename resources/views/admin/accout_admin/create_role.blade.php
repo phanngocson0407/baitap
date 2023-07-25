@@ -6,10 +6,12 @@
         <div class="panel-heading">
             <h2 class="text-center">Thêm/Xóa Quyền Admin</h2>
         </div>
+       
         <div class="panel-body">
             <form method="post" action="{{URL::to('/admin/accout/create-role')}}" enctype="multipart/form-data">
                @csrf
                <input type="hidden" name="id_admin" value={{$id_admin_duocchon}}>
+              
                @foreach ($role_all as $all)
                     <?php 
                         $checked="";
