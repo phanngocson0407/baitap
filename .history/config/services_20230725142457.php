@@ -36,11 +36,11 @@ return [
        'redirect' => 'http://giaynew.demo.com/login/callback'
     ],
 //GG local
-    // 'google' => [
-    // 'client_id' => '381378445544-e5shaj4vefq5sj909r02tm80f27b5gok.apps.googleusercontent.com',
-    // 'client_secret' => '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',
-    // 'redirect' => 'http://giaynew.demo.com/login/google/callback'
-    // ],
+    'google' => [
+    'client_id' => '381378445544-e5shaj4vefq5sj909r02tm80f27b5gok.apps.googleusercontent.com',
+    'client_secret' => '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',
+    'redirect' => 'http://giaynew.demo.com/login/google/callback'
+    ],
 
     'google' => [
         'client_id' => '381378445544-e5shaj4vefq5sj909r02tm80f27b5gok.apps.googleusercontent.com',

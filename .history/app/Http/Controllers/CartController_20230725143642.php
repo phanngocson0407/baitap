@@ -138,59 +138,53 @@ class CartController extends Controller
         ->groupBy('order.coupon_code')
         ->first();
         
-        
 
-        if($data['coupon']!=null){
-            if($check_quanti_order->total < $check_quanti_coupon->coupon_quanti){
-                if($check_coupon==null){
-                    $coupon = Coupon::where('coupon_code',$data['coupon'])->first();        
-                     if($coupon){
-                        $count_coupon = $coupon->count();             
-                        if($count_coupon>0){
-                            $coupon_session = Session::get('coupon');            
-                            if($coupon_session==true){
-                                $is_avaiable = 0;
-                                if($is_avaiable==0){
-                                    $cou[]=array(
-                                        'id_coupon '=>$coupon->id_coupon ,
-                                        'coupon_code'=>$coupon->coupon_code,
-                                    'coupon_condition'=>$coupon->coupon_condition,
-                                    'coupon_number'=>$coupon->coupon_number,
-                                    'coupon_quanti'=>$coupon->coupon_quanti,                              
-                                );                                  
-                                session::put('coupon',$cou);
-                                }
-                                }else{
+        if($check_quanti_order->total==)
+        if($check_quanti_order->total < $check_quanti_coupon->coupon_quanti){
+            if($check_coupon==null){
+                $coupon = Coupon::where('coupon_code',$data['coupon'])->first();        
+                 if($coupon){
+                    $count_coupon = $coupon->count();             
+                    if($count_coupon>0){
+                        $coupon_session = Session::get('coupon');            
+                        if($coupon_session==true){
+                            $is_avaiable = 0;
+                            if($is_avaiable==0){
                                 $cou[]=array(
                                     'id_coupon '=>$coupon->id_coupon ,
                                     'coupon_code'=>$coupon->coupon_code,
-                                    'coupon_condition'=>$coupon->coupon_condition,
-                                    'coupon_number'=>$coupon->coupon_number,
-                                    'coupon_quanti'=>$coupon->coupon_quanti,                        
-                                );
-                         
-                                // dd($cou);
-                                session::put('coupon',$cou);
+                                'coupon_condition'=>$coupon->coupon_condition,
+                                'coupon_number'=>$coupon->coupon_number,
+                                'coupon_quanti'=>$coupon->coupon_quanti,                              
+                            );                                  
+                            session::put('coupon',$cou);
                             }
-                            session::save();                      
-                            return redirect()->back()->with('message','thêm mã giảm giá thành công');
+                            }else{
+                            $cou[]=array(
+                                'id_coupon '=>$coupon->id_coupon ,
+                                'coupon_code'=>$coupon->coupon_code,
+                                'coupon_condition'=>$coupon->coupon_condition,
+                                'coupon_number'=>$coupon->coupon_number,
+                                'coupon_quanti'=>$coupon->coupon_quanti,                        
+                            );
+                     
+                            // dd($cou);
+                            session::put('coupon',$cou);
                         }
-                    }else{
-                        Session::forget('coupon'); 
-                        return redirect()->back()->with('error','Mã giảm giá không tồn tại hoặc đã hết');
-                     }
-                }else{   
+                        session::save();                      
+                        return redirect()->back()->with('message','thêm mã giảm giá thành công');
+                    }
+                }else{
                     Session::forget('coupon'); 
-                    return redirect()->back()->with('error','Bạn đã sử dụng mã này rồi');
-                }
-            }else{
+                    return redirect()->back()->with('error','Mã giảm giá không tồn tại hoặc đã hết');
+                 }
+            }else{   
                 Session::forget('coupon'); 
-                return redirect()->back()->with('error','Đã hết mã giảm giá');
+                return redirect()->back()->with('error','Bạn đã sử dụng mã này rồi');
             }
         }else{
             Session::forget('coupon'); 
-            return redirect()->back()->with('error','Bạn chưa nhập mã giảm giá');
+            return redirect()->back()->with('error','Đã hết mã giảm giá');
         }
-        
     }
 }

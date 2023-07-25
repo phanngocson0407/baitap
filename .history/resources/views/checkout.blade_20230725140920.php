@@ -221,8 +221,12 @@
                 @csrf
              
                 <div class="input-group">
-                    <input hidden  type="text"   name="id_user" value="{{$data1->id??""}}" id="">                                 
-                    <input type="text" name="coupon" value=" " class="form-control p-4" placeholder="Nhập mã giảm giá">               
+                    <input hidden  type="text"   name="id_user" value="{{$data1->id??""}}" id="">
+                    
+                      
+                    <input type="text" name="coupon" value=" " class="form-control p-4" placeholder="Nhập mã giảm giá">
+                 
+                  
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary check_coupon">Mã giảm giá</button>
                     </div>

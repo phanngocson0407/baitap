@@ -138,9 +138,8 @@ class CartController extends Controller
         ->groupBy('order.coupon_code')
         ->first();
         
-        
 
-        if($data['coupon']!=null){
+        if($check_quanti_order->total!=null){
             if($check_quanti_order->total < $check_quanti_coupon->coupon_quanti){
                 if($check_coupon==null){
                     $coupon = Coupon::where('coupon_code',$data['coupon'])->first();        
@@ -191,6 +190,6 @@ class CartController extends Controller
             Session::forget('coupon'); 
             return redirect()->back()->with('error','Bạn chưa nhập mã giảm giá');
         }
-        
+ 
     }
 }
