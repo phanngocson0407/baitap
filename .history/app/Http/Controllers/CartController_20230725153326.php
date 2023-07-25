@@ -137,59 +137,15 @@ class CartController extends Controller
         ->select('order.coupon_code',DB::raw('count(*) as total'))
         ->groupBy('order.coupon_code')
         ->first();
-        $check_quanti = Order::join('coupon', 'coupon.coupon_code', '=', 'order.coupon_code')
-        ->whereNotNull('order.coupon_code')
-    ->count('order.coupon_code');
-        // dd($check_quanti);
+        $check_totalcoupon_order= Order::where('coupon_code',$data['coupon'])->first();
+        dd
         // if(){
             
         // }
         if($check_quanti_coupon !=null){
             if($data['coupon']!=null){
-                if($check_quanti_order->total==null){
-                    if($check_coupon==null){
-                        $coupon = Coupon::where('coupon_code',$data['coupon'])->first();        
-                         if($coupon){
-                            $count_coupon = $coupon->count();             
-                            if($count_coupon>0){
-                                $coupon_session = Session::get('coupon');            
-                                if($coupon_session==true){
-                                    $is_avaiable = 0;
-                                    if($is_avaiable==0){
-                                        $cou[]=array(
-                                            'id_coupon '=>$coupon->id_coupon ,
-                                            'coupon_code'=>$coupon->coupon_code,
-                                        'coupon_condition'=>$coupon->coupon_condition,
-                                        'coupon_number'=>$coupon->coupon_number,
-                                        'coupon_quanti'=>$coupon->coupon_quanti,                              
-                                    );                                  
-                                    session::put('coupon',$cou);
-                                    }
-                                    }else{
-                                    $cou[]=array(
-                                        'id_coupon '=>$coupon->id_coupon ,
-                                        'coupon_code'=>$coupon->coupon_code,
-                                        'coupon_condition'=>$coupon->coupon_condition,
-                                        'coupon_number'=>$coupon->coupon_number,
-                                        'coupon_quanti'=>$coupon->coupon_quanti,                        
-                                    );
-                             
-                                    // dd($cou);
-                                    session::put('coupon',$cou);
-                                }
-                                session::save();                      
-                                return redirect()->back()->with('message','thêm mã giảm giá thành công');
-                            }
-                        }else{
-                            Session::forget('coupon'); 
-                            return redirect()->back()->with('error','Mã giảm giá không tồn tại hoặc đã hết');
-                         }
-                    }else{   
-                        Session::forget('coupon'); 
-                        return redirect()->back()->with('error','Bạn đã sử dụng mã này rồi');
-                    }
-                }
-                elseif($check_quanti_order->total < $check_quanti_coupon->coupon_quanti){
+            
+                if($check_quanti_order->total < $check_quanti_coupon->coupon_quanti){
                     if($check_coupon==null){
                         $coupon = Coupon::where('coupon_code',$data['coupon'])->first();        
                          if($coupon){
