@@ -45,7 +45,7 @@
                 <td>     <?php
                     if($item->status_payment==0){
                         echo 'Thanh Toán Bằng Tiền Mặt';
-                    }elseif($item->status==1){
+                    }elseif($item->status_payment==1){
                         echo 'Thanh Toán Qua VNPAY';
            
                     }
