@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Models\Comment;
+use App\Models\ReplyComment;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 
@@ -73,8 +74,15 @@ class CommentController extends Controller
             'product.*',
             'comment.*'
         )->get();
-        return view('admin.comment.index',['cm'=>$cm]);
+
+        $reply = ReplyComment::all();
+        return view('admin.comment.index',
+        [
+            'cm'=>$cm,
+            'reply'=>$reply,
+        ]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -120,6 +128,22 @@ class CommentController extends Controller
             $comment = Comment::find($id);
             $comment->delete();
             session()->flash('mess', 'Xóa Thành công!');
+        return redirect('/admin/comment/');
+    }
+    public function reply_comment($id)
+    {
+        $comment = Comment:: join('product','product.id','=','comment.product_id')
+        ->select('product.*','comment.*')
+        ->find($id);
+        
+        return view ('admin.comment.reply_comment',['comment'=>$comment]);
+    }
+    public function create_reply_comment(Request $request) {
+        $data_reply =array();
+        $data_reply['id_comment']=$request->id_comment; 
+        $data_reply['name_admin']=$request->name_admin;
+        $data_reply['reply']=$request->reply;
+        DB::table('reply_comment')->insert($data_reply);
         return redirect('/admin/comment/');
     }
 }

@@ -90,6 +90,7 @@ Route::get('/cart', function(){
 //đánh giá sản phẩm
 Route::post('/detail/{id}', [CommentController::class, 'store'] );
 Route::post('/insert-rating', [CommentController::class, 'insert_rating'] );
+Route::get('/showreply', [CommentController::class, 'show_reply'] );
 //cong thanh toan
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
 Route::post('/momopayment', [CheckoutController::class, 'momopayment'] );
@@ -236,6 +237,8 @@ route::prefix('admin')->group( function()
         Route::get('/unactive/{id}', [CommentController::class, 'unactive']);
         Route::get('/active/{id}', [CommentController::class, 'active']);
         Route::delete('/delete/{id}',[CommentController::class,'destroy']);
+        Route::get('/reply-comment/{id}',[CommentController::class,'reply_comment']);
+        Route::post('/reply-comment',[CommentController::class,'create_reply_comment']);
     });
 
   
