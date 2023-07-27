@@ -143,7 +143,7 @@ class CartController extends Controller
         // dd($check_quanti);
         // if(){
             
-        // } 
+        // }
         if($check_quanti_coupon !=null){
             if($data['coupon']!=null){
                 if($check_quanti_order->total==null){
