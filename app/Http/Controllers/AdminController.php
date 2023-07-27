@@ -19,6 +19,7 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $status = 3;
+        $status_huy = 0;
         $count = DB::table('order')
         ->join('order_detail','order.id','=','order_detail.id_order')
         ->where('order.status', $status)
@@ -56,7 +57,7 @@ class AdminController extends Controller
         
 
         $userCount = User::count();
-        $OrderCount = Order::count();
+        $OrderCount = Order::where('order.status_huy', $status_huy)->count();
         return view('admin/trangchu',[
             'count'=>$count,
             'status' => $status,
