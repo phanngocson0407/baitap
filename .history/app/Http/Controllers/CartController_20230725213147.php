@@ -143,14 +143,15 @@ class CartController extends Controller
         // dd($check_quanti);
         // if(){
             
-        // } 
+        // }
         if($check_quanti_coupon !=null){
             if($data['coupon']!=null){
                 if($check_quanti_order->total==null){
                     if($check_coupon==null){
                         $coupon = Coupon::where('coupon_code',$data['coupon'])->first();     
                          if($coupon){
-                            $count_coupon = $coupon->count();              
+                            $count_coupon = $coupon->count();  
+            
                             if($count_coupon>0){
                                 $coupon_session = Session::get('coupon');            
                                 if($coupon_session==true){
