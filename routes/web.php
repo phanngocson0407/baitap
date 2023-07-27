@@ -17,6 +17,8 @@ use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\OrderDetailController;  
 use App\Http\Controllers\MapController;  
 use App\Http\Controllers\CheckoutController;  
+use App\Http\Controllers\CouponController;
+use App\Models\Coupon;
 use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
@@ -94,17 +96,20 @@ Route::get('/showreply', [CommentController::class, 'show_reply'] );
 Route::post('/vnpayment', [CheckoutController::class, 'vnpayment'] );
 Route::post('/momopayment', [CheckoutController::class, 'momopayment'] );
  
+ 
 Route::get('/xacnhanvnpay', function(){
     return view('xacnhanvnpay');
 });
 Route::get('/xacnhanmomo', function(){
     return view('xacnhanmomo');
 });
+//user
+
 Route::get('/info_user/{id}', function(){
     return view('info_user');
 });
 Route::put('/info_user/{id}', [UserController::class, 'updateUser'] );
-
+//cart
 Route::get('/List-Cart', [CartController::class, 'ViewListCart'] );
 Route::post('/List-Cart', [CartController::class, 'checkout'] );
 Route::post('/checkoutVnpay', [CartController::class, 'checkoutVnpay'] );
@@ -122,10 +127,18 @@ Route::get('/admin/callback',[UserController::class,'callback_facebook']);
 //đăng nhập google
 Route::get('/login/login-google',[UserController::class,'login_google']);
 Route::get('/login/google/callback',[UserController::class,'callback_google']);
+
+//check_coupon
+Route::post('/check_coupon',[CartController::class,'check_coupon']);
 //route for admin
 route::prefix('admin')->group( function()
 {
-
+    route::prefix('coupon')->group( function(){
+        route::get('/', [CouponController::class, 'show']);
+        route::get('/create',  [CouponController::class, 'create']);
+        route::post('/create',  [CouponController::class, 'store']);
+        route::delete('/delete/{id}',[CouponController::class,'destroy'] );
+    });
     route::prefix('product')->group( function(){
         route::get('/', [ProductController::class, 'show']);
         route::get('/create',  [ProductController::class, 'create']);

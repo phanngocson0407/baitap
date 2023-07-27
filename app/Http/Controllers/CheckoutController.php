@@ -12,8 +12,13 @@ class CheckoutController extends Controller
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 
 // $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
-$vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
+
+ $vnp_Returnurl = "http://giaynew.demo.com/xacnhanvnpay";
+
+
+
 // $vnp_Returnurl = "http://127.0.0.1:8000/xacnhanvnpay";
+
 $vnp_TmnCode = "BR8YFTUY";//Mã website tại VNPAY 
 $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
 
@@ -21,12 +26,12 @@ $vnp_HashSecret = "OSAKVFQBCMPXGYJBVGNPEJENHSQUSLIA"; //Chuỗi bí mật
         $vnp_TxnRef = $code_Cart; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Test thanh toan';
         $vnp_OrderType ='billpayment';
-        $vnp_Amount = $data['totalvnpay'] * 100;
+        $vnp_Amount = $data['total'] * 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode =  'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
                 
-                $inputData = array(
+                $inputData = array( 
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
             "vnp_Amount" => $vnp_Amount,

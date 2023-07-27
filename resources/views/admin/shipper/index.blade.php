@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Đơn hàng</strong>
+                                <strong class="card-title">Vận chuyển đơn hàng</strong>
                             </div>
                             <div class="card-body" id="change-list-status">
                                 <table class="table table-striped table-bordered"> 
@@ -37,7 +37,7 @@
                                         <?php $n=0 ?>
                                       @foreach($order as $item)
                                      
-                                      @if($item->status!=0){
+                                      @if($item->status!=0)
                                        <?php $n++ ?>
                                        <tr>
                                        <td>{{$n}}</td>
@@ -81,12 +81,14 @@
 
                                         </td>
                                         <td>
+                                            @if($item->status==2 || $item->status == 1)
                                             <input type="hidden" value="{{$item->id}}" name="id_order">
                                             <select name="status" id="status" class="update_status_vanchuyen">
                                                 <option value="">---Chọn trạng thái---</option>
                                                 <option value="2">Đang vận chuyển</option>
                                                 <option value="3">Giao hàng thành công</option>
                                             </select>
+                                            @endif
                                         </td>
                                         @foreach ($role as $k=>$v)
                                             @if($v->role_module=="role_edit_order")
@@ -99,7 +101,7 @@
                                             @endif
                                             @endforeach
                                         </tr>
-                                    }@endif
+                                    @endif
                                     @endforeach
                                     </tbody>
                                 </table>

@@ -6,7 +6,7 @@
             <div class="animated fadeIn">
                 <!-- Widgets  -->
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$OrderCount}}</span></div>
+                                            <div class="stat-text"><span class="">{{$OrderCount}}</span></div>
                                             <div class="stat-heading">Số Lượng Đơn hàng</div>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    {{-- <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
@@ -54,16 +54,16 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-text"><span class="">349</span></div>
                                             <div class="stat-heading">Kho sản phẩm</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$userCount}}</span></div>
+                                            <div class="stat-text"><span class="">{{$userCount}}</span></div>
                                             <div class="stat-heading">Tài khoản </div>
                                         </div>
                                     </div>

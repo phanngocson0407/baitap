@@ -56,8 +56,8 @@
                                         ?></td>
                                         <td>
                                             <?php
-                                                 if($item->status==0){
-                                                    echo '<b style="color:rgb(216, 12, 238)">Đang chờ duyệt đơn</b>';
+                                                if($item->status==0){
+                                                    echo '<b style="color:rgb(216, 12, 238)">Đang chờ duyệt</b>';
                                                 }elseif($item->status==1){
                                                     echo '<b style="color:rgb(12, 170, 238)">Đã duyệt đơn hàng</b>';
                                                 }elseif($item->status==2){
@@ -78,14 +78,15 @@
 
                                         </td>
                                         <td>
-                                            @if($item->status == 2 && $item->status==3){
+                                            @if($item->status==0)
                                             <input type="hidden" value="{{$item->id}}" name="id_order">
                                             <select name="status" id="status" class="update_status">
                                                 <option value="">---Chọn trạng thái---</option>
+                                                
                                                 <option value="0">Đặt hàng(chờ duyệt)</option>
-                                                <option value="1">Đã duyệt đơn hàng</option>
+                                                <option value="1">Duyệt đơn hàng</option>
                                             </select>
-                                        }@endif
+                                            @endif
                                         </td>
                                         @foreach ($role as $k=>$v)
                                             @if($v->role_module=="role_edit_order")

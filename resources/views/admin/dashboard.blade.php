@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Shop giày new</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -72,11 +72,14 @@
                                 @if($v->role_module=="role_user")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
                                 @endif
-                                @if($v->role_module=="role_shipper")
-                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/shipper')}}">Vận chuyển</a></li>
+                                @if($v->role_module=="role_coupon")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/coupon')}}">Quản lí Mã Giảm Gía</a></li>
+                                @endif
+                                @if($v->role_module=="role_comment")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/comment')}}">Quản lí Đánh giá</a></li>
                                 @endif
                             @endforeach
-                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/comment')}}">Quản lí Đánh giá</a></li>
+                            
                             
                         </ul>
                     </li>
@@ -104,6 +107,18 @@
                             @endforeach
                         </ul>
                     </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="menu-icon fa fa-users"></i>Vận chuyển</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            @foreach ($role as $k=>$v) 
+                            
+                            @if($v->role_module=="role_shipper")
+                            <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/shipper')}}">Vận chuyển</a></li>
+                            @endif
+                            @endforeach
+                        </ul>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -114,8 +129,8 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="{{url('backend')}}/img/logo.png" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="{{url('backend')}}/img/logo2.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="{{URL('/admin/trangchu')}}"><img src="{{url('backend')}}/img/logogiaynew.png" alt="Logo"></a>
+               
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
