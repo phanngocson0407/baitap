@@ -189,15 +189,31 @@ class UserController extends Controller
         }
     }
     public function updateUser(Request $request,$id){
-        $v = $request->validate([
-            'password'=>'required|min:8|regex:/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', 
-        ],
-        [
-            'password.required'=>'Điền mật khẩu',
-            'password.min'=>'Mật khẩu ít nhất 8 chữ số',
-            'password.regex'=>'Bao gốm cả chữ và số',
-        ]
-    );
+    $v = $request->validate([
+        'email'=>'required|unique:user',
+        'password'=>'required|min:8|regex:/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', 
+        'fullname'=>'required',
+        'address'=>'required|min:20',   
+        'phone'=>'required|numeric|digits:10',
+    ],
+    [
+        'email.required'=>'Điền email',
+        'email.unique'=>'Đã có người sử dụng email này rồi',
+
+        'phone.required'=>'Điền số điện thoại',
+        'phone.digits'=>'Số điện thoại phải có 10 chữ số.',
+
+        'password.required'=>'Điền mật khẩu',
+        'password.min'=>'Mật khẩu ít nhất 8 chữ số',
+        'password.regex'=>'Bao gốm cả chữ và số',
+        
+        'fullname.required'=>'Điền họ và tên đầy đủ',
+
+        'address.required'=>'Điền địa chỉ',
+        'address.min'=>'Ít nhất 20 ký tự',
+            
+    ]
+);
         $data_khachhang =array();
         $data_khachhang['fullname']=$request->fullname;
         $data_khachhang['email']=$request->email;

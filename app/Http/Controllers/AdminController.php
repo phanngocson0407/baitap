@@ -251,7 +251,15 @@ class AdminController extends Controller
     }
 
     public function edit_acc_admin(Request $request, $id)
-{
+    {
+        $v = $request->validate([
+            'phone'=>'required|numeric|digits:10',
+        ],
+        [
+            'phone.required'=>'Điền số điện thoại',
+            'phone.digits'=>'Số điện thoại phải có 10 chữ số.',
+        ]
+    );
     $data_admin = array();
     $data_admin['fullname'] = $request->fullname;
     $data_admin['phone'] = $request->phone;

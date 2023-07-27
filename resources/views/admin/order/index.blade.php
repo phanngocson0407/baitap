@@ -37,10 +37,14 @@
                                        <?php $n++ ?>
                                        <tr>
                                        <td>{{$n}}</td>
-                                        <td data-id="{{$item->id}}"> <a href="{{URL::to('/admin/order/order-detail/' .$item->id)}}"
-                                            style="color:blue">
+                                     
+                                        <td data-id="{{$item->id}}">
+                                            @if($item->status_huy!=1)<a href="{{URL::to('/admin/order/order-detail/' .$item->id)}}" style="color:blue">
+                                            
+                                            @endif
                                              {{$item->id}}</a>
                                         </td>
+                                        
                                         <td>{{$item->date_payment}}</td>    
                                         <td>{{$item->consingnee_email}}</td>
                                         <td>{{$item->consingnee_name}}</td>
@@ -79,6 +83,7 @@
                                         </td>
                                         <td>
                                             @if($item->status==0)
+                                                @if($item->status_huy!=1)
                                             <input type="hidden" value="{{$item->id}}" name="id_order">
                                             <select name="status" id="status" class="update_status">
                                                 <option value="">---Chọn trạng thái---</option>
@@ -86,6 +91,7 @@
                                                 <option value="0">Đặt hàng(chờ duyệt)</option>
                                                 <option value="1">Duyệt đơn hàng</option>
                                             </select>
+                                            @endif
                                             @endif
                                         </td>
                                         @foreach ($role as $k=>$v)

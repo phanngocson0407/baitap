@@ -26,8 +26,13 @@
                  <label for="name">Số điện thoại:</label>
 
                  <input required="true" name="phone" type="text" class="form-control" id="title" name="title"
-                 value="{{$data_admin->phone}}">
+                 value="{{$data_admin->phone}}" 
+                 class="@error('phone') form-control is-invalid @enderror">
+                 <span class="focus-input100" data-symbol="&#9742;"></span>
              </div>
+             @error('phone') 
+             <div class="" style="color:red">{{$message}} </div>
+              @enderror
              <div class="form-group">
                 <label for="name">Tên tài khoản:</label>
 
