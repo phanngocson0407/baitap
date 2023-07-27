@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RoleAdminController; 
 use App\Http\Controllers\CommentController;  
 use App\Http\Controllers\OrderController;  
+use App\Http\Controllers\ShipperController;  
 use App\Http\Controllers\OrderDetailController;  
 use App\Http\Controllers\MapController;  
 use App\Http\Controllers\CheckoutController;  
@@ -226,6 +227,10 @@ route::prefix('admin')->group( function()
         Route::delete('/delete/{id}',[CommentController::class,'destroy']);
         Route::get('/reply-comment/{id}',[CommentController::class,'reply_comment']);
         Route::post('/reply-comment',[CommentController::class,'create_reply_comment']);
+    });
+    route::prefix('shipper')->group( function(){
+        Route::get('/', [ShipperController::class, 'show']);
+        route::post('/update-status-vanchuyen', [ShipperController::class, 'update_status_vanchuyen']);
     });
 
   

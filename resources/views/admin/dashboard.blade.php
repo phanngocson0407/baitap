@@ -47,7 +47,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="menu-icon fa fa-users"></i>Quản lí</a>
                         <ul class="sub-menu children dropdown-menu">
                             @foreach ($role as $k=>$v)
-                               
                                 @if($v->role_module=="role_product")
                                     <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/product')}}">Quản lí Sản phẩm</a></li>
                                 @endif
@@ -72,6 +71,9 @@
                                 @endif
                                 @if($v->role_module=="role_user")
                                 <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/khachhang')}}">Quản lí Khách hàng</a></li>
+                                @endif
+                                @if($v->role_module=="role_shipper")
+                                <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/shipper')}}">Vận chuyển</a></li>
                                 @endif
                             @endforeach
                             <li><i class="menu-icon fa fa-paperclip"></i><a href="{{URL('/admin/comment')}}">Quản lí Đánh giá</a></li>
