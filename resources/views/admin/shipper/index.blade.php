@@ -83,32 +83,30 @@
                                         <td>
                                             @if($item->status==2 || $item->status == 1)
                                             <input type="hidden" value="{{$item->id}}" name="id_order">
-                                            <select name="status" id="status" class="update_status_vanchuyen">
-                                                <option value="">---Chọn trạng thái---</option>
-                                                <option value="2">Đang vận chuyển</option>
-                                                <option value="3">Giao hàng thành công</option>
-                                            </select>
+                                                @if($item->status==1)
+                                                <select name="status" id="status" class="update_status_vanchuyen">
+                                                    <option value="">---Chọn trạng thái---</option>
+                                                    <option value="2">Đang vận chuyển</option>
+                                                </select>
+                                                @elseif($item->status==2)
+                                                <select name="status" id="status" class="update_status_vanchuyen">
+                                                    <option value="">---Chọn trạng thái---</option>
+                                                    <option value="3">Giao hàng thành công</option>
+                                                </select>
+                                                @endif
                                             @endif
                                         </td>
-                                        @foreach ($role as $k=>$v)
-                                            @if($v->role_module=="role_edit_order")
-                                            <td>
-                                                <a href="order/edit/{{$item->id}}">
-                                                <button  class="btn btn-outline-secondary">
-                                                <i class="fa fa-edit"></i>Sửa</button>
-                                                </a>
-                                            </td>
-                                            @endif
-                                            @endforeach
+                                   
                                         </tr>
                                     @endif
                                     @endforeach
                                     </tbody>
                                 </table>
+                                {{$order->links()}}
                             </div>
                         </div>
                     </div>
-                    {{$order->links()}}
+                   
 
                 </div>
             </div><!-- .animated -->

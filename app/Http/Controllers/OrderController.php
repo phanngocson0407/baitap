@@ -86,9 +86,10 @@ class OrderController extends Controller
 }
     public function show(Order $Order)
     {
-        $order = Order::all();
+        $order = Order::orderBy('status', 'asc')
+        ->orderBy('status_huy', 'asc')->paginate(4);
         
-        return view('admin.order.index',['order'=>Order::paginate(4)]);
+        return view('admin.order.index',['order'=>$order]);
     }
     public function show_detail($id)
     {

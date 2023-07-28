@@ -6,7 +6,7 @@ use App\Models\Comment;
 use App\Models\ReplyComment;
 use App\Models\Rating;
 use Illuminate\Http\Request;
-
+use Illuminate\Pagination\Paginator;
 class CommentController extends Controller
 {
     /**
@@ -72,8 +72,9 @@ class CommentController extends Controller
         $cm = Comment::join('product','product.id','=','comment.product_id')
         ->select(
             'product.*',
-            'comment.*'
-        )->get();
+            'comment.*')
+        ->orderByRaw("CASE WHEN status = 0 THEN 0 ELSE 1 END")
+        ->paginate(4);
 
         $reply = ReplyComment::all();
         return view('admin.comment.index',

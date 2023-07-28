@@ -11,27 +11,16 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bảng Coupon</strong>
+                                <strong class="card-title">Bảng Mã Giảm Giá</strong>
                                 <br>
                                 <strong style="color: red" class="card-title">{{session('mess')}}</strong>
                             </div>
-                            <div class="col-lg-6 col-6 text-left">
-                                <form action="/admin/size/" method="get">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm id sản phẩm">
-                                        <div class="input-group-append">
-                                            <input type="submit" class="input-group-text bg-transparent text-primary" value="Tìm Kiếm">
-                                                
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                           
                             <div class="card-body">
                                 @foreach ($role as $k=>$v)
                                 @if($v->role_module=="role_create_coupon")
                                 <a href="{{URL::to('/admin/coupon/create') }}">
-                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Coupon</button>
+                                    <button class="btn btn-outline-primary" style="margin-bottom: 15px;"><i class="fa fa-star"></i>Thêm Mã Giảm Giá</button>
                                 </a>
                                 @endif
                                 @endforeach
