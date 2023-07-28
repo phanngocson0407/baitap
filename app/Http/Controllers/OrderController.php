@@ -99,20 +99,15 @@ class OrderController extends Controller
         ->select(
             'user.*',
             'order_detail.*',
-            'order.id',
+            'order.*',
             'product.image',
         )
         ->where('order_detail.id_order', $id)
         ->get();
 
-        $total = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
-        ->select(
-            'order_detail.*',
-        )
-        ->where('order_detail.id_order', $id)
-        ->sum(DB::raw('price * quantity'));
+   
         $Order_detail = Order::find($id);
-        return view('admin.order.show_detail',['order_detail'=>$Order_detail,'order'=>$Order,'total'=>$total]);
+        return view('admin.order.show_detail',['order_detail'=>$Order_detail,'order'=>$Order]);
     }
     /**
      * Show the form for editing the specified resource.

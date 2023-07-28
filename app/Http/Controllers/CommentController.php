@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Models\Comment;
+use App\Models\Order;
 use App\Models\ReplyComment;
 use App\Models\Rating;
 use Illuminate\Http\Request;
@@ -51,15 +52,45 @@ class CommentController extends Controller
         return Redirect('/detail/'.$id);
     }
 
-    public function insert_rating(Request $r) {
-        $data=$r->all();
-       
-        $rating=new Rating();
-        $rating->id_product=$data['id_product'];
-        $rating->rating=$data['index'];
+ 
+
+// Mã PHP được sửa đổi để trả về mã lỗi và thông báo hợp lệ cho mã JavaScript
+
+function insert_rating(Request $r) {
+    $data = $r->all();
+    $status = 3;
+    $check_rating = Rating::where('id_user', $data['id_user'])
+                      ->where('id_product', $data['id_product'])
+                      ->first();
+
+    // $check_pay = Order::where('status','3')->first();
+    $check_pay = Rating::join('user','rating.id_user','=','user.id')
+    ->join('order','user.id','=','order.id_user')
+    ->where('order.status',$status)
+    ->select('order.*')
+    ->where('order.id_user','rating.id_user')
+   
+    ->first();
+  
+    
+    
+    // if ($check_pay!=null) {
+    //     return response()->json(['status' => 'error', 'message' => 'Bạn đã phải nhận hàng thành công trước khi có thể đánh giá.']);
+    // } else
+     if ($check_rating != null) {
+        return response()->json(['status' => 'error', 'message' => 'Bạn đã đánh giá sản phẩm này trước đó.']);
+    } else {
+        $rating = new Rating();
+        $rating->id_product = $data['id_product'];
+        $rating->rating = $data['index'];
+        $rating->id_user = $data['id_user'];
         $rating->save();
-        echo 'done';
+        return response()->json(['status' => 'success', 'message' => 'Bạn đã đánh giá ' . $data['index'] . ' trên 5']);
     }
+}
+
+ 
+    
 
     /**
      * Display the specified resource.
