@@ -168,7 +168,7 @@ function insert_rating(Request $r) {
         ->select('product.*','comment.*')
         ->find($id);
       
-        return view ('admin.comment.reply_comment',['comment'=>$comment] );
+        return view ('admin.comment.reply_comment',['comment'=>$comment],['Reply' =>$Reply]);
     }
     public function create_reply_comment(Request $request) {
         $data_reply =array();

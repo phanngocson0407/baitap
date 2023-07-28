@@ -308,9 +308,7 @@
                                 {{$item->comment}}
                               </p>
                               @foreach($reply_comment as $data)
-                              <span class="text-dark" style="font-size: 15px"> {{$data->name_admin}} </span>  
-                              <span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Bình luận:</span>
-                                {{$data->reply}}
+                                    
                               @endforeach
                             </div>
                           @endif

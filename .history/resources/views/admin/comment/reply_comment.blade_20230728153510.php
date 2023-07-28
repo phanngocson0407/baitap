@@ -41,7 +41,7 @@
                         
                     </div>
                     <div class="input-group">
-                        <input type="text" id="input1-group1" name="reply"     class="form-control">
+                        <input type="text" id="input1-group1" name="reply"   value="{{$Reply['reply']}}" class="form-control">
                     </div>
                 </div>
             </div>

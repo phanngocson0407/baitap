@@ -55,10 +55,9 @@ class ProductController extends Controller
         ->where('comment.product_id',$id)
         ->get();
         $reply_comment = ReplyComment::join('comment','comment.id','=','reply_comment.id_comment')
-        // ->where()
         ->select('reply_comment.*')
         ->get();
-        // dd($reply_comment);
+        dd
 
         // $reply_comment = Comment::join('product','product.id','=','comment.product_id')
         // ->join('reply_comment','reply_comment.id_comment','=','comment.id')

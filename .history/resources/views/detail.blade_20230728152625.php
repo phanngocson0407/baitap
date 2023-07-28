@@ -292,7 +292,7 @@
                    
                     <p><b>CÁC BÌNH LUẬN CỦA KHÁCH HÀNG</b> </p>
                     
-                    <div  class="style_comment" id="scrollableDiv" style="max-height: 550px; overflow: auto; background-color: white; padding: 20px">
+                    <div class="style_comment" id="scrollableDiv" style="max-height: 550px; overflow: auto; background-color: white; padding: 20px">
                         @php $count = 0 @endphp
                         @foreach($comment as $item)
                           @if($item->status==1)
@@ -307,11 +307,6 @@
                                 <span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Bình luận:</span>
                                 {{$item->comment}}
                               </p>
-                              @foreach($reply_comment as $data)
-                              <span class="text-dark" style="font-size: 15px"> {{$data->name_admin}} </span>  
-                              <span class="text-dark" style="font-size: 15px; font-weight: 700; line-height: 22.4px;">Bình luận:</span>
-                                {{$data->reply}}
-                              @endforeach
                             </div>
                           @endif
                         @endforeach
@@ -390,7 +385,22 @@
                    
                 </div>
                 <p><b>Viết đánh giá của bạn</b></p>
-              
+                
+                @if($data1 == null){   <form id="comment-form" method="post" action="{{URL::to('/detail/'.$detail['id'])}}" >
+                    @csrf
+                    <input style="border-radius: 10px;" type="hidden"
+                     name="product_id" value="{{ $detail['id'] }}">
+                    <input style="border-radius: 10px;" type="text"
+                     name="comment_name" id="username" placeholder="Tên người dùng" required>
+                    <textarea style="border-radius: 10px;" id="content"
+                     name="comment" placeholder="Nội dung bình luận" required></textarea>
+                     <button class="text-right" id="submit-button" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
+                     <span id="error-message" style="color: red; display: none;">
+                         Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
+                     </span>
+                </form>
+
+                }
                 <form id="comment-form" method="post" action="{{URL::to('/detail/'.$detail['id'])}}" >
                     @csrf
                     <input style="border-radius: 10px;" type="hidden"
