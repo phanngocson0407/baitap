@@ -73,7 +73,7 @@
                 <div class="col-md-12 form-group">
                     <label>Address</label>
                     <input class="form-control" readonly   name="consingnee_address" type="text"
-                        value="{{$order_detail['consingnee_address'] }}">
+                        value="{{$order_detail['status_payment']consingnee_address}}">
                 </div>
  
 
@@ -118,20 +118,20 @@
                 </tr>
            
          
-                @foreach($order_detail_product as $item)
+                {{-- @foreach($order_detail as $item) --}}
          <tr>
           
-            <td>{{$item->id_order}}</td>
+            {{-- <td>{{$item->id_order}}</td>
             <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"></td>
             <td>{{$item->name_product}}</td>
              <td>{{$item->quantity}}</td>
              <td>{{number_format($item->price, 0, '.', '.') . ' VNĐ'}}</td>
              <td>{{$item->color}}</td>
-             <td>{{$item->size}}</td>
+             <td>{{$item->size}}</td> --}}
            
              
             </tr>
-            @endforeach
+            {{-- @endforeach --}}
             <th>Phí Vận Chuyển</th>
             <th>{{number_format(30000, 0, '.', '.') . ' VNĐ'}}</th>
             <th>Mã giảm giá</th>

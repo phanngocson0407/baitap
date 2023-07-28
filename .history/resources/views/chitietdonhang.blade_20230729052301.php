@@ -118,7 +118,7 @@
                 </tr>
            
          
-                @foreach($order_detail_product as $item)
+                @foreach($order_detail as $item)
          <tr>
           
             <td>{{$item->id_order}}</td>

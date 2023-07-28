@@ -180,7 +180,7 @@ class OrderController extends Controller
         )
         ->where('order_detail.id_order', $id)
         ->first();
-        $order_detail_product = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
+        $order_detail = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
         ->join("product", 'product.id', '=', 'order_detail.id_product')
         ->select(
             'product.image',
@@ -189,9 +189,9 @@ class OrderController extends Controller
             
         )
         ->where('order_detail.id_order', $id)
-            ->get();
+ 
      
-        return view('chitietdonhang',[ 'order_detail'=>$order_detail],[ 'order_detail_product'=>$order_detail_product]);
+        return view('chitietdonhang',[ 'order_detail'=>$order_detail]);
     }
  
 }

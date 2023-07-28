@@ -51,43 +51,43 @@
           </div>
           <div class="col-md-6">
             <h5>Thông tin khách hàng nhận </h5>
-            {{-- @foreach($order_detail as $item) --}}
+            {{-- @foreach($order_detail as $item)
             <div class="row">
                
 
                 <div class="col-md-12 form-group">
                     <label>Họ tên</label>
                     <input class="form-control" readonly   name="consingnee_name" type="text"
-                        value="{{$order_detail['consingnee_name'] }}">
+                        value="{{$item->consingnee_name}}">
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Email</label>
                     <input class="form-control" readonly   name="consingnee_email" type="email"
-                        value="{{$order_detail['consingnee_email'] }}">
+                        value="{{$item->consingnee_email}}">
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Phone</label>
                     <input class="form-control" readonly   name="consingnee_phone" type="number"
-                        value="{{$order_detail['consingnee_phone'] }}">
+                        value="{{$item->consingnee_phone}}">
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Address</label>
                     <input class="form-control" readonly   name="consingnee_address" type="text"
-                        value="{{$order_detail['consingnee_address'] }}">
+                        value="{{$item->consingnee_address}}">
                 </div>
  
 
 
 
             </div>
-            {{-- @endforeach --}}
+            @endforeach --}}
           </div>
         </div>
         <div class="row">
             <div class="col-md-12"> 
                 <h5>Hình Thức Thanh Toán</h5>
-                {{-- @foreach($order_detail as $item) --}}
-                    @if($order_detail['status_payment']   ==0)
+                {{-- @foreach($order_detail as $item)
+                    @if($item->status_payment ==0)
 
                 <input class="form-control" readonly   name=" " type="text"
                 value="Thanh Toán Khi Nhận Hàng">
@@ -95,7 +95,7 @@
                 <input class="form-control" readonly   name=" " type="text"
                 value="Thanh Toán Bằng VNPAY">
                 @endif
-                {{-- @endforeach --}}
+                @endforeach --}}
 
             </div>
         </div>
@@ -118,20 +118,20 @@
                 </tr>
            
          
-                @foreach($order_detail_product as $item)
+                {{-- @foreach($order_detail as $item) --}}
          <tr>
           
-            <td>{{$item->id_order}}</td>
-            <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"></td>
-            <td>{{$item->name_product}}</td>
-             <td>{{$item->quantity}}</td>
-             <td>{{number_format($item->price, 0, '.', '.') . ' VNĐ'}}</td>
-             <td>{{$item->color}}</td>
-             <td>{{$item->size}}</td>
+            <td>{{$order_detail['coupon_code']id_order}}</td>
+            <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$order_detail['coupon_code']->image)}}"></td>
+            <td>{{$order_detail['coupon_code']name_product}}</td>
+             <td>{{$order_detail['coupon_code']quantity}}</td>
+             <td>{{number_format($order_detail['coupon_code']price, 0, '.', '.') . ' VNĐ'}}</td>
+             <td>{{$order_detail['coupon_code']color}}</td>
+             <td>{{$order_detail['coupon_code']size}}</td>
            
              
             </tr>
-            @endforeach
+            {{-- @endforeach --}}
             <th>Phí Vận Chuyển</th>
             <th>{{number_format(30000, 0, '.', '.') . ' VNĐ'}}</th>
             <th>Mã giảm giá</th>

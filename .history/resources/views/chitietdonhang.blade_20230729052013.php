@@ -51,36 +51,36 @@
           </div>
           <div class="col-md-6">
             <h5>Thông tin khách hàng nhận </h5>
-            {{-- @foreach($order_detail as $item) --}}
+            {{-- @foreach($order_detail as $item)
             <div class="row">
                
 
                 <div class="col-md-12 form-group">
                     <label>Họ tên</label>
                     <input class="form-control" readonly   name="consingnee_name" type="text"
-                        value="{{$order_detail['consingnee_name'] }}">
+                        value="{{$item->consingnee_name}}">
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Email</label>
                     <input class="form-control" readonly   name="consingnee_email" type="email"
-                        value="{{$order_detail['consingnee_email'] }}">
+                        value="{{$item->consingnee_email}}">
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Phone</label>
                     <input class="form-control" readonly   name="consingnee_phone" type="number"
-                        value="{{$order_detail['consingnee_phone'] }}">
+                        value="{{$item->consingnee_phone}}">
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Address</label>
                     <input class="form-control" readonly   name="consingnee_address" type="text"
-                        value="{{$order_detail['consingnee_address'] }}">
+                        value="{{$item->consingnee_address}}">
                 </div>
  
 
 
 
             </div>
-            {{-- @endforeach --}}
+            @endforeach --}}
           </div>
         </div>
         <div class="row">
@@ -118,7 +118,7 @@
                 </tr>
            
          
-                @foreach($order_detail_product as $item)
+                {{-- @foreach($order_detail as $item) --}}
          <tr>
           
             <td>{{$item->id_order}}</td>
@@ -131,7 +131,7 @@
            
              
             </tr>
-            @endforeach
+            {{-- @endforeach --}}
             <th>Phí Vận Chuyển</th>
             <th>{{number_format(30000, 0, '.', '.') . ' VNĐ'}}</th>
             <th>Mã giảm giá</th>

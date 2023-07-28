@@ -118,16 +118,16 @@
                 </tr>
            
          
-                @foreach($order_detail_product as $item)
+                {{-- @foreach($order_detail as $item) --}}
          <tr>
           
-            <td>{{$item->id_order}}</td>
+            {{-- <td>{{$item->id_order}}</td>
             <td><img style="max-width: 200px; height 200px;" src="{{ URL::to('/frontend/img/'.$item->image)}}"></td>
             <td>{{$item->name_product}}</td>
              <td>{{$item->quantity}}</td>
              <td>{{number_format($item->price, 0, '.', '.') . ' VNĐ'}}</td>
              <td>{{$item->color}}</td>
-             <td>{{$item->size}}</td>
+             <td>{{$item->size}}</td> --}}
            
              
             </tr>

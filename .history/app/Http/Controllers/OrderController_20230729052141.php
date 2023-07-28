@@ -180,18 +180,10 @@ class OrderController extends Controller
         )
         ->where('order_detail.id_order', $id)
         ->first();
-        $order_detail_product = Order::join("order_detail", 'order.id', '=', 'order_detail.id_order')
-        ->join("product", 'product.id', '=', 'order_detail.id_product')
-        ->select(
-            'product.image',
-            'order_detail.*',
-            'order.*'
             
-        )
-        ->where('order_detail.id_order', $id)
-            ->get();
+ 
      
-        return view('chitietdonhang',[ 'order_detail'=>$order_detail],[ 'order_detail_product'=>$order_detail_product]);
+        return view('chitietdonhang',[ 'order_detail'=>$order_detail]);
     }
  
 }
