@@ -96,7 +96,15 @@
 
         <div class="col-lg-7 pb-5">
             <h2 class="font-weight-semi-bold">{{ $detail['name_product'] }}</h2>
-            
+            <div class="d-flex mb-3">
+                <div class="text-primary mr-2" style="with:20%;position:relative">
+                    <span class="fa fa-star"
+                        style="font-size: 30px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
+
+
+                </div>
+                <small class="pt-1" style="font-size: 20px"> {{$rating}} sao </small>
+            </div>
             <div class="d-flex ">
                 <p style="font-size:
                     23px;
@@ -323,15 +331,7 @@
               </div>
           <div class="col-md-6">
             <div>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2" style="with:20%;position:relative">
-                        <span class="fa fa-star"
-                            style="font-size: 30px;color:rgb(209,156,151); margin:0 auto; text:align: center;"></span>
-    
-    
-                    </div>
-                    <small class="pt-1" style="font-size: 20px"> {{$rating}} sao ({{$count}} lượt đánh giá)</small>
-                </div>
+             
                 <?php
                 $data1=Session::get('data1');
                 ?>
@@ -598,7 +598,7 @@
             }
         });
         //click đánh giá sao 
-        $(document).on('click', '.rating', function () {
+$(document).on('click', '.rating', function () {
     var index = $(this).data("index");
     var id_product = $(this).data("id_product");
     var id_user = $(this).data("id_user");

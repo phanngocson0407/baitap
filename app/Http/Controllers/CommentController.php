@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Order;
 use App\Models\ReplyComment;
 use App\Models\Rating;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 class CommentController extends Controller
@@ -59,25 +60,32 @@ class CommentController extends Controller
 function insert_rating(Request $r) {
     $data = $r->all();
     $status = 3;
+
     $check_rating = Rating::where('id_user', $data['id_user'])
                       ->where('id_product', $data['id_product'])
                       ->first();
 
     // $check_pay = Order::where('status','3')->first();
-    $check_pay = Rating::join('user','rating.id_user','=','user.id')
-    ->join('order','user.id','=','order.id_user')
-    ->where('order.status',$status)
-    ->select('order.*')
-    ->where('order.id_user','rating.id_user')
+    // $check_pay = Rating::join('user','rating.id_user','=','user.id')
+    // ->join('order','user.id','=','order.id_user')
+    // ->where('order.status',$status)
+    // ->select('order.*')
+    // ->where('order.id_user','rating.id_user')
    
+    // ->first();
+    $check =Product::join('order_detail','product.id','=','order_detail.id_product')
+    ->join('order','order_detail.id_order','=','order.id')
+    ->join('user','user.id','=','order.id_user')
+    ->where('order.status',3)
+    ->where('order_detail.id_product',$data['id_product'])
     ->first();
-  
+   
     
-    
-    // if ($check_pay!=null) {
-    //     return response()->json(['status' => 'error', 'message' => 'Bạn đã phải nhận hàng thành công trước khi có thể đánh giá.']);
-    // } else
-     if ($check_rating != null) {
+   
+    if(empty($check)){
+        return response()->json(['status' => 'error', 'message' => 'Sản phẩm này bạn chưa đặt']);
+    }
+    else if ($check_rating != null) {
         return response()->json(['status' => 'error', 'message' => 'Bạn đã đánh giá sản phẩm này trước đó.']);
     } else {
         $rating = new Rating();

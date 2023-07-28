@@ -69,9 +69,8 @@ function insert_rating(Request $r) {
     ->where('order.status',$status)
     ->select('order.*')
     ->where('order.id_user','rating.id_user')
-   
     ->first();
-  
+ 
     
     
     // if ($check_pay!=null) {

@@ -99,15 +99,21 @@ class AdminController extends Controller
     {
         
         $id_admin=$request->id_admin;
-        RoleAdmin::where('id_admin',$id_admin)->delete();
-        foreach($request->array_role_dachon as $k=>$v)
-        {
-                $role_admin=new RoleAdmin;
-                $role_admin->id_admin=$id_admin;
-                $role_admin->id_role=$v;
-                $role_admin->save();
-                session()->flash('messthem','Thêm quyền thành công vào admin');
-        }
+        $deleteRole = $request->has('array_role_dachon');
+        if ($deleteRole) {
+            foreach($request->array_role_dachon as $k=>$v)
+            {
+                    $role_admin=new RoleAdmin;
+                    $role_admin->id_admin=$id_admin;
+                    $role_admin->id_role=$v;
+                    $role_admin->save();
+                    session()->flash('messthem','Thêm quyền thành công vào admin');
+            }
+       
+        }else {
+            RoleAdmin::where('id_admin',$id_admin)->delete();
+            session()->flash('messxoa', 'Xóa quyền thành công khỏi admin');
+    }
         return redirect('admin/accout/show-role/'.$id_admin);
     }
 

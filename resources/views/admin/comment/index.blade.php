@@ -55,9 +55,11 @@
                                                 </form>
                                             </td>
                                             <td>
+                                                @if($item->status==1)
                                                 <a href="comment/reply-comment/{{$item->id}}">
                                                     <button class="btn btn-outline-success btn-block" style="margin-bottom: 15px;"><i class="fa fa-magic"></i>Trả lời bình luận</button>
                                                 </a>
+                                                @endif
                                             </td>
                                     </tbody>
                                 @endforeach

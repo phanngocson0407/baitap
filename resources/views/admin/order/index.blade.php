@@ -98,10 +98,12 @@
                                             @if($v->role_module=="role_edit_order")
                                             <td>
                                                 @if($item->status==0)
+                                                     @if($item->status_huy!=1)
                                                 <a href="order/edit/{{$item->id}}">
                                                 <button  class="btn btn-outline-secondary">
                                                 <i class="fa fa-edit"></i>Sửa</button>
                                                 </a>
+                                                @endif
                                                 @endif
                                             </td>
                                             @endif
