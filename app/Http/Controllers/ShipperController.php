@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
-
+use Illuminate\Pagination\Paginator;
 class ShipperController extends Controller
 {
      public function show(Order $Order)
     {
-        $order = Order::all();
+        $order = Order::orderBy('status', 'asc')->paginate(4);
         
-        return view('admin.shipper.index',['order'=>Order::paginate(4)]);
+        return view('admin.shipper.index',['order'=>$order]);
     }
     public function update_status_vanchuyen(Request $request)
     {

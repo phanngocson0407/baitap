@@ -62,11 +62,10 @@
                                     </tbody>
                                 @endforeach
                                 </table>
+                                {{$cm->links()}}
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
