@@ -393,10 +393,12 @@
                      name="comment_name" id="username" placeholder="Tên người dùng" required>
                     <textarea style="border-radius: 10px;" id="content"
                      name="comment" placeholder="Nội dung bình luận" required></textarea>
-                     <button class="text-right" id="submit-button" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
-                     <span id="error-message" style="color: red; display: none;">
-                         Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
-                     </span>
+                    <button class="text-right" id="submit-button"
+                     style="border-radius: 10px;" type="submit">Gửi bình luận
+                    </button>
+                    <span id="error-message" style="color: red; display: none;">
+                        Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
+                    </span>
                 </form>
             </div>
           </div>

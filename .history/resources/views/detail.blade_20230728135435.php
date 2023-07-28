@@ -392,11 +392,14 @@
                     <input style="border-radius: 10px;" type="text"
                      name="comment_name" id="username" placeholder="Tên người dùng" required>
                     <textarea style="border-radius: 10px;" id="content"
-                     name="comment" placeholder="Nội dung bình luận" required></textarea>
-                     <button class="text-right" id="submit-button" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
-                     <span id="error-message" style="color: red; display: none;">
-                         Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
-                     </span>
+                     name="comment" placeholder="Nội dung bình luận" required>
+                    </textarea>
+                    <button class="text-right" id="submit-button"
+                     style="border-radius: 10px;" type="submit">Gửi bình luận
+                    </button>
+                    <span id="error-message" style="color: red; display: none;">
+                        Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
+                    </span>
                 </form>
             </div>
           </div>
@@ -453,32 +456,7 @@
     <!-- Template Javascript -->
 
     {{-- Code phần đánh giá --}}
-    <script>
-        $(document).ready(function() {
-            var commentForm = $("#comment-form");
-            var submitButton = $("#submit-button");
-            var errorMessage = $("#error-message");
-            var isSubmitting = false;
-    
-            commentForm.on('submit', function(event) {
-                if (isSubmitting) {
-                    event.preventDefault();
-                    return;
-                }
-                
-                // Disable the submit button for 2 minutes
-                submitButton.prop('disabled', true);
-                isSubmitting = true;
-                errorMessage.hide();
-                
-                // Simulate a server request for 2 minutes wait
-                setTimeout(function() {
-                    submitButton.prop('disabled', false);
-                    isSubmitting = false;
-                }, 2 * 60 * 1000); // 2 minutes in milliseconds
-            });
-        });
-    </script>
+
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
         function AddCart(id) {

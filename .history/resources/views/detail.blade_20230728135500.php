@@ -392,11 +392,14 @@
                     <input style="border-radius: 10px;" type="text"
                      name="comment_name" id="username" placeholder="Tên người dùng" required>
                     <textarea style="border-radius: 10px;" id="content"
-                     name="comment" placeholder="Nội dung bình luận" required></textarea>
-                     <button class="text-right" id="submit-button" style="border-radius: 10px;" type="submit">Gửi bình luận</button>
-                     <span id="error-message" style="color: red; display: none;">
-                         Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
-                     </span>
+                     name="comment" placeholder="Nội dung bình luận" required>
+                    </textarea>
+                    <button class="text-right" id="submit-button"
+                     style="border-radius: 10px;" type="submit">Gửi bình luận
+                    </button>
+                    <span id="error-message" style="color: red; display: none;">
+                        Xin lỗi, bạn chỉ có thể gửi bình luận mỗi 1 phút.
+                    </span>
                 </form>
             </div>
           </div>
@@ -455,30 +458,42 @@
     {{-- Code phần đánh giá --}}
     <script>
         $(document).ready(function() {
-            var commentForm = $("#comment-form");
-            var submitButton = $("#submit-button");
-            var errorMessage = $("#error-message");
-            var isSubmitting = false;
-    
-            commentForm.on('submit', function(event) {
-                if (isSubmitting) {
-                    event.preventDefault();
-                    return;
-                }
-                
-                // Disable the submit button for 2 minutes
-                submitButton.prop('disabled', true);
-                isSubmitting = true;
-                errorMessage.hide();
-                
-                // Simulate a server request for 2 minutes wait
-                setTimeout(function() {
-                    submitButton.prop('disabled', false);
-                    isSubmitting = false;
-                }, 2 * 60 * 1000); // 2 minutes in milliseconds
-            });
+          var lastCommentTime = 0;
+          var submitButton = $("#submit-button");
+          var errorMessage = $("#error-message");
+        
+          // Function to check if the time difference is greater than 2 minutes
+          function isTimeDifferenceExceeded() {
+            var currentTime = Date.now();
+            var timeDifference = currentTime - lastCommentTime;
+            var twoMinutesInMillis = 2 * 60 * 1000; // 2 minutes in milliseconds
+            return timeDifference < twoMinutesInMillis;
+          }
+        
+          // Function to show the error message and disable the submit button
+          function showErrorMessage() {
+            errorMessage.show();
+            submitButton.attr("disabled", true);
+          }
+        
+          // Function to hide the error message and enable the submit button
+          function hideErrorMessage() {
+            errorMessage.hide();
+            submitButton.attr("disabled", false);
+          }
+        
+          // Function to handle form submission
+          $("#comment-form").submit(function(event) {
+            if (isTimeDifferenceExceeded()) {
+              event.preventDefault(); // Prevent form submission
+              showErrorMessage();
+            } else {
+              hideErrorMessage();
+              lastCommentTime = Date.now();
+            }
+          });
         });
-    </script>
+        </script>
     <script src="{{url('frontend')}}/js/main.js"></script>
     <script>
         function AddCart(id) {
